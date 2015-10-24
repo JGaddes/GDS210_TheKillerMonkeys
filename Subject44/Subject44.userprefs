@@ -1,10 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="F:\UnityProjects\GDS210_TheKillerMonkeys\Subject44\Assets\Scripts\menuScript.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\TestMovment.cs">
     <Files>
-      <File FileName="F:\UnityProjects\GDS210_TheKillerMonkeys\Subject44\Assets\Scripts\PauseMenuScript.cs" Line="59" Column="3" />
-      <File FileName="F:\UnityProjects\GDS210_TheKillerMonkeys\Subject44\Assets\Scripts\menuScript.cs" Line="52" Column="2" />
-      <File FileName="F:\UnityProjects\GDS210_TheKillerMonkeys\Subject44\Assets\Scripts\LevelSelectScript.cs" Line="39" Column="1" />
+      <File FileName="Assets\Scripts\InGameMenu\GuiScript.cs" Line="27" Column="1" />
+      <File FileName="Assets\Scripts\PlayerController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\TestMovment.cs" Line="23" Column="33" />
+      <File FileName="Assets\Scripts\CameraFollow.cs" Line="13" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

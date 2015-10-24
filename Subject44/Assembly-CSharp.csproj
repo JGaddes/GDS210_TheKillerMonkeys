@@ -54,15 +54,11 @@
      <Compile Include="Assets\Scripts\InGameMenu\PauseMenuScript.cs" />
      <Compile Include="Assets\Scripts\LevelSelectScript.cs" />
      <Compile Include="Assets\Scripts\LockLevel.cs" />
-     <Compile Include="Assets\Scripts\MainMenu\CodeScript.cs" />
-     <Compile Include="Assets\Scripts\MainMenu\LevelSelectScript.cs" />
-     <Compile Include="Assets\Scripts\MainMenu\LockLevel.cs" />
-     <Compile Include="Assets\Scripts\MainMenu\PlayerMovement.cs" />
-     <Compile Include="Assets\Scripts\MainMenu\menuScript.cs" />
      <Compile Include="Assets\Scripts\PatrolAi.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\Pole.cs" />
+     <Compile Include="Assets\Scripts\TestMovment.cs" />
      <Compile Include="Assets\Scripts\Vent.cs" />
      <Compile Include="Assets\Scripts\menuScript.cs" />
  <Reference Include="UnityEngine.Advertisements">
