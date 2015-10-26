@@ -16,19 +16,19 @@ public class PlayerController : MonoBehaviour {
 	public bool hidden = false;
 	public bool isBanana = false;
 
-	public Material hide;
-	public Material visible;
-	public Material bananaMode;
+	//public Material hide;
+	//public Material visible;
+	//public Material bananaMode;
 
 	public CharacterController controller;
-	public GuiScript guiScript;
+	//public GuiScript guiScript;
 	public Vent vent;
 	public Slider bananaSlider;
 
 
 	void Start () {
 
-		guiScript.GetComponent <GuiScript>();
+		//guiScript.GetComponent <GuiScript>();
 		controller = GetComponent<CharacterController> ();
 		isBanana = false;
 	}
@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour {
 		{
 			if (hidden == false){
 				speed = 0f;
-				this.transform.position = new Vector3(8, 0.5f, -2);
+				transform.position = new Vector3(8, 0.5f, -2);
 				speed = 15f;
 			}
 		}
@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour {
 		if (col.gameObject.tag == "Banana"){
 			
 			Debug.Log ("Mmmm nana");
-			guiScript.bananaList[0].SetActive (true);
+			//guiScript.bananaList[0].SetActive (true);
 			Destroy(col.gameObject);
 		}
 	}
@@ -89,9 +89,11 @@ public class PlayerController : MonoBehaviour {
 	void TestHidden()
 	{
 		if (hidden == true) {
-			gameObject.GetComponent<Renderer> ().material = hide;
+            //gameObject.GetComponent<Renderer> ().material = hide;
+            Debug.Log("u r know hidde");
 		} else {
-			gameObject.GetComponent<Renderer> ().material = visible;
+            //gameObject.GetComponent<Renderer> ().material = visible;
+            Debug.Log("No more hidde");
 		}
 
 	}
