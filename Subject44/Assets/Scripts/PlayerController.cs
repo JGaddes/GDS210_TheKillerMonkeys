@@ -61,23 +61,23 @@ public class PlayerController : MonoBehaviour {
 		if (other.CompareTag ("Shadow")) {
 			hidden = true;	
 		}
-		if (other.CompareTag ("Vent")) {
-			if (Input.GetKeyDown (KeyCode.Space)) {
-			Debug.Log ("You Entered the Vent");
-				vent.CallVent ();
-			}
-		}
+
+        if (other.CompareTag("Vent"))
+        {
+            vent.CallVent();
+        }
 	}
 	
+
 	void OnTriggerEnter(Collider col){
 
-		if (col.gameObject.tag == "Banana"){
+		if (col.CompareTag("Banana")){
 			
 			Debug.Log ("Mmmm nana");
 			//guiScript.bananaList[0].SetActive (true);
 			Destroy(col.gameObject);
 		}
-	}
+    }
 
 	void OnTriggerExit(Collider other){
 		if (other.CompareTag ("Shadow")) {
@@ -88,10 +88,14 @@ public class PlayerController : MonoBehaviour {
 
 	void TestHidden()
 	{
-		if (hidden == true) {
+		if (hidden == true)
+        {
             //gameObject.GetComponent<Renderer> ().material = hide;
             Debug.Log("u r know hidde");
-		} else {
+		}
+
+        else
+        {
             //gameObject.GetComponent<Renderer> ().material = visible;
             Debug.Log("No more hidde");
 		}

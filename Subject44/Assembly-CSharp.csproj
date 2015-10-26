@@ -45,6 +45,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\AISight.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\CircleGuard.cs" />
      <Compile Include="Assets\Scripts\Guard.cs" />
@@ -53,6 +54,7 @@
      <Compile Include="Assets\Scripts\MainMenu\CodeScript.cs" />
      <Compile Include="Assets\Scripts\MainMenu\LevelSelectScript.cs" />
      <Compile Include="Assets\Scripts\MainMenu\LockLevel.cs" />
+     <Compile Include="Assets\Scripts\MainMenu\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\MainMenu\menuScript.cs" />
      <Compile Include="Assets\Scripts\PatrolAi.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />

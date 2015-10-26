@@ -12,24 +12,35 @@ public class Vent : MonoBehaviour {
 
 
 	public void CallVent(){
-		StartCoroutine (UseVent ());
-	}
+		
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (inVent == false)
+            {
+                StartCoroutine(EnterVent());
+            }
+
+            if (inVent == true)
+            {
+                StartCoroutine(ExitVent());
+            }
+        }
+    }
 
 
-	public IEnumerator UseVent()
+	public IEnumerator EnterVent()
 	{
-		if (inVent = false){
-			player.transform.position = ventPoins[0].position;
-			inVent = true;
-			yield return new WaitForSeconds(vCldn);
-
-		}
-
-		if (inVent = true){
-			player.transform.position = ventPoins[1].transform.position;
-			inVent = false;
-			yield return new WaitForSeconds (vCldn);
-		}
+        player.transform.position = ventPoins[0].position;
+		inVent = true;
+		yield return new WaitForSeconds(vCldn);
 	}
+
+    public IEnumerator ExitVent()
+    {
+        player.transform.position = ventPoins[1].transform.position;
+        inVent = false;
+        yield return new WaitForSeconds(vCldn);
+    }
 
 }
