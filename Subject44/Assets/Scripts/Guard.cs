@@ -15,7 +15,7 @@ public class Guard : MonoBehaviour {
 	void Update () {
 	
 		if(Vector3.Distance (transform.position, player.transform.position) < 1.5f) {
-			if(Input.GetKeyDown(KeyCode.LeftShift)) {
+			if(Input.GetKeyDown(KeyCode.Mouse0)) {
 				Destroy (gameObject);
 			}
 		}

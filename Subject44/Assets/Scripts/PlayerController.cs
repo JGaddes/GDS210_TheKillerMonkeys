@@ -24,6 +24,10 @@ public class PlayerController : MonoBehaviour {
 	//public GuiScript guiScript;
 	public Vent vent;
 	public Slider bananaSlider;
+	public GameObject playerSprite;
+
+	public AudioClip detected, enemyDeath;
+
 
 
 	void Start () {
@@ -31,6 +35,7 @@ public class PlayerController : MonoBehaviour {
 		//guiScript.GetComponent <GuiScript>();
 		controller = GetComponent<CharacterController> ();
 		isBanana = false;
+		
 	}
 
 
@@ -44,6 +49,8 @@ public class PlayerController : MonoBehaviour {
 		Vector3 _moveDirection = transform.TransformDirection (_hori, 0, _vert).normalized; 
 		controller.SimpleMove(((_moveDirection * speed) * Time.deltaTime) * speed);
 		_moveDirection = Vector3.zero;
+
+
 	}
 
 
@@ -53,7 +60,8 @@ public class PlayerController : MonoBehaviour {
 		{
 			if (hidden == false){
 				speed = 0f;
-				transform.position = new Vector3(8, 0.5f, -2);
+				transform.position = new Vector3(6.46f, 0.171f, 0.4f);
+				playerSprite.transform.eulerAngles = new Vector3(90, 0, 0);
 				speed = 15f;
 			}
 		}
@@ -97,7 +105,7 @@ public class PlayerController : MonoBehaviour {
         else
         {
             //gameObject.GetComponent<Renderer> ().material = visible;
-            Debug.Log("No more hidde");
+            //Debug.Log("No more hidde");
 		}
 
 	}
