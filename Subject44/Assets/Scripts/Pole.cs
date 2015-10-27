@@ -7,6 +7,8 @@ public class Pole : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+
 	
 	}
 	
@@ -17,17 +19,21 @@ public class Pole : MonoBehaviour {
 		{
 			if(Input.GetKeyDown(KeyCode.Space))
 			{
-				if(player.GetComponent<PlayerController>().onPole == false)
+				if(!player.GetComponent<PlayerController>().onPole)
 				{
-					player.transform.position = this.transform.position;
+					player.transform.position = new Vector3(transform.position.x, 5f, transform.position.z);
+					Debug.Log ("up");
 					player.GetComponent<PlayerController>().speed = 0f;
+					Debug.Log ("stopped");
 					player.GetComponent<PlayerController>().onPole = true;
+					Debug.Log ("on");
 					player.GetComponent<PlayerController>().hidden = true;
+					Debug.Log ("hide");
 				}
 				
-				else if(player.GetComponent<PlayerController>().onPole == true)
+				else if(player.GetComponent<PlayerController>().onPole)
 				{
-					player.transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
+					player.transform.position = new Vector3(transform.position.x, 1.059f, transform.position.z);
 					player.GetComponent<PlayerController>().speed = 15f;
 					player.GetComponent<PlayerController>().onPole = false;
 					player.GetComponent<PlayerController>().hidden = false;

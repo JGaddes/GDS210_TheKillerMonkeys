@@ -10,7 +10,9 @@ public class PauseMenuScript : MonoBehaviour {
 	//variable for checking if the game is paused 
 	private bool isPaused = false;
 	// Use this for initialization
+
 	void Start () {
+
 		//unpause the game on <span id="IL_AD2" class="IL_AD">start
 		Time.timeScale = 1;
 		//get the animator component
@@ -21,6 +23,7 @@ public class PauseMenuScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	public void Update () {
+
 		//pause the game on escape key press and when the game is not already paused
 		if(Input.GetKeyUp(KeyCode.P) && !isPaused){
 			PauseGame();
@@ -33,6 +36,7 @@ public class PauseMenuScript : MonoBehaviour {
 	
 	//function to pause the game
 	public void PauseGame(){
+
 		//enable the animator component
 		anim.enabled = true;
 		//play the Slidein animation
@@ -44,6 +48,7 @@ public class PauseMenuScript : MonoBehaviour {
 	}
 	//function to unpause the game
 	public void UnpauseGame(){
+
 		//set the isPaused flag to false to indicate that the game is not paused
 		isPaused = false;
 		//play the SlideOut animation
@@ -54,8 +59,7 @@ public class PauseMenuScript : MonoBehaviour {
 
 	public void ExitGame(){
 		
-		Application.Quit ();
-		Debug.Log ("You have quit the game");
+		Application.LoadLevel ("MainMenu1");
 	}
 	
 }

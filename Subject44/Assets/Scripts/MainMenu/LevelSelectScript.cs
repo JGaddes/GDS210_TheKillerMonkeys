@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class LevelSelectScript : MonoBehaviour {
 
     private int worldIndex;
-    private int levelIndex;   
+    private int levelIndex;
+    private int stars = 0; //Variable to store stars achieved
 	
 	void  Start (){
 		//loop thorugh all the worlds
@@ -34,8 +36,16 @@ public class LevelSelectScript : MonoBehaviour {
 	void  CheckLockedLevels (){
 		//loop through the levels of a particular world
 		for(int j = 1; j < LockLevel.levels; j++){
-			levelIndex = (j+1);
-			if((PlayerPrefs.GetInt("level"+worldIndex.ToString() +":" +levelIndex.ToString()))==1){
+
+            //get the number of stars obtained for that particular level
+            //used to enable the image which should be displayed in the World1 scene beside the individual levels
+            stars = PlayerPrefs.GetInt("level" + worldIndex.ToString() + ":" + j.ToString() + "stars");
+            levelIndex = (j+1);
+            //enable the respective image based on the stars variable value
+            GameObject.Find(j + "star" + stars).GetComponent<Image>().enabled = true;
+            Debug.Log(j + "star" + stars);
+            //Check if the level is locked
+            if ((PlayerPrefs.GetInt("level"+worldIndex.ToString() +":" +levelIndex.ToString()))==1){
 				GameObject.Find("LockedLevel"+(j+1)).SetActive (false);
 				Debug.Log ("Unlocked Level " + levelIndex);
 			}
