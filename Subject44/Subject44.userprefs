@@ -1,29 +1,13 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerController.cs">
     <Files>
-<<<<<<< HEAD
-      <File FileName="Assets\Scripts\PlayerController.cs" Line="115" Column="33" />
-      <File FileName="Assets\Scripts\InGameMenu\GuiScript.cs" Line="32" Column="1" />
-      <File FileName="Assets\Scripts\CameraFollow.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CircleGuard.cs" Line="19" Column="33" />
-      <File FileName="Assets\Scripts\Guard.cs" Line="12" Column="3" />
-      <File FileName="Assets\Scripts\PatrolAi.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\InGameMenu\PauseMenuScript.cs" Line="51" Column="3" />
-      <File FileName="Assets\Scripts\Pole.cs" Line="28" Column="49" />
-=======
-      <File FileName="Assets\Scripts\PlayerController.cs" Line="29" Column="40" />
-      <File FileName="..\..\..\SAE\2015 Trimester 2\GAM111 Scripting for Game Developers\3D Shooter\Assets\Scripts\Assignment\Player.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CameraFollow.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CircleGuard.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Guard.cs" Line="1" Column="1" />
->>>>>>> origin/master
+      <File FileName="Assets\Scripts\Guard.cs" Line="33" Column="3" />
+      <File FileName="Assets\Scripts\PlayerController.cs" Line="38" Column="30" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="C:\Users\jholt\Desktop\Subject44\Assets\Scripts\Pole.cs" line="28" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

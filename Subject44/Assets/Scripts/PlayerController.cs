@@ -23,21 +23,12 @@ public class PlayerController : MonoBehaviour {
 	//public Material bananaMode;
 
 	public CharacterController controller;
-
-	//public GuiScript guiScript;
 	public Vent vent;
-<<<<<<< HEAD
 	public GameObject playerSprite;
-=======
 	public Slider bananaSlider;
-	public GameObject playerSprite;
-
 	public AudioClip detected, enemyDeath;
 
->>>>>>> origin/master
 
-	public AudioClip detected, enemyDeath;
-	
 	//GUI VARIABLES!!
 	public GuiScript guiScript;
 
@@ -69,30 +60,30 @@ public class PlayerController : MonoBehaviour {
 	void Start () {
 		//set the level complete to false on start of level
         isLevelComplete = false;
+
         //get the star images
         star1 = GameObject.Find("star1");
         star2 = GameObject.Find("star2");
         star3 = GameObject.Find("star3");
+
         //get the next button
         buttonNext = GameObject.Find("Next");
+
         //disable the image component of all the star images
         star1.GetComponent<Image>().enabled = false;
         star2.GetComponent<Image>().enabled = false;
        	star3.GetComponent<Image>().enabled = false;
+
         //disable the next button
         buttonNext.SetActive(false);
+
         //save the current level name
         currentLevel = Application.loadedLevelName;
 		
 		//guiScript.GetComponent <GuiScript>();
 		controller = GetComponent<CharacterController> ();
 		isBanana = false;
-<<<<<<< HEAD
-
-		banana.canvasRenderer.SetAlpha (0);
-=======
->>>>>>> origin/master
-		
+		banana.canvasRenderer.SetAlpha (0);		
 	}
 
 
@@ -107,11 +98,11 @@ public class PlayerController : MonoBehaviour {
 		controller.SimpleMove(((_moveDirection * speed) * Time.deltaTime) * speed);
 		_moveDirection = Vector3.zero;
 
-<<<<<<< HEAD
 		if (!isLevelComplete)
         {
             //update the timer value
             totalTime += Time.deltaTime;
+
             //display the timer value 
             timerText.text = "TIME: " + totalTime.ToString();
 
@@ -133,9 +124,6 @@ public class PlayerController : MonoBehaviour {
 			bananaTime = 15f;
 			banana.canvasRenderer.SetAlpha(0);
 		}
-=======
->>>>>>> origin/master
-
 	}
 
 
@@ -165,19 +153,11 @@ public class PlayerController : MonoBehaviour {
 	void OnTriggerEnter(Collider col){
 
 		if (col.CompareTag("Banana")){
-<<<<<<< HEAD
-
-			isBanana = true;
-
-=======
->>>>>>> origin/master
-			
+			isBanana = true;			
 			Debug.Log ("Mmmm nana");
 			//guiScript.bananaList[0].SetActive (true);
 			Destroy(col.gameObject);
-		}
-<<<<<<< HEAD
-		
+		}		
 		if (col.gameObject.name == "Goal")
         {
 
@@ -207,10 +187,6 @@ public class PlayerController : MonoBehaviour {
  
             guiScript.KeyPadActive();
         }
-		
-		
-=======
->>>>>>> origin/master
     }
 
 	void OnTriggerExit(Collider other){
@@ -245,8 +221,10 @@ public class PlayerController : MonoBehaviour {
                     worldIndex = (i + 1);
                     levelIndex = (j + 1);
                     PlayerPrefs.SetInt("level" + worldIndex.ToString() + ":" + levelIndex.ToString(), 1);
+
                     //check if the current stars value is less than the new value
                     if (PlayerPrefs.GetInt("level" + worldIndex.ToString() + ":" + j.ToString() + "stars") < stars)
+
                         //overwrite the stars value with the new value obtained
                         PlayerPrefs.SetInt("level" + worldIndex.ToString() + ":" + j.ToString() + "stars", stars);
                 }
@@ -266,7 +244,7 @@ public class PlayerController : MonoBehaviour {
         else
         {
             //gameObject.GetComponent<Renderer> ().material = visible;
-            //Debug.Log("No more hidde");
+            Debug.Log("No more hidde");
 		}
 
 	}

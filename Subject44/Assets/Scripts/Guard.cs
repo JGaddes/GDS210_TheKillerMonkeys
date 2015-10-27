@@ -17,15 +17,17 @@ public class Guard : MonoBehaviour {
 	void Update () {
 	
 		if(Vector3.Distance (transform.position, player.transform.position) < 1.5f) {
-<<<<<<< HEAD
+
+//<<<<<<< HEAD
 			if(playerController.isBanana){
 				if(Input.GetKeyDown(KeyCode.Mouse0)) {
 					Destroy (gameObject);
 				}
-=======
+//=======
 			if(Input.GetKeyDown(KeyCode.Mouse0)) {
 				Destroy (gameObject);
->>>>>>> origin/master
+//>>>>>>> origin/master
+				}
 			}
 		}
 	}
