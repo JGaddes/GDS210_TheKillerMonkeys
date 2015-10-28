@@ -5,11 +5,7 @@ using System.Collections.Generic;
 
 public class GuiScript : MonoBehaviour {
 	
-	//public Slider bananaMode;
 	public PlayerController playerController;
-	//public List<GameObject> bananaList;
-	//public Slider bananaSlider;
-
 	public int count;
 	public float cooldown = 2;
 
@@ -18,7 +14,13 @@ public class GuiScript : MonoBehaviour {
     public Canvas keyPad;
     public string password = "";
 
+    //Computer Variables
+    public InputField compInput;
+    public Canvas Computer;
+    public string loginPass = "";
+
     private Animator anim;
+    private Animator anim2;
 
 
     // Use this for initialization
@@ -31,7 +33,12 @@ public class GuiScript : MonoBehaviour {
         anim = keyPadText.GetComponent<Animator>();
         keyPad.enabled = false;
         anim.enabled = false;
-	}
+
+        anim2 = Computer.gameObject.GetComponent<Animator>();
+        Computer.enabled = false;
+        anim2.enabled = false;
+      
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -48,6 +55,20 @@ public class GuiScript : MonoBehaviour {
 		//		bananaSlider.value = 100;
 		//	}
 	 //   }
+    }
+
+    public void CodeCheck(string other) {
+
+        switch (other.ToLower()){
+
+            case "password":
+                Debug.Log("Correct Password");
+                anim2.enabled = true;
+                break;
+            default:
+                Debug.Log("Wrong Code Nerd!");
+                break;
+        }
     }
 
     public void ClickLetter(string letterClicked)
@@ -89,6 +110,8 @@ public class GuiScript : MonoBehaviour {
         }
     }
 
+    //KEYPAD FUNCTIONS!!
+
     public void KeyPadActive() {
 
         keyPad.enabled = true;
@@ -100,7 +123,8 @@ public class GuiScript : MonoBehaviour {
         keyPad.enabled = false;
     }
 
-    IEnumerator MyCoroutine(){
+    IEnumerator MyCoroutine()
+    {
 
         //Disable Raycast so the Keypad becomes unusable
         keyPad.GetComponent<GraphicRaycaster>().enabled = false;
@@ -108,4 +132,34 @@ public class GuiScript : MonoBehaviour {
         yield return new WaitForSeconds(2);
         keyPad.enabled = false;
     }
+
+    //END OF KEYPAD FUNCTIONS
+
+    //COMPUTER FUNCTIONS!!
+
+    public void ComputerActive() {
+
+        Computer.enabled = true;
+    }
+
+    public void ComputerUnActive()
+    {
+
+        Computer.enabled = false;
+        playerController.speed = 15;
+    }
+
+    public void UnlockDoors() {
+
+        Debug.Log("Doors Unlocking!");
+    }
+
+    public void DisableCameras() {
+
+        Debug.Log("Cameras Disabled!");
+    }
+
+    //END OF COMPUTER FUNCTIONS
+
+    
 }

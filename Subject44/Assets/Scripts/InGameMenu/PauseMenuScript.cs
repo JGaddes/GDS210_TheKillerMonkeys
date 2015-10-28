@@ -25,13 +25,22 @@ public class PauseMenuScript : MonoBehaviour {
 	public void Update () {
 
 		//pause the game on escape key press and when the game is not already paused
-		if(Input.GetKeyUp(KeyCode.P) && !isPaused){
+		if(Input.GetKeyUp(KeyCode.Escape) && !isPaused){
 			PauseGame();
 		}
 		//unpause the game if its paused and the escape key is pressed
 		else if(Input.GetKeyUp(KeyCode.P) && isPaused){
 			UnpauseGame();
 		}
+
+        if (Input.GetKeyDown(KeyCode.Q)) {
+
+            if (isPaused){
+
+                Application.LoadLevel("MainMenu1");
+            }
+            
+        }
 	}
 	
 	//function to pause the game

@@ -20,11 +20,6 @@ public class PlayerController : MonoBehaviour {
 	public bool isBanana = false;
 	public bool havePill = false;
 
-
-	//public Material hide;
-	//public Material visible;
-	//public Material bananaMode;
-
 	public CharacterController controller;
 	public Vent vent;
 	public GameObject playerSprite;
@@ -59,6 +54,8 @@ public class PlayerController : MonoBehaviour {
     protected float totalTime = 0f;
 
 	public Image banana;
+    public Image pill;
+    public Text pillAmountText;
 
 
 
@@ -85,13 +82,15 @@ public class PlayerController : MonoBehaviour {
         //save the current level name
         currentLevel = Application.loadedLevelName;
 		
-		//guiScript.GetComponent <GuiScript>();
+		guiScript.GetComponent <GuiScript>();
 		controller = GetComponent<CharacterController> ();
 		isBanana = false;
 		bananaSlider.value = 0;
-		banana.canvasRenderer.SetAlpha (0);		
+        pills = 0;
 
-		foreach (GameObject g in GameObject.FindGameObjectsWithTag ("Guards")) 
+        
+
+        foreach (GameObject g in GameObject.FindGameObjectsWithTag ("Guards")) 
 		{
 			guards.Add (g);
 		}
@@ -116,11 +115,13 @@ public class PlayerController : MonoBehaviour {
 
 		if (pills > 0) {
 			havePill = true;
-		}
+            pill.canvasRenderer.SetAlpha(1);
+        }
 
-		if (pills < 0) {
+		if (pills <= 0) {
 			pills = 0;
-		}
+            pill.canvasRenderer.SetAlpha(0.2f);
+        }
 
 		if (!isLevelComplete)
         {
@@ -129,29 +130,27 @@ public class PlayerController : MonoBehaviour {
 
             //display the timer value 
             timerText.text = "TIME: " + totalTime.ToString();
-
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                Application.LoadLevel("MainMenu1");
-            }
         }
 
 		if (isBanana)
 		{
-			bananaTime -= Time.deltaTime;
-			banana.canvasRenderer.SetAlpha(100);
+            bananaSlider.value -= bananaTime * Time.deltaTime;
+            banana.enabled = true;
+            banana.canvasRenderer.SetAlpha(1f);
 		}
 
-		if (bananaTime <= 0)
+		if (bananaSlider.value <= 0)
 		{
 			isBanana = false;
 			bananaTime = 15f;
-			banana.canvasRenderer.SetAlpha(0);
-		}
+            banana.canvasRenderer.SetAlpha(0.1f);
+        }
 
-		Debug.Log ("You have " + pills + " pills left");
+        pillAmountText.text = ("Pills " + pills);
+        if (pills == 0) {
 
-
+            havePill = false;
+        }
 	}
 
 
@@ -184,7 +183,8 @@ public class PlayerController : MonoBehaviour {
         {
             vent.CallVent();
         }
-	}
+
+    }
 	
 
 	void OnTriggerEnter(Collider col){
@@ -192,13 +192,13 @@ public class PlayerController : MonoBehaviour {
 		if (col.CompareTag("Banana")){
 			isBanana = true;	
 			BananaMode();
-			//guiScript.bananaList[0].SetActive (true);
+            bananaSlider.value = 100;
 			Destroy(col.gameObject);
 		}	
 
 		if (col.CompareTag ("Pill")) {
 			pills +=1;
-			Debug.Log ("picked up drugz");
+            Debug.Log ("picked up drugz");
 			Destroy(col.gameObject);
 		}
 
@@ -234,6 +234,15 @@ public class PlayerController : MonoBehaviour {
 				pills -=1;
 			}
         }
+
+        if (col.gameObject.tag == "Computer")
+        {
+
+            guiScript.ComputerActive();
+            speed = 0;
+        }
+
+
     }
 
 	void OnTriggerExit(Collider other){
@@ -245,8 +254,14 @@ public class PlayerController : MonoBehaviour {
         {
             guiScript.KeyPadUnActive();
         }
-		
-	}
+
+        if (other.gameObject.tag == "Computer")
+        {
+
+            guiScript.ComputerUnActive();
+        }
+
+    }
 	
 	 public void OnClickButton()
     {
@@ -297,16 +312,9 @@ public class PlayerController : MonoBehaviour {
 
 
 	public void BananaMode(){
-		//GameObject[] shadow = GameObject.FindGameObjectsWithTag ("Shadow");
+
 		Debug.Log ("You are now nanna");
 		isBanana = true;
 		hidden = false;
-		bananaSlider.value = 1;
-		if (bananaSlider.value > 0) {
-			bananaSlider.value -= bananaTime;
-		}
-		//foreach (GameObject _obj in shadow) {
-			//_obj.SetActive (false);
-			//}
 		}
 }
