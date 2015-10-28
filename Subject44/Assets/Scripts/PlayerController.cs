@@ -10,12 +10,14 @@ public class PlayerController : MonoBehaviour {
 	public float bCldn = 5f; //banana mode cooldown
 	public float vCldn = 0.5f; //vent cooldown
 	public float bananaTime = 15f;
+	public float pills = 0f;
 
 	public AudioClip bananaMusic;
 
 	public bool onPole = false;
 	public bool hidden = false;
 	public bool isBanana = false;
+	public bool havePill = false;
 
 
 	//public Material hide;
@@ -44,8 +46,7 @@ public class PlayerController : MonoBehaviour {
     private string currentLevel;
     private int worldIndex;
     private int levelIndex;
-
-    bool isLevelComplete;
+    private bool isLevelComplete;
 
     //timer text reference
     public Text timerText;
@@ -83,6 +84,7 @@ public class PlayerController : MonoBehaviour {
 		//guiScript.GetComponent <GuiScript>();
 		controller = GetComponent<CharacterController> ();
 		isBanana = false;
+		bananaSlider.value = 0;
 		banana.canvasRenderer.SetAlpha (0);		
 	}
 
@@ -90,13 +92,20 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
 
 		TestHidden ();
-
 		float _vert = -Input.GetAxis("Vertical");
 		float _hori = -Input.GetAxis ("Horizontal");
 		
 		Vector3 _moveDirection = transform.TransformDirection (_hori, 0, _vert).normalized; 
 		controller.SimpleMove(((_moveDirection * speed) * Time.deltaTime) * speed);
 		_moveDirection = Vector3.zero;
+
+		if (pills > 0) {
+			havePill = true;
+		}
+
+		if (pills < 0) {
+			pills = 0;
+		}
 
 		if (!isLevelComplete)
         {
@@ -124,6 +133,8 @@ public class PlayerController : MonoBehaviour {
 			bananaTime = 15f;
 			banana.canvasRenderer.SetAlpha(0);
 		}
+
+		Debug.Log ("You have " + pills + " pills left");
 	}
 
 
@@ -153,11 +164,19 @@ public class PlayerController : MonoBehaviour {
 	void OnTriggerEnter(Collider col){
 
 		if (col.CompareTag("Banana")){
-			isBanana = true;			
-			Debug.Log ("Mmmm nana");
+			isBanana = true;	
+			BananaMode();
 			//guiScript.bananaList[0].SetActive (true);
 			Destroy(col.gameObject);
-		}		
+		}	
+
+		if (col.CompareTag ("Pill")) {
+			pills +=1;
+			Debug.Log ("picked up drugz");
+			Destroy(col.gameObject);
+		}
+
+
 		if (col.gameObject.name == "Goal")
         {
 
@@ -184,8 +203,10 @@ public class PlayerController : MonoBehaviour {
         }
 		
 		 if (col.gameObject.tag == "KeyPad") {
- 
-            guiScript.KeyPadActive();
+ 			if(havePill == true){
+            	guiScript.KeyPadActive();
+				pills -=1;
+			}
         }
     }
 
@@ -196,7 +217,6 @@ public class PlayerController : MonoBehaviour {
 		
 		if (other.gameObject.tag == "KeyPad")
         {
-
             guiScript.KeyPadUnActive();
         }
 		
@@ -252,20 +272,15 @@ public class PlayerController : MonoBehaviour {
 
 	public void BananaMode(){
 		//GameObject[] shadow = GameObject.FindGameObjectsWithTag ("Shadow");
-
+		Debug.Log ("You are now nanna");
 		isBanana = true;
 		hidden = false;
-			//gameObject.GetComponent<Renderer> ().material = bananaMode;
-			//foreach (GameObject _obj in shadow) {
-				//_obj.SetActive (false);
+		bananaSlider.value = 1;
+		if (bananaSlider.value > 0) {
+			bananaSlider.value -= bananaTime;
+		}
+		//foreach (GameObject _obj in shadow) {
+			//_obj.SetActive (false);
 			//}
 		}
-
-
-		/*if (bananaSlider.value == 0){
-			isBanana = false;
-			gameObject.GetComponent<Renderer> ().material = visible;
-			foreach (GameObject _obj in shadow) {
-				_obj.SetActive (true);
-			}*/
 }
