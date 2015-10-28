@@ -16,7 +16,7 @@ public class CircleGuard : MonoBehaviour {
 	void Update () {
 	
 		if (Vector3.Distance (transform.position, player.transform.position) < 2f) {
-			if (playerController.isBanana) {
+			if (playerController.useBanana) {
 				if (Input.GetKeyDown (KeyCode.LeftShift)) {
 					guardColl.enabled = false;
 					player.transform.position = new Vector3 (transform.position.x, 0.5f, transform.position.z);

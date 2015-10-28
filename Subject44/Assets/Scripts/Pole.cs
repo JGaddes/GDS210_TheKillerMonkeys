@@ -4,13 +4,8 @@ using System.Collections;
 public class Pole : MonoBehaviour {
 
 	public GameObject player;
+    public Vector3 posOrigin;
 
-	// Use this for initialization
-	void Start () {
-
-
-	
-	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -21,7 +16,8 @@ public class Pole : MonoBehaviour {
 			{
 				if(!player.GetComponent<PlayerController>().onPole)
 				{
-					player.transform.position = new Vector3(transform.position.x, 5f, transform.position.z);
+                    posOrigin = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
+                    player.transform.position = new Vector3(transform.position.x, 5f, transform.position.z);
 					Debug.Log ("up");
 					player.GetComponent<PlayerController>().speed = 0f;
 					Debug.Log ("stopped");
@@ -33,7 +29,7 @@ public class Pole : MonoBehaviour {
 				
 				else if(player.GetComponent<PlayerController>().onPole)
 				{
-					player.transform.position = new Vector3(transform.position.x, 1.059f, transform.position.z);
+                    player.transform.position = new Vector3(posOrigin.x, posOrigin.y, posOrigin.z);
 					player.GetComponent<PlayerController>().speed = 15f;
 					player.GetComponent<PlayerController>().onPole = false;
 					player.GetComponent<PlayerController>().hidden = false;

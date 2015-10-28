@@ -6,22 +6,21 @@ using System.Collections.Generic;
 public class PlayerController : MonoBehaviour {
 
 	// Public Variables
-	public float speed = 10f;
-	public float lookSpeed;
-	public float bCldn = 5f; //banana mode cooldown
-	public float vCldn = 0.5f; //vent cooldown
+	public float speed = 5f;
 	public float bananaTime = 15f;
-	public float pills = 0f;
+	public float pillCount = 0f;
+    public float bananaCount = 0f;
 
 	public AudioClip bananaMusic;
 
 	public bool onPole = false;
 	public bool hidden = false;
-	public bool isBanana = false;
+	public bool useBanana = false;
 	public bool havePill = false;
 
 	public CharacterController controller;
-	public Vent vent;
+    private Vector3 moveDirection = Vector3.zero;
+    public Vent vent;
 	public GameObject playerSprite;
 	public Slider bananaSlider;
 	public AudioClip detected, enemyDeath;
@@ -56,6 +55,7 @@ public class PlayerController : MonoBehaviour {
 	public Image banana;
     public Image pill;
     public Text pillAmountText;
+    public Text bananaAmountText;
 
 
 
@@ -84,9 +84,9 @@ public class PlayerController : MonoBehaviour {
 		
 		guiScript.GetComponent <GuiScript>();
 		controller = GetComponent<CharacterController> ();
-		isBanana = false;
+		useBanana = false;
 		bananaSlider.value = 0;
-        pills = 0;
+        pillCount = 0;
 
         
 
@@ -106,20 +106,19 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
 
 		TestHidden ();
-		float _vert = -Input.GetAxis("Vertical");
-		float _hori = -Input.GetAxis ("Horizontal");
-		
-		Vector3 _moveDirection = transform.TransformDirection (_hori, 0, _vert).normalized; 
-		controller.SimpleMove(((_moveDirection * speed) * Time.deltaTime) * speed);
-		_moveDirection = Vector3.zero;
+        controller = GetComponent<CharacterController>();
+        moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        moveDirection = transform.TransformDirection(moveDirection);
+        moveDirection *= speed;
+        controller.Move(moveDirection * Time.deltaTime);
 
-		if (pills > 0) {
+		if (pillCount > 0) {
 			havePill = true;
             pill.canvasRenderer.SetAlpha(1);
         }
 
-		if (pills <= 0) {
-			pills = 0;
+		if (pillCount <= 0) {
+			pillCount = 0;
             pill.canvasRenderer.SetAlpha(0.2f);
         }
 
@@ -132,22 +131,38 @@ public class PlayerController : MonoBehaviour {
             timerText.text = "TIME: " + totalTime.ToString();
         }
 
-		if (isBanana)
+		if (bananaCount > 0)
 		{
-            bananaSlider.value -= bananaTime * Time.deltaTime;
-            banana.enabled = true;
-            banana.canvasRenderer.SetAlpha(1f);
+            if (!useBanana)
+            {
+                bananaSlider.value = 100;
+                if (Input.GetKeyDown(KeyCode.B))
+                {
+                    Debug.Log("use that nanna");
+                    bananaCount -= 1;
+                    useBanana = true;
+                }
+            }               
 		}
 
-		if (bananaSlider.value <= 0)
-		{
-			isBanana = false;
-			bananaTime = 15f;
+        if (bananaCount == 0)
+        {
             banana.canvasRenderer.SetAlpha(0.1f);
         }
 
-        pillAmountText.text = ("Pills " + pills);
-        if (pills == 0) {
+        if (useBanana)
+        {
+            bananaSlider.value -= bananaTime * Time.deltaTime;
+        }
+
+		if (bananaSlider.value <= 0)
+		{
+			useBanana = false;
+			bananaTime = 15f;
+        }
+        bananaAmountText.text = ("x " + bananaCount);
+        pillAmountText.text = ("x " + pillCount);
+        if (pillCount == 0) {
 
             havePill = false;
         }
@@ -168,7 +183,7 @@ public class PlayerController : MonoBehaviour {
 						speed = 0f;
 						transform.position = new Vector3(6.46f, 0.171f, 0.4f);
 						playerSprite.transform.eulerAngles = new Vector3(90, 0, 0);
-						speed = 15f;
+						speed = 5f;
 					}		
 				}
 			}
@@ -178,26 +193,20 @@ public class PlayerController : MonoBehaviour {
 		if (other.CompareTag ("Shadow")) {
 			hidden = true;	
 		}
-
-        if (other.CompareTag("Vent"))
-        {
-            vent.CallVent();
-        }
-
     }
 	
 
 	void OnTriggerEnter(Collider col){
 
 		if (col.CompareTag("Banana")){
-			isBanana = true;	
-			BananaMode();
-            bananaSlider.value = 100;
-			Destroy(col.gameObject);
-		}	
+                bananaCount += 1;
+                banana.enabled = true;
+                banana.canvasRenderer.SetAlpha(1f);
+                Destroy(col.gameObject);
+        }	
 
 		if (col.CompareTag ("Pill")) {
-			pills +=1;
+			pillCount +=1;
             Debug.Log ("picked up drugz");
 			Destroy(col.gameObject);
 		}
@@ -229,23 +238,27 @@ public class PlayerController : MonoBehaviour {
         }
 		
 		 if (col.gameObject.tag == "KeyPad") {
- 			if(havePill == true){
+ 			if(havePill){
             	guiScript.KeyPadActive();
-				pills -=1;
+				pillCount -=1;
 			}
         }
 
         if (col.gameObject.tag == "Computer")
         {
-
-            guiScript.ComputerActive();
-            speed = 0;
+            if (havePill)
+            {
+                guiScript.ComputerActive();
+                pillCount -= 1;
+                speed = 0;
+            }
         }
 
 
     }
 
 	void OnTriggerExit(Collider other){
+        speed = 5f;
 		if (other.CompareTag ("Shadow")) {
 			hidden = false;
 		}
@@ -257,7 +270,6 @@ public class PlayerController : MonoBehaviour {
 
         if (other.gameObject.tag == "Computer")
         {
-
             guiScript.ComputerUnActive();
         }
 
@@ -309,12 +321,4 @@ public class PlayerController : MonoBehaviour {
 		}
 
 	}
-
-
-	public void BananaMode(){
-
-		Debug.Log ("You are now nanna");
-		isBanana = true;
-		hidden = false;
-		}
 }

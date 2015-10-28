@@ -18,15 +18,12 @@ public class Guard : MonoBehaviour {
 	
 		if(Vector3.Distance (transform.position, player.transform.position) < 1.5f) {
 
-//<<<<<<< HEAD
-			if(playerController.isBanana){
-				if(Input.GetKeyDown(KeyCode.Mouse0)) {
+			if(playerController.useBanana){
+				if(Input.GetKeyDown(KeyCode.Space)) {
 					Destroy (gameObject);
 				}
-//=======
-			if(Input.GetKeyDown(KeyCode.Mouse0)) {
+			if(Input.GetKeyDown(KeyCode.Space)) {
 				Destroy (gameObject);
-//>>>>>>> origin/master
 				}
 			}
 		}
