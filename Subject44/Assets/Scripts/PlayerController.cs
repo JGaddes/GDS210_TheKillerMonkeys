@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour {
 
@@ -51,6 +52,9 @@ public class PlayerController : MonoBehaviour {
     //timer text reference
     public Text timerText;
 
+	public List<PatrolAi> patrol = new List<PatrolAi>();
+	public List<GameObject> guards = new List<GameObject>();
+
     //time passed since start of level
     protected float totalTime = 0f;
 
@@ -86,6 +90,17 @@ public class PlayerController : MonoBehaviour {
 		isBanana = false;
 		bananaSlider.value = 0;
 		banana.canvasRenderer.SetAlpha (0);		
+
+		foreach (GameObject g in GameObject.FindGameObjectsWithTag ("Guards")) 
+		{
+			guards.Add (g);
+		}
+
+		foreach (GameObject g in GameObject.FindGameObjectsWithTag ("Guards")) 
+		{
+			patrol.Add(g.GetComponent<PatrolAi>());
+		}
+
 	}
 
 
@@ -135,6 +150,8 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		Debug.Log ("You have " + pills + " pills left");
+
+
 	}
 
 
@@ -142,12 +159,21 @@ public class PlayerController : MonoBehaviour {
 	{
 		if (other.CompareTag("Detect"))
 		{
-			if (hidden == false){
-				speed = 0f;
-				transform.position = new Vector3(6.46f, 0.171f, 0.4f);
-				playerSprite.transform.eulerAngles = new Vector3(90, 0, 0);
-				speed = 15f;
+			for (int i = 0; i < patrol.Count; i++)
+			{
+				if (patrol[i].hitWall)
+					return;
+				else
+				{
+					if (hidden == false){
+						speed = 0f;
+						transform.position = new Vector3(6.46f, 0.171f, 0.4f);
+						playerSprite.transform.eulerAngles = new Vector3(90, 0, 0);
+						speed = 15f;
+					}		
+				}
 			}
+
 		}
 
 		if (other.CompareTag ("Shadow")) {

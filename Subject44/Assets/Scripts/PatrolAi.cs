@@ -5,7 +5,7 @@ public class PatrolAi : MonoBehaviour {
 		
 	public Transform[] waypoint;       
 	public float patrolSpeed = 3f;       
-	public bool  loop = true;       
+	public bool  loop = true, hitWall = false;       
 	public float dampingLook = 6.0f;          
 	public float pauseDuration = 0; 
 		
@@ -26,6 +26,19 @@ public class PatrolAi : MonoBehaviour {
 			if(loop){
 				currentWaypoint=0;
 			} 
+		}
+
+		RaycastHit hit;
+		if (Physics.Raycast(transform.position, transform.forward, out hit, 2.5f))
+		{
+			if (hit.collider.tag == "Wall")
+			{
+				hitWall = true;
+			}
+			else
+			{
+				hitWall = false;
+			}
 		}
 
 	}
