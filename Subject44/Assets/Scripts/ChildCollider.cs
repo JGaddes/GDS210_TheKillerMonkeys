@@ -8,7 +8,7 @@ public class ChildCollider : MonoBehaviour {
     public float keyCardCount;
 
 	public PlayerController player;
-	public AudioSource source;
+	public AudioSource source; 
 	public AudioClip detected;
 
     public List<PatrolAi> patrol = new List<PatrolAi>();
@@ -17,7 +17,7 @@ public class ChildCollider : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-
+		
         player = gameObject.GetComponentInParent<PlayerController>();
         source = gameObject.GetComponentInParent<AudioSource>();
         detected = gameObject.GetComponentInParent<PlayerController>().detected;
@@ -56,6 +56,7 @@ public class ChildCollider : MonoBehaviour {
                         player.useBanana = false;
                         player.bananaSlider.value = 0;
                         player.speed = 5f;
+						source.Play();
                     }
                 }
             }
