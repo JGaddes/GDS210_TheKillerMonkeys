@@ -18,17 +18,20 @@ public class PlayerController : MonoBehaviour {
 	public bool useBanana = false;
 	public bool havePill = false;
 
-	public CharacterController controller;
-    private Vector3 moveDirection = Vector3.zero;
-    public Vent vent;
-	public GameObject playerSprite;
+    public GameObject playerSprite;
+    public GameObject playerVisible;
+    public GameObject playerHidden;
+    public GameObject shadows;
+
+    public CharacterController controller;
+    public GameObject spawnPoint;
 	public Slider bananaSlider;
 	public AudioClip detected, enemyDeath;
+    private Vector3 moveDirection = Vector3.zero;
 
 
-	//GUI VARIABLES!!
-	public GuiScript guiScript;
-
+    //GUI VARIABLES!!
+    public GuiScript guiScript;
 
     //reference to stars
     private GameObject star1;
@@ -46,8 +49,6 @@ public class PlayerController : MonoBehaviour {
     //timer text reference
     public Text timerText;
 
-	public List<PatrolAi> patrol = new List<PatrolAi>();
-	public List<GameObject> guards = new List<GameObject>();
 
     //time passed since start of level
     protected float totalTime = 0f;
@@ -88,18 +89,6 @@ public class PlayerController : MonoBehaviour {
 		bananaSlider.value = 0;
         pillCount = 0;
 
-        
-
-        foreach (GameObject g in GameObject.FindGameObjectsWithTag ("Guards")) 
-		{
-			guards.Add (g);
-		}
-
-		foreach (GameObject g in GameObject.FindGameObjectsWithTag ("Guards")) 
-		{
-			patrol.Add(g.GetComponent<PatrolAi>());
-		}
-
 	}
 
 
@@ -135,10 +124,9 @@ public class PlayerController : MonoBehaviour {
 		{
             if (!useBanana)
             {
-                bananaSlider.value = 100;
                 if (Input.GetKeyDown(KeyCode.B))
                 {
-                    Debug.Log("use that nanna");
+                    bananaSlider.value = 100;
                     bananaCount -= 1;
                     useBanana = true;
                 }
@@ -152,14 +140,17 @@ public class PlayerController : MonoBehaviour {
 
         if (useBanana)
         {
+            shadows.SetActive(false);
             bananaSlider.value -= bananaTime * Time.deltaTime;
         }
 
 		if (bananaSlider.value <= 0)
 		{
-			useBanana = false;
+            shadows.SetActive(true);
+            useBanana = false;
 			bananaTime = 15f;
         }
+
         bananaAmountText.text = ("x " + bananaCount);
         pillAmountText.text = ("x " + pillCount);
         if (pillCount == 0) {
@@ -168,33 +159,6 @@ public class PlayerController : MonoBehaviour {
         }
 	}
 
-
-	void OnTriggerStay (Collider other)
-	{
-		if (other.CompareTag("Detect"))
-		{
-			for (int i = 0; i < patrol.Count; i++)
-			{
-				if (patrol[i].hitWall)
-					return;
-				else
-				{
-					if (hidden == false){
-						speed = 0f;
-						transform.position = new Vector3(6.46f, 0.171f, 0.4f);
-						playerSprite.transform.eulerAngles = new Vector3(90, 0, 0);
-						speed = 5f;
-					}		
-				}
-			}
-
-		}
-
-		if (other.CompareTag ("Shadow")) {
-			hidden = true;	
-		}
-    }
-	
 
 	void OnTriggerEnter(Collider col){
 
@@ -207,7 +171,6 @@ public class PlayerController : MonoBehaviour {
 
 		if (col.CompareTag ("Pill")) {
 			pillCount +=1;
-            Debug.Log ("picked up drugz");
 			Destroy(col.gameObject);
 		}
 
@@ -308,15 +271,19 @@ public class PlayerController : MonoBehaviour {
 
 	void TestHidden()
 	{
-		if (hidden == true)
+		if (hidden)
         {
-            //gameObject.GetComponent<Renderer> ().material = hide;
+            //gameObject.GetComponent<Renderer> ().material = hid;
+            playerVisible.SetActive(false);
+            playerHidden.SetActive(true);
             Debug.Log("u r know hidde");
 		}
 
         else
         {
             //gameObject.GetComponent<Renderer> ().material = visible;
+            playerVisible.SetActive(true);
+            playerHidden.SetActive(false);
             Debug.Log("No more hidde");
 		}
 

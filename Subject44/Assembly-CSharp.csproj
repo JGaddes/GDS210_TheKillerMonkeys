@@ -45,7 +45,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\AISight.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\ChildCollider.cs" />
      <Compile Include="Assets\Scripts\CircleGuard.cs" />
@@ -60,8 +59,6 @@
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PlayerRotate.cs" />
      <Compile Include="Assets\Scripts\Pole.cs" />
-     <Compile Include="Assets\Scripts\TestGuardVision.cs" />
-     <Compile Include="Assets\Scripts\Vent.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
