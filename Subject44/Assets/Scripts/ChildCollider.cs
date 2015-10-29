@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 public class ChildCollider : MonoBehaviour {
 
+    public float keyCardCount;
+
 	public PlayerController player;
 	public AudioSource source;
 	public AudioClip detected;
@@ -30,6 +32,11 @@ public class ChildCollider : MonoBehaviour {
             patrol.Add(g.GetComponent<PatrolAi>());
         }
 	}
+
+    public void Update()
+    {
+        Debug.Log("You have " + keyCardCount + " keycards");
+    }
 
 	void OnTriggerStay (Collider other)
 	{
@@ -57,6 +64,14 @@ public class ChildCollider : MonoBehaviour {
 		if (other.CompareTag ("Shadow")) {
 			player.hidden = true;	
 		}
+
+        if (other.CompareTag("Door"))
+        {
+            if (keyCardCount > 0)
+            {
+                Destroy(other.gameObject);
+            }
+        }
 	}
 	
 	
@@ -64,6 +79,12 @@ public class ChildCollider : MonoBehaviour {
 		if (col.CompareTag("Banana")){
 			Destroy(col.gameObject);
 		}
+
+        if (col.CompareTag("Key Card"))
+        {
+            keyCardCount += 1;
+            Destroy(col.gameObject);
+        }
 	}
 	
 	void OnTriggerExit(Collider other){
