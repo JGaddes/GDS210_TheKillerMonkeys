@@ -4,32 +4,28 @@ using System.Collections;
 public class Pole : MonoBehaviour {
 
 	public GameObject player;
-    public Vector3 origPos;
-
 	
 	// Update is called once per frame
 	void Update () {
 	
-		if (Vector3.Distance (transform.position, player.transform.position) < 1f)
+		if (Vector3.Distance (transform.position, player.transform.position) < 1.1f)
 		{
 			if(Input.GetKeyDown(KeyCode.Space))
 			{
-				if(!player.GetComponent<PlayerController>().onPole)
+				if(player.GetComponent<PlayerController>().onPole == false)
 				{
-                    origPos = player.transform.position;
-                    player.transform.position = new Vector3(transform.position.x, 5f, transform.position.z);
+					player.transform.position = new Vector3 (transform.position.x, 1f, transform.position.z);
 					player.GetComponent<PlayerController>().speed = 0f;
 					player.GetComponent<PlayerController>().onPole = true;
-					player.GetComponent<PlayerController>().hidden = true;
-				}
+                    player.GetComponent<PlayerController>().hidden = true;
+                }
 				
-				else if(player.GetComponent<PlayerController>().onPole)
+				else if(player.GetComponent<PlayerController>().onPole == true)
 				{
-                    Debug.Log("You Climbed down");
-                    player.transform.position = origPos;
+					player.transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
 					player.GetComponent<PlayerController>().speed = 5f;
 					player.GetComponent<PlayerController>().onPole = false;
-					player.GetComponent<PlayerController>().hidden = false;
+                    player.GetComponent<PlayerController>().hidden = false;
 				}
 			}
 			
