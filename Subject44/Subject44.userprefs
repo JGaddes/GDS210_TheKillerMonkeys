@@ -1,9 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PatrolAi.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BananaRotate.cs">
     <Files>
-      <File FileName="Assets\Scripts\ChildCollider.cs" Line="104" Column="1" />
-      <File FileName="Assets\Scripts\PatrolAi.cs" Line="38" Column="40" />
+      <File FileName="Assets\Scripts\FlyingBananananana.cs" Line="16" Column="1" />
+      <File FileName="Assets\Scripts\BananaRotate.cs" Line="14" Column="28" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
