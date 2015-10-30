@@ -92,7 +92,7 @@ public class GuiScript : MonoBehaviour {
             StartCoroutine(MyCoroutine());
             Debug.Log("Unlocking something!");
 			PasswordSuccess.Play();
-            playerController.speed = 5;
+            playerController.canMove = true;
             //THIS IS WHERE YOU CAN MAKE IT OPEN A DOOR ETC!
 
         }
@@ -110,7 +110,7 @@ public class GuiScript : MonoBehaviour {
     public void KeyPadActive() {
 
         keyPad.enabled = true;
-        playerController.speed = 0;
+        playerController.canMove = false;
     }
 
     public void KeyPadUnActive()
@@ -136,14 +136,14 @@ public class GuiScript : MonoBehaviour {
     public void ComputerActive() {
 
         Computer.enabled = true;
-        playerController.speed = 0;
+        playerController.canMove = false;
     }
 
     public void ComputerUnActive()
     {
 
         Computer.enabled = false;
-        playerController.speed = 5;
+        playerController.canMove = true;
     }
 
     public void UnlockDoors() {

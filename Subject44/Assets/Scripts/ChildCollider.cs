@@ -51,11 +51,11 @@ public class ChildCollider : MonoBehaviour {
                 {
                     if (!player.hidden && !patrol[i].hitWall)
                     {
-                        player.speed = 0f;
+                        player.canMove = false;
                         transform.position = spawnPoint.transform.position;
                         player.useBanana = false;
                         player.bananaSlider.value = 0;
-                        player.speed = 5f;
+                        player.canMove = true;
 						source.Play();
                     }
                 }
