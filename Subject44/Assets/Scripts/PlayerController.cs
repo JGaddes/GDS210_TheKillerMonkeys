@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
 	public float bananaTime = 15f;
 	public float pillCount = 0f;
     public float bananaCount = 0f;
+    public float keyCardCount = 0f;
 
 	public AudioClip bananaMusic;
 
@@ -24,7 +25,6 @@ public class PlayerController : MonoBehaviour {
     public GameObject shadows;
 
     public CharacterController controller;
-    public GameObject spawnPoint;
 	public Slider bananaSlider;
 	public AudioClip detected, enemyDeath;
     private Vector3 moveDirection = Vector3.zero;
@@ -55,12 +55,14 @@ public class PlayerController : MonoBehaviour {
 
 	public Image banana;
     public Image pill;
+    public Image key;
     public Text pillAmountText;
     public Text bananaAmountText;
+    public Text keyAmountText;
 
 
 
-	void Start () {
+    void Start () {
 		//set the level complete to false on start of level
         isLevelComplete = false;
 
@@ -102,13 +104,22 @@ public class PlayerController : MonoBehaviour {
         moveDirection *= speed;
         controller.Move(moveDirection * Time.deltaTime);
 
-		if (pillCount > 0) {
+        if(keyCardCount >0 )
+        {
+            key.canvasRenderer.SetAlpha(1);
+        }
+
+        if (keyCardCount == 0)
+        {
+            key.canvasRenderer.SetAlpha(0.2f);
+        }
+
+        if (pillCount > 0) {
 			havePill = true;
             pill.canvasRenderer.SetAlpha(1);
         }
 
-		if (pillCount <= 0) {
-			pillCount = 0;
+		if (pillCount == 0) {
             pill.canvasRenderer.SetAlpha(0.2f);
         }
 
@@ -155,6 +166,8 @@ public class PlayerController : MonoBehaviour {
 
         bananaAmountText.text = ("x " + bananaCount);
         pillAmountText.text = ("x " + pillCount);
+        keyAmountText.text = ("x " + keyCardCount);
+
         if (pillCount == 0) {
 
             havePill = false;
@@ -215,7 +228,6 @@ public class PlayerController : MonoBehaviour {
             {
                 guiScript.ComputerActive();
                 pillCount -= 1;
-                speed = 0;
             }
         }
 

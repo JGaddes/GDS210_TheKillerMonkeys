@@ -27,12 +27,10 @@ public class GuiScript : MonoBehaviour {
 	AudioSource PasswordFail;
 
 
-
     // Use this for initialization
     void Start () {
 	
 		playerController.GetComponent <PlayerController>();
-		//bananaSlider.value = 0;
 
         
         anim = keyPadText.GetComponent<Animator>();
@@ -48,23 +46,6 @@ public class GuiScript : MonoBehaviour {
 		PasswordSuccess = allMyAudioSources[1];
 		PasswordFail = allMyAudioSources [2];
 		      
-    }
-	
-	// Update is called once per frame
-	void Update () {
-
-		//bananaSlider.value -=  Time.deltaTime * cooldown; 
-
-		//if (Input.GetKeyDown (KeyCode.B) && bananaSlider.value == 0) {
-			
-		//	if (count < 3)
-		//	{
-		//		bananaList[count].gameObject.GetComponent<Image> ().enabled = false;
-		//		count++;
-		//		playerController.BananaMode();
-		//		bananaSlider.value = 100;
-		//	}
-	 //   }
     }
 
     public void CodeCheck(string other) {
@@ -111,8 +92,9 @@ public class GuiScript : MonoBehaviour {
             StartCoroutine(MyCoroutine());
             Debug.Log("Unlocking something!");
 			PasswordSuccess.Play();
+            playerController.speed = 5;
             //THIS IS WHERE YOU CAN MAKE IT OPEN A DOOR ETC!
-            
+
         }
         else {
 
@@ -128,6 +110,7 @@ public class GuiScript : MonoBehaviour {
     public void KeyPadActive() {
 
         keyPad.enabled = true;
+        playerController.speed = 0;
     }
 
     public void KeyPadUnActive()
@@ -153,6 +136,7 @@ public class GuiScript : MonoBehaviour {
     public void ComputerActive() {
 
         Computer.enabled = true;
+        playerController.speed = 0;
     }
 
     public void ComputerUnActive()

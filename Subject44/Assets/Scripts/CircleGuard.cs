@@ -3,6 +3,7 @@ using System.Collections;
 
 public class CircleGuard : MonoBehaviour {
 
+    public GameObject spawnPoint;
 	public GameObject player;
 	public BoxCollider guardColl;
 	public PlayerController playerController;
@@ -15,17 +16,11 @@ public class CircleGuard : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-		if (Vector3.Distance (transform.position, player.transform.position) < 2f) {
-			if (playerController.useBanana) {
-				if (Input.GetKeyDown (KeyCode.LeftShift)) {
-					guardColl.enabled = false;
-					player.transform.position = new Vector3 (transform.position.x, 0.5f, transform.position.z);
-					player.GetComponent<PlayerController> ().speed = 15f;
-					player.GetComponent<PlayerController> ().onPole = false;
-					player.GetComponent<PlayerController> ().hidden = false;
-					Destroy (gameObject);
-				}
-			}
+		if (Vector3.Distance (transform.position, player.transform.position) < 1.5f) {
+			if(player.GetComponent<PlayerController>().hidden == false)
+            {
+                player.transform.position = spawnPoint.transform.position;
+            }
 		}
 	}
 }

@@ -4,7 +4,7 @@ using System.Collections;
 public class TextShow : MonoBehaviour {
 
     public GameObject tutorialText;
-    public float waitTime = 5f;
+    public float waitTime = 10f;
 
 
     public void CallText()

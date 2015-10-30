@@ -5,9 +5,8 @@ using System.Collections.Generic;
 
 public class ChildCollider : MonoBehaviour {
 
-    public float keyCardCount;
-
-	public PlayerController player;
+    public PlayerController player;
+    public GameObject spawnPoint;
     public TextShow tutorial;
 	public AudioSource source; 
 	public AudioClip detected;
@@ -36,7 +35,7 @@ public class ChildCollider : MonoBehaviour {
 
     public void Update()
     {
-        Debug.Log("You have " + keyCardCount + " keycards");
+        Debug.Log("You have " + player.keyCardCount + " keycards");
     }
 
 	void OnTriggerStay (Collider other)
@@ -53,7 +52,7 @@ public class ChildCollider : MonoBehaviour {
                     if (!player.hidden)
                     {
                         player.speed = 0f;
-                        transform.position = player.spawnPoint.transform.position;
+                        transform.position = spawnPoint.transform.position;
                         player.useBanana = false;
                         player.bananaSlider.value = 0;
                         player.speed = 5f;
@@ -69,8 +68,9 @@ public class ChildCollider : MonoBehaviour {
 
         if (other.CompareTag("Door"))
         {
-            if (keyCardCount > 0)
+            if (player.keyCardCount > 0)
             {
+                player.keyCardCount -= 1;
                 Destroy(other.gameObject);
             }
         }
@@ -84,7 +84,7 @@ public class ChildCollider : MonoBehaviour {
 
         if (col.CompareTag("Key Card"))
         {
-            keyCardCount += 1;
+            player.keyCardCount += 1;
             Destroy(col.gameObject);
         }
 
