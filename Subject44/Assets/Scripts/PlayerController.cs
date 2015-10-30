@@ -15,9 +15,11 @@ public class PlayerController : MonoBehaviour {
 	public AudioClip bananaMusic;
 
 	public bool onPole = false;
-	public bool hidden = false;
+    public bool inBarrel = false;
+    public bool hidden = false;
 	public bool useBanana = false;
 	public bool havePill = false;
+    public bool canMove = true;
 
     public GameObject playerSprite;
     public GameObject playerVisible;
@@ -99,10 +101,15 @@ public class PlayerController : MonoBehaviour {
 		TestHidden ();
 
         controller = GetComponent<CharacterController>();
-        moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        moveDirection = transform.TransformDirection(moveDirection);
-        moveDirection *= speed;
-        controller.Move(moveDirection * Time.deltaTime);
+
+        if (canMove)
+        {
+            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            moveDirection = transform.TransformDirection(moveDirection);
+            moveDirection *= speed;
+            controller.Move(moveDirection * Time.deltaTime);
+        }
+        
 
         if(keyCardCount >0 )
         {
@@ -155,12 +162,14 @@ public class PlayerController : MonoBehaviour {
         {
             shadows.SetActive(false);
             bananaSlider.value -= bananaTime * Time.deltaTime;
+            speed = 7.5f;
         }
 
 		if (bananaSlider.value <= 0)
 		{
             shadows.SetActive(true);
             useBanana = false;
+            speed = 5;
 			bananaTime = 15f;
         }
 
