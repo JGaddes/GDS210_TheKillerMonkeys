@@ -35,7 +35,7 @@ public class PatrolAi : MonoBehaviour {
 			{
 				hitWall = true;
 			}
-			else
+			else if (hit.collider.tag != "Wall")
 			{
 				hitWall = false;
 			}

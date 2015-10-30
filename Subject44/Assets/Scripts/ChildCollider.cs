@@ -49,7 +49,7 @@ public class ChildCollider : MonoBehaviour {
                     return;
                 else
                 {
-                    if (!player.hidden)
+                    if (!player.hidden && !patrol[i].hitWall)
                     {
                         player.speed = 0f;
                         transform.position = spawnPoint.transform.position;
