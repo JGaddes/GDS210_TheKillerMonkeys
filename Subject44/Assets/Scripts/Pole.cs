@@ -4,7 +4,7 @@ using System.Collections;
 public class Pole : MonoBehaviour {
 
 	public GameObject player;
-    public Vector3 posOrigin;
+    public Vector3 origPos;
 
 	
 	// Update is called once per frame
@@ -16,21 +16,18 @@ public class Pole : MonoBehaviour {
 			{
 				if(!player.GetComponent<PlayerController>().onPole)
 				{
-                    posOrigin = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
+                    origPos = player.transform.position;
                     player.transform.position = new Vector3(transform.position.x, 5f, transform.position.z);
-					Debug.Log ("up");
 					player.GetComponent<PlayerController>().speed = 0f;
-					Debug.Log ("stopped");
 					player.GetComponent<PlayerController>().onPole = true;
-					Debug.Log ("on");
 					player.GetComponent<PlayerController>().hidden = true;
-					Debug.Log ("hide");
 				}
 				
 				else if(player.GetComponent<PlayerController>().onPole)
 				{
-                    player.transform.position = new Vector3(posOrigin.x, posOrigin.y, posOrigin.z);
-					player.GetComponent<PlayerController>().speed = 15f;
+                    Debug.Log("You Climbed down");
+                    player.transform.position = origPos;
+					player.GetComponent<PlayerController>().speed = 5f;
 					player.GetComponent<PlayerController>().onPole = false;
 					player.GetComponent<PlayerController>().hidden = false;
 				}
