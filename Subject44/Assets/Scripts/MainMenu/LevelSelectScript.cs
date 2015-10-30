@@ -34,6 +34,7 @@ public class LevelSelectScript : MonoBehaviour {
 	
 	//function to check for the levels locked
 	void  CheckLockedLevels (){
+
 		//loop through the levels of a particular world
 		for(int j = 1; j < LockLevel.levels; j++){
 
@@ -41,9 +42,11 @@ public class LevelSelectScript : MonoBehaviour {
             //used to enable the image which should be displayed in the World1 scene beside the individual levels
             stars = PlayerPrefs.GetInt("level" + worldIndex.ToString() + ":" + j.ToString() + "stars");
             levelIndex = (j+1);
+
             //enable the respective image based on the stars variable value
             GameObject.Find(j + "star" + stars).GetComponent<Image>().enabled = true;
             Debug.Log(j + "star" + stars);
+
             //Check if the level is locked
             if ((PlayerPrefs.GetInt("level"+worldIndex.ToString() +":" +levelIndex.ToString()))==1){
 				GameObject.Find("LockedLevel"+(j+1)).SetActive (false);

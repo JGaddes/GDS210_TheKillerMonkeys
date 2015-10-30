@@ -159,7 +159,7 @@ public class GuiScript : MonoBehaviour {
     {
 
         Computer.enabled = false;
-        playerController.speed = 15;
+        playerController.speed = 5;
     }
 
     public void UnlockDoors() {

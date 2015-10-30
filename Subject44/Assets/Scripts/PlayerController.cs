@@ -95,6 +95,7 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
 
 		TestHidden ();
+
         controller = GetComponent<CharacterController>();
         moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         moveDirection = transform.TransformDirection(moveDirection);
@@ -129,6 +130,7 @@ public class PlayerController : MonoBehaviour {
                     bananaSlider.value = 100;
                     bananaCount -= 1;
                     useBanana = true;
+                    hidden = false;
                 }
             }               
 		}
@@ -221,7 +223,6 @@ public class PlayerController : MonoBehaviour {
     }
 
 	void OnTriggerExit(Collider other){
-        speed = 5f;
 		if (other.CompareTag ("Shadow")) {
 			hidden = false;
 		}
@@ -271,20 +272,17 @@ public class PlayerController : MonoBehaviour {
 
 	void TestHidden()
 	{
+        // Switches spritesheet when hidden / visible
 		if (hidden)
         {
-            //gameObject.GetComponent<Renderer> ().material = hid;
             playerVisible.SetActive(false);
             playerHidden.SetActive(true);
-            Debug.Log("u r know hidde");
 		}
 
         else
         {
-            //gameObject.GetComponent<Renderer> ().material = visible;
             playerVisible.SetActive(true);
             playerHidden.SetActive(false);
-            Debug.Log("No more hidde");
 		}
 
 	}

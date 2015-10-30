@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerRotate : MonoBehaviour
 {
 
-    public Vector3 _origPos;
+
     // Use this for initialization
     void Start()
     {

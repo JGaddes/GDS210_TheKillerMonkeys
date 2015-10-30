@@ -8,6 +8,7 @@ public class ChildCollider : MonoBehaviour {
     public float keyCardCount;
 
 	public PlayerController player;
+    public TextShow tutorial;
 	public AudioSource source; 
 	public AudioClip detected;
 
@@ -85,6 +86,11 @@ public class ChildCollider : MonoBehaviour {
         {
             keyCardCount += 1;
             Destroy(col.gameObject);
+        }
+
+        if(col.CompareTag("Tutorial"))
+        {
+            tutorial.CallText();
         }
 	}
 	
