@@ -160,12 +160,14 @@ public class PlayerController : MonoBehaviour {
 
         if (useBanana)
         {
+            shadows.SetActive(false);
             bananaSlider.value -= bananaTime * Time.deltaTime;
             speed = 7.5f;
         }
 
 		if (bananaSlider.value <= 0)
 		{
+            shadows.SetActive(true);
             useBanana = false;
             speed = 5;
 			bananaTime = 15f;

@@ -1,24 +1,17 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
-using System.Collections.Generic;
 
 public class Barrel : MonoBehaviour {
 
     public GameObject player;
     public Vector3 origPos;
-    public GameObject[] walls; 
-
-    void Start()
-    {
-        walls = GameObject.FindGameObjectsWithTag("Wall");
-    }
-
 
     void Update()
     {
-        if (Vector3.Distance(transform.position, player.transform.position) < 2f)
-        { 
+
+        if (Vector3.Distance(transform.position, player.transform.position) < 1f)
+        {
+
             if (player.GetComponent<PlayerController>().inBarrel == false)
             {
                 if (Input.GetKeyDown(KeyCode.Space))
