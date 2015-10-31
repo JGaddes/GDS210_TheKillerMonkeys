@@ -62,6 +62,7 @@
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PlayerRotate.cs" />
      <Compile Include="Assets\Scripts\Pole.cs" />
+     <Compile Include="Assets\Scripts\SecCamAi.cs" />
      <Compile Include="Assets\Scripts\TextShow.cs" />
  <Reference Include="UnityEngine.Advertisements">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
