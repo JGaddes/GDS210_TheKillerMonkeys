@@ -3,24 +3,24 @@ using System.Collections;
 
 public class PatrolAi : MonoBehaviour {
 		
-	public Transform[] waypoint;       
+	public Transform[] waypoints;       
 	public float patrolSpeed = 3f;       
 	public bool  loop = true, hitWall = false;       
 	public float dampingLook = 6.0f;          
-	public float pauseDuration = 0; 
-		
+	public float pauseDuration = 0;
+    		
 	private float curTime;
 	private int currentWaypoint = 0;
 	private CharacterController character;
 		
 	void  Start (){
 			
-		character = GetComponent<CharacterController>();;
+		character = GetComponent<CharacterController>();
 	}
 		
 	void  Update (){
 			
-		if(currentWaypoint < waypoint.Length){
+		if(currentWaypoint < waypoints.Length){
 			patrol();
 		}else{    
 			if(loop){
@@ -45,7 +45,7 @@ public class PatrolAi : MonoBehaviour {
 		
 	void  patrol (){
 			
-		Vector3 target = waypoint[currentWaypoint].position;
+		Vector3 target = waypoints[currentWaypoint].position;
 		target.y = transform.position.y; 
 		Vector3 moveDirection = target - transform.position;
 
