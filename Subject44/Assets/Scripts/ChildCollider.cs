@@ -7,17 +7,29 @@ public class ChildCollider : MonoBehaviour {
 
     public PlayerController player;
     public GameObject spawnPoint;
-    public TextShow tutorial;
 	public AudioSource source; 
 	public AudioClip detected;
+    public GuiScript guiScript;
+
+    public GameObject purKeyCard;
+    public GameObject bluKeyCard;
+    public GameObject greKeyCard;
+    public GameObject oraKeyCard;
+    public GameObject pinKeyCard;
 
     public List<PatrolAi> patrol = new List<PatrolAi>();
     public List<GameObject> guards = new List<GameObject>();
 
+    private bool haveBluCard = false;
+    private bool haveOraCard = false;
+    private bool haveGreCard = false;
+    private bool havePurCard = false;
+    private bool havePinCard = false;
+
 
     // Use this for initialization
     void Start () {
-		
+
         player = gameObject.GetComponentInParent<PlayerController>();
         source = gameObject.GetComponentInParent<AudioSource>();
         detected = gameObject.GetComponentInParent<PlayerController>().detected;
@@ -32,11 +44,6 @@ public class ChildCollider : MonoBehaviour {
             patrol.Add(g.GetComponent<PatrolAi>());
         }
 	}
-
-    public void Update()
-    {
-        Debug.Log("You have " + player.keyCardCount + " keycards");
-    }
 
 	void OnTriggerStay (Collider other)
 	{
@@ -63,41 +70,159 @@ public class ChildCollider : MonoBehaviour {
         }
 		
 		if (other.CompareTag ("Shadow")) {
-			player.hidden = true;	
+            if (!player.useBanana)
+            {
+                player.hidden = true;
+            }
 		}
 
+        // Doors
         if (other.CompareTag("Door"))
         {
-            if (player.keyCardCount > 0)
+            other.gameObject.GetComponent<MeshRenderer>().enabled = false;
+        }
+
+        if(other.CompareTag("Blue Door"))
+        {
+            if(haveBluCard)
             {
-                player.keyCardCount -= 1;
-                Destroy(other.gameObject);
+                other.gameObject.SetActive(false);
             }
         }
-	}
-	
-	
-	void OnTriggerEnter(Collider col){
-		if (col.CompareTag("Banana")){
-			Destroy(col.gameObject);
-		}
 
-        if (col.CompareTag("Key Card"))
+        if (other.CompareTag("Orange Door"))
         {
-            player.keyCardCount += 1;
+            if (haveOraCard)
+            {
+                other.gameObject.SetActive(false);
+            }
+        }
+
+        if (other.CompareTag("Green Door"))
+        {
+            if (haveGreCard)
+            {
+                other.gameObject.SetActive(false);
+            }
+        }
+
+        if (other.CompareTag("Purple Door"))
+        {
+            if (havePurCard)
+            {
+                other.gameObject.SetActive(false);
+            }
+        }
+
+        if (other.CompareTag("Pink Door"))
+        {
+            if (havePinCard)
+            {
+                other.gameObject.SetActive(false);
+            }
+        }
+    }
+	
+	
+	public void OnTriggerEnter(Collider col)
+    {
+        
+        // Power ups
+        if (col.CompareTag("Banana"))
+        {
+            player.bananaCount += 1;
+            player.banana.enabled = true;
+            player.banana.canvasRenderer.SetAlpha(1f);
             Destroy(col.gameObject);
         }
 
-        if(col.CompareTag("Tutorial"))
+        if (col.CompareTag("Pill"))
         {
-            tutorial.CallText();
+            player.pillCount += 1;
+            Destroy(col.gameObject);
         }
-	}
-	
-	void OnTriggerExit(Collider other){
-		if (other.CompareTag ("Shadow")) {
-			player.hidden = false;
-        }
-	}
 
+        // Interactables
+        if (col.CompareTag ("KeyPad"))
+        {
+            if (player.havePill)
+            {
+                col.gameObject.GetComponent<GuiScript>();
+                guiScript.KeyPadActive();
+                player.pillCount -= 1;
+            }
+        }
+
+        if (col.CompareTag ("Computer"))
+        {
+            if (player.havePill)
+            {
+                guiScript.ComputerActive();
+                player.pillCount -= 1;
+            }
+        }
+
+        // Pick up Keys
+        if (col.CompareTag("Blue Key"))
+        {
+            haveBluCard = true;
+            Destroy(col.gameObject);
+            bluKeyCard.SetActive(true);
+        }
+
+        if (col.CompareTag("Orange Key"))
+        {
+            haveOraCard = true;
+            oraKeyCard.SetActive(true);
+            Destroy(col.gameObject);
+        }
+
+        if (col.CompareTag("Pink Key"))
+        {
+            havePinCard = true;
+            pinKeyCard.SetActive(true);
+            Destroy(col.gameObject);
+        }
+
+        if (col.CompareTag("Purple Key"))
+        {
+            havePurCard = true;
+            purKeyCard.SetActive(true);
+            Destroy(col.gameObject);
+        }
+
+        if (col.CompareTag("Green Key"))
+        {
+            haveGreCard = true;
+            greKeyCard.SetActive(true);
+            Destroy(col.gameObject);
+        }
+
+        
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Shadow"))
+        {
+            player.hidden = false;
+        }
+
+        // Doors
+        if (other.CompareTag("Door"))
+        {
+            other.gameObject.GetComponent<MeshRenderer>().enabled = true;
+        }
+
+        // Interactables
+        if (other.CompareTag("KeyPad"))
+        {
+            guiScript.KeyPadUnActive();
+        }
+
+        if (other.gameObject.tag == "Computer")
+        {
+            guiScript.ComputerUnActive();
+        }
+    }
 }

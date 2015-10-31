@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour {
 	public float bananaTime = 15f;
 	public float pillCount = 0f;
     public float bananaCount = 0f;
-    public float keyCardCount = 0f;
 
 	public AudioClip bananaMusic;
 
@@ -109,17 +108,7 @@ public class PlayerController : MonoBehaviour {
             moveDirection *= speed;
             controller.Move(moveDirection * Time.deltaTime);
         }
-        
-
-        if(keyCardCount >0 )
-        {
-            key.canvasRenderer.SetAlpha(1);
-        }
-
-        if (keyCardCount == 0)
-        {
-            key.canvasRenderer.SetAlpha(0.2f);
-        }
+     
 
         if (pillCount > 0) {
 			havePill = true;
@@ -160,14 +149,12 @@ public class PlayerController : MonoBehaviour {
 
         if (useBanana)
         {
-            shadows.SetActive(false);
             bananaSlider.value -= bananaTime * Time.deltaTime;
             speed = 7.5f;
         }
 
 		if (bananaSlider.value <= 0)
 		{
-            shadows.SetActive(true);
             useBanana = false;
             speed = 5;
 			bananaTime = 15f;
@@ -175,7 +162,6 @@ public class PlayerController : MonoBehaviour {
 
         bananaAmountText.text = ("x " + bananaCount);
         pillAmountText.text = ("x " + pillCount);
-        keyAmountText.text = ("x " + keyCardCount);
 
         if (pillCount == 0) {
 
@@ -184,24 +170,10 @@ public class PlayerController : MonoBehaviour {
 	}
 
 
-	void OnTriggerEnter(Collider col){
-
-		if (col.CompareTag("Banana")){
-                bananaCount += 1;
-                banana.enabled = true;
-                banana.canvasRenderer.SetAlpha(1f);
-                Destroy(col.gameObject);
-        }	
-
-		if (col.CompareTag ("Pill")) {
-			pillCount +=1;
-			Destroy(col.gameObject);
-		}
-
-
+	void OnTriggerEnter(Collider col)
+    {
 		if (col.gameObject.name == "Goal")
-        {
-
+        { 
             //set the isLevelComplete flag to true if the player hits an object with name Goal
             isLevelComplete = true;
             if (totalTime < 2)
@@ -223,43 +195,8 @@ public class PlayerController : MonoBehaviour {
             Time.timeScale = 0;
 
         }
-		
-		 if (col.gameObject.tag == "KeyPad") {
- 			if(havePill){
-            	guiScript.KeyPadActive();
-				pillCount -=1;
-			}
-        }
+}
 
-        if (col.gameObject.tag == "Computer")
-        {
-            if (havePill)
-            {
-                guiScript.ComputerActive();
-                pillCount -= 1;
-            }
-        }
-
-
-    }
-
-	void OnTriggerExit(Collider other){
-		if (other.CompareTag ("Shadow")) {
-			hidden = false;
-		}
-		
-		if (other.gameObject.tag == "KeyPad")
-        {
-            guiScript.KeyPadUnActive();
-        }
-
-        if (other.gameObject.tag == "Computer")
-        {
-            guiScript.ComputerUnActive();
-        }
-
-    }
-	
 	 public void OnClickButton()
     {
         //load the World1 level 

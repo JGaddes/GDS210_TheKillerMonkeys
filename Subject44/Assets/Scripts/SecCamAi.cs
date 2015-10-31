@@ -4,61 +4,86 @@ using System.Collections;
 public class SecCamAi : MonoBehaviour
 {
 
-    public Transform waypoints;
+    public Transform[] waypoint;
     public bool loop = true, hitWall = false;
-    public float waitTime = 0;
-    public float rotationSpeed = 0.5f;
+    public bool isLooking = false;
+    public bool activated = true;
+    public float dampingLook;
+    public float pauseDuration;
+    public float waitTime;
 
+    private float curTime;
     private int currentWaypoint = 0;
     private CharacterController character;
-    private Quaternion _lookRotation;
-    private Vector3 _direction;
 
-    void Start()
-    {
-
-        character = GetComponent<CharacterController>(); ;
-    }
 
     void Update()
     {
-
-        _direction = (waypoints.position - transform.position).normalized;
-        _lookRotation = Quaternion.LookRotation(_direction);
-        transform.rotation = Quaternion.Slerp(transform.rotation, _lookRotation, Time.deltaTime * rotationSpeed);
-
-        /*
-        if (currentWaypoint < waypoints.Length)
+        if (activated)
         {
-            patrol();
-        }
-        else
-        {
-            if (loop)
+            Debug.Log("Still active");
+            if (currentWaypoint < waypoint.Length)
             {
-                currentWaypoint = 0;
+                patrol();
             }
-        }
-        */
+            else
+            {
+                if (loop)
+                {
+                    currentWaypoint = 0;
+                }
+            }
 
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, 2.5f))
-        {
-            if (hit.collider.tag == "Wall")
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.forward, out hit, 2.5f))
             {
-                hitWall = true;
+                if (hit.collider.tag == "Wall")
+                {
+                    hitWall = true;
+                }
+                else if (hit.collider.tag != "Wall")
+                {
+                    hitWall = false;
+                }
             }
-            else if (hit.collider.tag != "Wall")
-            {
-                hitWall = false;
-            }
-        }
 
+        }
     }
 
-    IEnumerator patrol()
+    void patrol()
+    {
+
+        Vector3 target = waypoint[currentWaypoint].position;
+        target.y = transform.position.y;
+
+        if (isLooking)
+        {
+            if (curTime == 0)
+            {
+                curTime = Time.time;
+            }
+
+            if ((Time.time - curTime) >= pauseDuration)
+            {
+                currentWaypoint++;
+                curTime = 0;
+                isLooking = false;
+            }
+        }
+
+        else
+        {
+
+            var rotation = Quaternion.LookRotation(target - transform.position);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * dampingLook);
+            StartCoroutine(Wait());
+            
+        }
+    }
+
+    IEnumerator Wait()
     {
         yield return new WaitForSeconds(waitTime);
-    
+        isLooking = true;
     }
 }

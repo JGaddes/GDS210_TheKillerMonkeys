@@ -14,25 +14,32 @@ public class GuiScript : MonoBehaviour {
     public Canvas keyPad;
     public string password = "";
 
+    public GameObject exitDoor;
+
     //Computer Variables
     public InputField compInput;
     public Canvas Computer;
     public string loginPass = "";
 
-    private Animator anim;
     private Animator anim2;
+    private Animator anim;
 
 	AudioSource KeyPressed; 
 	AudioSource PasswordSuccess; 
 	AudioSource PasswordFail;
 
+    public GameObject[] lockedDoors;
+    public GameObject[] secCams;
+    public SecCamAi secCamAi;
+
 
     // Use this for initialization
     void Start () {
-	
-		playerController.GetComponent <PlayerController>();
 
-        
+        lockedDoors = GameObject.FindGameObjectsWithTag("Locked Door");
+        secCams = GameObject.FindGameObjectsWithTag("Sec Cam");
+
+        playerController.GetComponent<PlayerController>();        
         anim = keyPadText.GetComponent<Animator>();
         keyPad.enabled = false;
         anim.enabled = false;
@@ -41,11 +48,12 @@ public class GuiScript : MonoBehaviour {
         Computer.enabled = false;
         anim2.enabled = false;
 
-		AudioSource[] allMyAudioSources = GetComponents<AudioSource>();
+        AudioSource[] allMyAudioSources = GetComponents<AudioSource>();
 		KeyPressed = allMyAudioSources[0];
 		PasswordSuccess = allMyAudioSources[1];
 		PasswordFail = allMyAudioSources [2];
-		      
+
+
     }
 
     public void CodeCheck(string other) {
@@ -91,9 +99,9 @@ public class GuiScript : MonoBehaviour {
 
             StartCoroutine(MyCoroutine());
             Debug.Log("Unlocking something!");
-			PasswordSuccess.Play();
+            PasswordSuccess.Play();
             playerController.canMove = true;
-            //THIS IS WHERE YOU CAN MAKE IT OPEN A DOOR ETC!
+            exitDoor.SetActive(false);
 
         }
         else {
@@ -141,18 +149,28 @@ public class GuiScript : MonoBehaviour {
 
     public void ComputerUnActive()
     {
-
         Computer.enabled = false;
         playerController.canMove = true;
     }
 
-    public void UnlockDoors() {
+    public void UnlockDoors()
+    {
 
         Debug.Log("Doors Unlocking!");
+        foreach (GameObject d in lockedDoors)
+        {
+            d.SetActive(false);
+        }
     }
 
-    public void DisableCameras() {
-
+    public void DisableCameras()
+    {
+        foreach (GameObject sc in secCams)
+        {
+            secCamAi.GetComponent<SecCamAi>().activated = false;
+            sc.GetComponentInChildren<MeshCollider>().enabled = false;
+            sc.GetComponentInChildren<MeshRenderer>().enabled = false;
+        }
         Debug.Log("Cameras Disabled!");
     }
 

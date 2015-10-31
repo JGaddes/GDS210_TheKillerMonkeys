@@ -20,13 +20,12 @@ public class Guard : MonoBehaviour {
 	
 		if(Vector3.Distance (transform.position, player.transform.position) < 1.5f) {
 
-			if(playerController.useBanana){
-				if(Input.GetKeyDown(KeyCode.Space)) {
+			if(playerController.useBanana)
+            {
+				if(Input.GetKeyDown(KeyCode.Space))
+                {
 					Destroy (gameObject);
 					deadguard.Play();
-				}
-			if(Input.GetKeyDown(KeyCode.Space)) {
-				Destroy (gameObject);
 				}
 			}
 		}
