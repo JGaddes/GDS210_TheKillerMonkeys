@@ -20,11 +20,11 @@ public class ChildCollider : MonoBehaviour {
     public List<PatrolAi> patrol = new List<PatrolAi>();
     public List<GameObject> guards = new List<GameObject>();
 
-    private bool haveBluCard = false;
-    private bool haveOraCard = false;
-    private bool haveGreCard = false;
-    private bool havePurCard = false;
-    private bool havePinCard = false;
+    public bool haveBluCard = false;
+	public bool haveOraCard = false;
+	public bool haveGreCard = false;
+	public bool havePurCard = false;
+	public bool havePinCard = false;
 
 
     // Use this for initialization
@@ -162,6 +162,11 @@ public class ChildCollider : MonoBehaviour {
             }
         }
 
+		if (col.CompareTag("Button"))
+		{
+			col.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+		}
+
         // Pick up Keys
         if (col.CompareTag("Blue Key"))
         {
@@ -224,5 +229,10 @@ public class ChildCollider : MonoBehaviour {
         {
             guiScript.ComputerUnActive();
         }
+
+		if(other.CompareTag("Button"))
+		{
+			other.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+		}
     }
 }

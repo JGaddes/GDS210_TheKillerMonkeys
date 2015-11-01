@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 7aacc80d373481749bb6d83617dff36c
-timeCreated: 1446074798
+timeCreated: 1446359513
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -58,11 +58,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 26
-        y: 4
+        y: 0
         width: 72
-        height: 124
+        height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: SPR_SpriteSheet_Game_PlayerHidden_00_1
       rect:
@@ -72,17 +72,17 @@ TextureImporter:
         width: 72
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: SPR_SpriteSheet_Game_PlayerHidden_00_2
       rect:
         serializedVersion: 2
         x: 282
-        y: 4
+        y: 0
         width: 72
-        height: 124
+        height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: SPR_SpriteSheet_Game_PlayerHidden_00_3
       rect:
@@ -92,7 +92,7 @@ TextureImporter:
         width: 72
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

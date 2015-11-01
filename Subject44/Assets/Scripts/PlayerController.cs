@@ -19,10 +19,11 @@ public class PlayerController : MonoBehaviour {
 	public bool useBanana = false;
 	public bool havePill = false;
     public bool canMove = true;
+	public bool bananananaMode = false;
 
-    public GameObject playerSprite;
-    public GameObject playerVisible;
-    public GameObject playerHidden;
+    //public GameObject playerSprite;
+    //public GameObject playerVisible;
+   // public GameObject playerHidden;
     public GameObject shadows;
 
     public CharacterController controller;
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour {
 	public AudioClip detected, enemyDeath;
     private Vector3 moveDirection = Vector3.zero;
 
+	public Animator MonkeyAnimator;
 
     //GUI VARIABLES!!
     public GuiScript guiScript;
@@ -92,18 +94,41 @@ public class PlayerController : MonoBehaviour {
 		bananaSlider.value = 0;
         pillCount = 0;
 
+		MonkeyAnimator.SetInteger ("Walk", 1);
+
 	}
 
 
 	void Update () {
 
-		TestHidden ();
+		//TestHidden ();
+
+		//Monkey Animation
+		if (hidden)
+		{
+			MonkeyAnimator.SetBool("Hidden", true);
+		}
+
+		if (!hidden)
+		{
+			MonkeyAnimator.SetBool("Hidden", false);
+		}
+
+		if (bananananaMode)
+		{
+			MonkeyAnimator.SetBool("Banana", true);
+		}
+
+		if (!bananananaMode)
+		{
+			MonkeyAnimator.SetBool("Banana", false);
+		}
 
         controller = GetComponent<CharacterController>();
 
         if (canMove)
         {
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+			moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= speed;
             controller.Move(moveDirection * Time.deltaTime);
@@ -134,7 +159,7 @@ public class PlayerController : MonoBehaviour {
             {
                 if (Input.GetKeyDown(KeyCode.B))
                 {
-                    bananaSlider.value = 100;
+					bananaSlider.value = 100;
                     bananaCount -= 1;
                     useBanana = true;
                     hidden = false;
@@ -149,8 +174,9 @@ public class PlayerController : MonoBehaviour {
 
         if (useBanana)
         {
-            bananaSlider.value -= bananaTime * Time.deltaTime;
+			bananaSlider.value -= bananaTime * Time.deltaTime;
             speed = 7.5f;
+			bananananaMode = true;
         }
 
 		if (bananaSlider.value <= 0)
@@ -158,6 +184,7 @@ public class PlayerController : MonoBehaviour {
             useBanana = false;
             speed = 5;
 			bananaTime = 15f;
+			bananananaMode = false;
         }
 
         bananaAmountText.text = ("x " + bananaCount);
@@ -167,6 +194,7 @@ public class PlayerController : MonoBehaviour {
 
             havePill = false;
         }
+		
 	}
 
 
@@ -228,7 +256,7 @@ public class PlayerController : MonoBehaviour {
     }
 
 
-	void TestHidden()
+	/*void TestHidden()
 	{
         // Switches spritesheet when hidden / visible
 		if (hidden)
@@ -243,5 +271,5 @@ public class PlayerController : MonoBehaviour {
             playerHidden.SetActive(false);
 		}
 
-	}
+	}*/
 }
