@@ -26,6 +26,8 @@ public class ChildCollider : MonoBehaviour {
 	public bool havePurCard = false;
 	public bool havePinCard = false;
 
+	public Sprite green, red;
+
 
     // Use this for initialization
     void Start () {
@@ -142,29 +144,40 @@ public class ChildCollider : MonoBehaviour {
             Destroy(col.gameObject);
         }
 
+		/*if (col.CompareTag("Collectible"))
+		{
+			player.collect1.enabled = true;
+			Destroy(col.gameObject);
+		}*/
+
         // Interactables
         if (col.CompareTag ("KeyPad"))
         {
-            if (player.havePill)
-            {
-                col.gameObject.GetComponent<GuiScript>();
-                guiScript.KeyPadActive();
-                player.pillCount -= 1;
-            }
+			if (player.havePill)
+			{
+				col.gameObject.GetComponent<GuiScript>();
+				guiScript.KeyPadActive();
+				player.pillCount -= 1;
+
+			}
+
         }
 
-        if (col.CompareTag ("Computer"))
-        {
-            if (player.havePill)
-            {
-                guiScript.ComputerActive();
-                player.pillCount -= 1;
-            }
-        }
+		if (col.CompareTag ("Computer"))
+		{
+			if (player.havePill)
+			{
+				guiScript.ComputerActive();
+				player.pillCount -= 1;
+					
+			}
+		}
+
 
 		if (col.CompareTag("Button"))
 		{
-			col.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+			col.gameObject.GetComponent<SpriteRenderer>().sprite = green;
+			col.gameObject.GetComponent<Button>().buttonOn = true;
 		}
 
         // Pick up Keys
@@ -232,7 +245,7 @@ public class ChildCollider : MonoBehaviour {
 
 		if(other.CompareTag("Button"))
 		{
-			other.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+			other.gameObject.GetComponent<SpriteRenderer>().sprite = red;
 		}
     }
 }

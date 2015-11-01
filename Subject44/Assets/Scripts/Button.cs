@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Button : MonoBehaviour {
 
-	public bool buttonOn;
+	public bool buttonOn = false;
 
 	// Use this for initialization
 	void Start () {
@@ -15,15 +15,15 @@ public class Button : MonoBehaviour {
 	
 		if(buttonOn)
 		{
-			gameObject.SetActive(false);
+			gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load("GreenButton") as Sprite;
 		}
 	}
 
 	public void OnTriggerEnter(Collider col)
 	{
-		if(col.CompareTag("player"))
-		{
+		if (col.tag == "player") 
 			buttonOn = true;
-		}
+		else
+			buttonOn = false;
 	}
 }

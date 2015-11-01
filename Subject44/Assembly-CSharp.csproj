@@ -63,18 +63,26 @@
      <Compile Include="Assets\Scripts\MainMenu\LevelSelectScript.cs" />
      <Compile Include="Assets\Scripts\MainMenu\LockLevel.cs" />
      <Compile Include="Assets\Scripts\MainMenu\menuScript.cs" />
+     <Compile Include="Assets\Scripts\MonkeyKin.cs" />
      <Compile Include="Assets\Scripts\OrangeDoor.cs" />
      <Compile Include="Assets\Scripts\PatrolAi.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PlayerRotate.cs" />
      <Compile Include="Assets\Scripts\Pole.cs" />
+     <Compile Include="Assets\Scripts\RedDoor.cs" />
      <Compile Include="Assets\Scripts\SecCamAi.cs" />
      <Compile Include="Assets\Scripts\TextShow.cs" />
+ <Reference Include="UnityEngine.Advertisements">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Cecil">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/Mono.Cecil.dll</HintPath>

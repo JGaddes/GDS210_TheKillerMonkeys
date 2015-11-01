@@ -21,7 +21,7 @@ public class SecCamAi : MonoBehaviour
     {
         if (activated)
         {
-            Debug.Log("Still active");
+           // Debug.Log("Still active");
             if (currentWaypoint < waypoint.Length)
             {
                 patrol();

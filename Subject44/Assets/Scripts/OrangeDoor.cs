@@ -5,35 +5,31 @@ public class OrangeDoor : MonoBehaviour {
 	
 	public GameObject open, closed;
 	public float speed = 2f;
+	public GameObject _player;
 	
 	// Use this for initialization
 	void Start () {
+
+		_player = GameObject.FindGameObjectWithTag("Player");
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
-		GameObject _player = GameObject.FindGameObjectWithTag("Player");
+
 		
-		if(_player.GetComponent<ChildCollider>().haveOraCard == true)
-		{
-			if (Vector3.Distance (transform.position, _player.transform.position) < 2f)
-			{
+		if (_player.GetComponent<ChildCollider>().haveOraCard) {
+			if (Vector3.Distance (transform.position, _player.transform.position) < 2f) {
 				transform.position = Vector3.MoveTowards (transform.position, open.transform.position, speed * Time.deltaTime);
 				
 			}
-			
-			if (Vector3.Distance (transform.position, _player.transform.position) > 2f)
-			{		
+			else if (Vector3.Distance (transform.position, _player.transform.position) > 2f) {		
 				transform.position = Vector3.MoveTowards (transform.position, closed.transform.position, speed * Time.deltaTime);
 				
 			}
-		}
-		
-		if(_player.GetComponent<ChildCollider>().haveOraCard == false)
-		{
+		} 
+		else
 			return;
-		}
 	}
 }

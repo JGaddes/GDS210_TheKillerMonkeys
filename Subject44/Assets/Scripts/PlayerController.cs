@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour {
     public Text pillAmountText;
     public Text bananaAmountText;
     public Text keyAmountText;
+	public Image collect1, collect2, collect3;
 
 
 
