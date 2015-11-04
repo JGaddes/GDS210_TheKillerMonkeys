@@ -53,11 +53,11 @@
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\ChildCollider.cs" />
      <Compile Include="Assets\Scripts\CircleGuard.cs" />
+     <Compile Include="Assets\Scripts\DetectPlayer.cs" />
      <Compile Include="Assets\Scripts\Doors.cs" />
      <Compile Include="Assets\Scripts\FanRotate.cs" />
      <Compile Include="Assets\Scripts\FlyingBananananana.cs" />
      <Compile Include="Assets\Scripts\Guard.cs" />
-     <Compile Include="Assets\Scripts\GuardRotate.cs" />
      <Compile Include="Assets\Scripts\InGameMenu\GuiScript.cs" />
      <Compile Include="Assets\Scripts\InGameMenu\PauseMenuScript.cs" />
      <Compile Include="Assets\Scripts\MainMenu\CodeScript.cs" />
@@ -73,6 +73,7 @@
      <Compile Include="Assets\Scripts\RedDoor.cs" />
      <Compile Include="Assets\Scripts\SecCamAi.cs" />
      <Compile Include="Assets\Scripts\TextShow.cs" />
+     <None Include="Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

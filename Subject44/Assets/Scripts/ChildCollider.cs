@@ -6,9 +6,10 @@ using System.Collections.Generic;
 public class ChildCollider : MonoBehaviour {
 
     public PlayerController player;
+	//public DetectPlayer detected;
     public GameObject spawnPoint;
 	public AudioSource source; 
-	public AudioClip detected;
+	public AudioClip detectedSound;
     public GuiScript guiScript;
 
     public GameObject purKeyCard;
@@ -20,11 +21,13 @@ public class ChildCollider : MonoBehaviour {
     public List<PatrolAi> patrol = new List<PatrolAi>();
     public List<GameObject> guards = new List<GameObject>();
 
+
     public bool haveBluCard = false;
 	public bool haveOraCard = false;
 	public bool haveGreCard = false;
 	public bool havePurCard = false;
 	public bool havePinCard = false;
+	public bool seen = false;
 
 	public Sprite green, red;
 
@@ -34,7 +37,7 @@ public class ChildCollider : MonoBehaviour {
 
         player = gameObject.GetComponentInParent<PlayerController>();
         source = gameObject.GetComponentInParent<AudioSource>();
-        detected = gameObject.GetComponentInParent<PlayerController>().detected;
+        detectedSound = gameObject.GetComponentInParent<PlayerController>().detected;
 
         foreach (GameObject g in GameObject.FindGameObjectsWithTag("Guard"))
         {
@@ -50,26 +53,18 @@ public class ChildCollider : MonoBehaviour {
 	void OnTriggerStay (Collider other)
 	{
 
-        if (other.CompareTag("Detect"))
-        {
-            for (int i = 0; i < patrol.Count; i++)
-            {
-                if (patrol[i].hitWall)
-                    return;
-                else
-                {
-                    if (!player.hidden && !patrol[i].hitWall)
-                    {
-                        player.canMove = false;
-                        transform.position = spawnPoint.transform.position;
-                        player.useBanana = false;
-                        player.bananaSlider.value = 0;
-                        player.canMove = true;
-						source.Play();
-                    }
-                }
-            }
-        }
+		if (other.CompareTag ("Detect")) {
+			//if (seen) {
+				if (!player.hidden) {
+					player.canMove = false;
+					transform.position = spawnPoint.transform.position;
+					player.useBanana = false;
+					player.bananaSlider.value = 0;
+					player.canMove = true;
+					source.Play ();
+				}
+			//}
+		}
 		
 		if (other.CompareTag ("Shadow")) {
             if (!player.useBanana)
@@ -129,20 +124,18 @@ public class ChildCollider : MonoBehaviour {
 	public void OnTriggerEnter(Collider col)
     {
         
-        // Power ups
-        if (col.CompareTag("Banana"))
-        {
-            player.bananaCount += 1;
-            player.banana.enabled = true;
-            player.banana.canvasRenderer.SetAlpha(1f);
-            Destroy(col.gameObject);
-        }
+		// Power ups
+		if (col.CompareTag ("Banana")) {
+			player.bananaCount += 1;
+			player.banana.enabled = true;
+			player.banana.canvasRenderer.SetAlpha (1f);
+			Destroy (col.gameObject);
+		}
 
-        if (col.CompareTag("Pill"))
-        {
-            player.pillCount += 1;
-            Destroy(col.gameObject);
-        }
+		if (col.CompareTag ("Pill")) {
+			player.pillCount += 1;
+			Destroy (col.gameObject);
+		}
 
 		/*if (col.CompareTag("Collectible"))
 		{
@@ -150,74 +143,63 @@ public class ChildCollider : MonoBehaviour {
 			Destroy(col.gameObject);
 		}*/
 
-        // Interactables
-        if (col.CompareTag ("KeyPad"))
-        {
-			if (player.havePill)
-			{
-				col.gameObject.GetComponent<GuiScript>();
-				guiScript.KeyPadActive();
+		// Interactables
+		if (col.CompareTag ("KeyPad")) {
+			if (player.havePill) {
+				col.gameObject.GetComponent<GuiScript> ();
+				guiScript.KeyPadActive ();
 				player.pillCount -= 1;
 
 			}
 
-        }
+		}
 
-		if (col.CompareTag ("Computer"))
-		{
-			if (player.havePill)
-			{
-				guiScript.ComputerActive();
+		if (col.CompareTag ("Computer")) {
+			if (player.havePill) {
+				guiScript.ComputerActive ();
 				player.pillCount -= 1;
 					
 			}
 		}
 
 
-		if (col.CompareTag("Button"))
-		{
-			col.gameObject.GetComponent<SpriteRenderer>().sprite = green;
-			col.gameObject.GetComponent<Button>().buttonOn = true;
+		if (col.CompareTag ("Button")) {
+			col.gameObject.GetComponent<SpriteRenderer> ().sprite = green;
+			col.gameObject.GetComponent<Button> ().buttonOn = true;
 		}
 
-        // Pick up Keys
-        if (col.CompareTag("Blue Key"))
-        {
-            haveBluCard = true;
-            Destroy(col.gameObject);
-            bluKeyCard.SetActive(true);
-        }
+		// Pick up Keys
+		if (col.CompareTag ("Blue Key")) {
+			haveBluCard = true;
+			Destroy (col.gameObject);
+			bluKeyCard.SetActive (true);
+		}
 
-        if (col.CompareTag("Orange Key"))
-        {
-            haveOraCard = true;
-            oraKeyCard.SetActive(true);
-            Destroy(col.gameObject);
-        }
+		if (col.CompareTag ("Orange Key")) {
+			haveOraCard = true;
+			oraKeyCard.SetActive (true);
+			Destroy (col.gameObject);
+		}
 
-        if (col.CompareTag("Pink Key"))
-        {
-            havePinCard = true;
-            pinKeyCard.SetActive(true);
-            Destroy(col.gameObject);
-        }
+		if (col.CompareTag ("Pink Key")) {
+			havePinCard = true;
+			pinKeyCard.SetActive (true);
+			Destroy (col.gameObject);
+		}
 
-        if (col.CompareTag("Purple Key"))
-        {
-            havePurCard = true;
-            purKeyCard.SetActive(true);
-            Destroy(col.gameObject);
-        }
+		if (col.CompareTag ("Purple Key")) {
+			havePurCard = true;
+			purKeyCard.SetActive (true);
+			Destroy (col.gameObject);
+		}
 
-        if (col.CompareTag("Green Key"))
-        {
-            haveGreCard = true;
-            greKeyCard.SetActive(true);
-            Destroy(col.gameObject);
-        }
+		if (col.CompareTag ("Green Key")) {
+			haveGreCard = true;
+			greKeyCard.SetActive (true);
+			Destroy (col.gameObject);
+		}
 
-        
-    }
+	} 
 
     void OnTriggerExit(Collider other)
     {
