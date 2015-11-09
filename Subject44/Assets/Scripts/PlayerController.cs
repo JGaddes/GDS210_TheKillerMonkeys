@@ -37,12 +37,13 @@ public class PlayerController : MonoBehaviour {
     public GuiScript guiScript;
 
     //reference to stars
-    private GameObject star1;
-    private GameObject star2;
-    private GameObject star3;
+    public Image star1;
+    public Image star2;
+    public Image star3;
+
 
     //reference to next button
-    private GameObject buttonNext;
+    public GameObject buttonNext;
 
     private string currentLevel;
     private int worldIndex;
@@ -71,12 +72,12 @@ public class PlayerController : MonoBehaviour {
         isLevelComplete = false;
 
         //get the star images
-        star1 = GameObject.Find("star1");
-        star2 = GameObject.Find("star2");
-        star3 = GameObject.Find("star3");
+        //star1 = GameObject.Find("star1");
+        //star2 = GameObject.Find("star2");
+        //star3 = GameObject.Find("star3");
 
         //get the next button
-        buttonNext = GameObject.Find("Next");
+        //buttonNext = GameObject.Find("Next");
 
         //disable the image component of all the star images
         star1.GetComponent<Image>().enabled = false;
@@ -84,7 +85,7 @@ public class PlayerController : MonoBehaviour {
        	star3.GetComponent<Image>().enabled = false;
 
         //disable the next button
-        buttonNext.SetActive(false);
+        buttonNext.GetComponent<Image>().enabled = false; //.SetActive(false);
 
         //save the current level name
         currentLevel = Application.loadedLevelName;
@@ -224,7 +225,23 @@ public class PlayerController : MonoBehaviour {
             Time.timeScale = 0;
 
         }
-}
+
+        if (col.gameObject.tag == "KeyPad")
+        {
+            if (havePill == true)
+            {
+                guiScript.KeyPadActive();
+                //pills -= 1;
+            }
+        }
+
+        if (col.gameObject.tag == "Computer")
+        {
+
+            guiScript.ComputerActive();
+            speed = 0;
+        }
+    }
 
 	 public void OnClickButton()
     {

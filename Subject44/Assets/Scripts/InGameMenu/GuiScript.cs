@@ -17,7 +17,7 @@ public class GuiScript : MonoBehaviour {
     public GameObject exitDoor;
 
     //Computer Variables
-    public InputField compInput;
+    public Text compInput;
     public Canvas Computer;
     public string loginPass = "";
 
@@ -57,6 +57,8 @@ public class GuiScript : MonoBehaviour {
     }
 
     public void CodeCheck(string other) {
+
+        //Debug.Log(compInput.text);
 
         switch (other.ToLower()){
 

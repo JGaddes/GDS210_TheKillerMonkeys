@@ -18,10 +18,10 @@ public class menuScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	
-		exitMenu = exitMenu.GetComponent <Canvas> ();
-		creditMenu = creditMenu.GetComponent <Canvas> ();
-		startText = startText.GetComponent <Button> ();
-		exitText = exitText.GetComponent <Button> ();
+		//exitMenu = exitMenu.GetComponent <Canvas> ();
+		//creditMenu = creditMenu.GetComponent <Canvas> ();
+		//startText = startText.GetComponent <Button> ();
+		//exitText = exitText.GetComponent <Button> ();
 
 		exitMenu.enabled = false;
 		levelMenu.enabled = false;
