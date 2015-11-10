@@ -58,18 +58,27 @@ public class GuiScript : MonoBehaviour {
 
     public void CodeCheck(string other) {
 
-        //Debug.Log(compInput.text);
+		string tempLogin = compInput.text;
 
-        switch (other.ToLower()){
+       // switch (other.ToLower()){
 
-            case "password":
-                Debug.Log("Correct Password");
-                anim2.enabled = true;
-                break;
-            default:
-                Debug.Log("Wrong Code Nerd!");
-                break;
-        }
+        //    case "password":
+         //       Debug.Log("Correct Password");
+         //       anim2.enabled = true;
+           //     break;
+          //  default:
+           //     Debug.Log("Wrong Code Nerd!");
+            //    break;
+      //  }
+
+		if (loginPass == tempLogin) {
+
+			Debug.Log ("Correct Pass");
+			anim2.enabled = true;
+		} else {
+		
+			Debug.Log ("Wrong pass");
+		}
     }
 
     public void ClickLetter(string letterClicked)

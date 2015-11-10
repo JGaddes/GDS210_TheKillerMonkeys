@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour {
        	star3.GetComponent<Image>().enabled = false;
 
         //disable the next button
-        buttonNext.GetComponent<Image>().enabled = false; //.SetActive(false);
+        buttonNext.SetActive(false);
 
         //save the current level name
         currentLevel = Application.loadedLevelName;

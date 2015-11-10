@@ -58,6 +58,7 @@
      <Compile Include="Assets\Scripts\FanRotate.cs" />
      <Compile Include="Assets\Scripts\FlyingBananananana.cs" />
      <Compile Include="Assets\Scripts\Guard.cs" />
+     <Compile Include="Assets\Scripts\GuardRotate.cs" />
      <Compile Include="Assets\Scripts\InGameMenu\GuiScript.cs" />
      <Compile Include="Assets\Scripts\InGameMenu\PauseMenuScript.cs" />
      <Compile Include="Assets\Scripts\MainMenu\CodeScript.cs" />
