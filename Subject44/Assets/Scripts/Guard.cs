@@ -5,7 +5,8 @@ public class Guard : MonoBehaviour {
 
 	public GameObject player;
 	public PlayerController playerController;
-	AudioSource deadguard; 
+	AudioSource deadguard;
+	
 
 	// Use this for initialization
 	void Start () 
@@ -16,7 +17,8 @@ public class Guard : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 		if (Vector3.Distance (transform.position, player.transform.position) < 1.5f) {
 			if (playerController.useBanana) {
 				if (Input.GetKeyDown (KeyCode.Space)) {
@@ -25,5 +27,6 @@ public class Guard : MonoBehaviour {
 				}
 			}
 		}
+
 	}
 }

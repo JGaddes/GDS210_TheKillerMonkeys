@@ -23,25 +23,14 @@ public class PatrolAi : MonoBehaviour {
 			
 		if(currentWaypoint < waypoint.Length){
 			patrol();
-		}else{    
-			if(loop){
+		}
+		else
+		{    
+			if(loop)
+			{
 				currentWaypoint=0;
 			} 
 		}
-
-		RaycastHit hit;
-		if (Physics.Raycast(transform.position, transform.forward, out hit, 2.5f))
-		{
-			if (hit.collider.tag == "Wall")
-			{
-				hitWall = true;
-			}
-			else if (hit.collider.tag != "Wall")
-			{
-				hitWall = false;
-			}
-		}
-
 	}
 		
 	void  patrol ()
@@ -57,7 +46,8 @@ public class PatrolAi : MonoBehaviour {
 				currentWaypoint++;
 				curTime = 0;
 			}
-		}else{
+		}
+		else{
 
 			var rotation = Quaternion.LookRotation(target - transform.position);
 			transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * dampingLook);

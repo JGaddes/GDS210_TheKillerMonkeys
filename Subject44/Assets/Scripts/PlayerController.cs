@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour {
     public float bananaCount = 0f;
 
 	public AudioClip bananaMusic;
-
+	
 	public bool onPole = false;
     public bool inBarrel = false;
     public bool hidden = false;
@@ -71,14 +71,6 @@ public class PlayerController : MonoBehaviour {
 		//set the level complete to false on start of level
         isLevelComplete = false;
 
-        //get the star images
-        //star1 = GameObject.Find("star1");
-        //star2 = GameObject.Find("star2");
-        //star3 = GameObject.Find("star3");
-
-        //get the next button
-        //buttonNext = GameObject.Find("Next");
-
         //disable the image component of all the star images
         star1.GetComponent<Image>().enabled = false;
         star2.GetComponent<Image>().enabled = false;
@@ -102,8 +94,6 @@ public class PlayerController : MonoBehaviour {
 
 
 	void Update () {
-
-		//TestHidden ();
 
 		//Monkey Animation
 		if (hidden)

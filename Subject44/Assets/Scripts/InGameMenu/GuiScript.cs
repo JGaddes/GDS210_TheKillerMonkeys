@@ -39,7 +39,7 @@ public class GuiScript : MonoBehaviour {
         lockedDoors = GameObject.FindGameObjectsWithTag("Locked Door");
         secCams = GameObject.FindGameObjectsWithTag("Sec Cam");
 
-        playerController.GetComponent<PlayerController>();        
+        playerController.GetComponent<PlayerController>();   
         anim = keyPadText.GetComponent<Animator>();
         keyPad.enabled = false;
         anim.enabled = false;
@@ -179,8 +179,8 @@ public class GuiScript : MonoBehaviour {
         foreach (GameObject sc in secCams)
         {
             secCamAi.GetComponent<SecCamAi>().activated = false;
-            sc.GetComponentInChildren<MeshCollider>().enabled = false;
-            sc.GetComponentInChildren<MeshRenderer>().enabled = false;
+			sc.GetComponentInChildren<ParticleSystem>().enableEmission = false;
+			sc.GetComponentInChildren<DetectPlayer>().enabled = false;
         }
         Debug.Log("Cameras Disabled!");
     }

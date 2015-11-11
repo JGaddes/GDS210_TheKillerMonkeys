@@ -27,7 +27,6 @@ public class ChildCollider : MonoBehaviour {
 	public bool haveGreCard = false;
 	public bool havePurCard = false;
 	public bool havePinCard = false;
-	public bool seen = false;
 
 	public Sprite green, red;
 
@@ -52,20 +51,6 @@ public class ChildCollider : MonoBehaviour {
 
 	void OnTriggerStay (Collider other)
 	{
-
-		if (other.CompareTag ("Detect")) {
-			//if (seen) {
-				if (!player.hidden) {
-					player.canMove = false;
-					transform.position = spawnPoint.transform.position;
-					player.useBanana = false;
-					player.bananaSlider.value = 0;
-					player.canMove = true;
-					source.Play ();
-				}
-			//}
-		}
-		
 		if (other.CompareTag ("Shadow")) {
             if (!player.useBanana)
             {
@@ -158,7 +143,6 @@ public class ChildCollider : MonoBehaviour {
 			if (player.havePill) {
 				guiScript.ComputerActive ();
 				player.pillCount -= 1;
-					
 			}
 		}
 
