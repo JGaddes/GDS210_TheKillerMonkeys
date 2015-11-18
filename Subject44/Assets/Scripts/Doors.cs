@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Doors : MonoBehaviour {
 
-	public GameObject open, closed;
+	public GameObject doorUp, openUp, closedUp, doorDown, openDown, closedDown;
 	public float speed = 2f;
 
 	// Use this for initialization
@@ -13,35 +13,27 @@ public class Doors : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+	
+	}
 
-		GameObject _player = GameObject.FindGameObjectWithTag("Player");
-
-		if (Vector3.Distance (transform.position, _player.transform.position) < 2f)
+	//Door opens
+	void OnTriggerStay (Collider other)
+	{
+		if(other.CompareTag("Player"))
 		{
-			transform.position = Vector3.MoveTowards (transform.position, open.transform.position, speed * Time.deltaTime);
-
+			doorUp.transform.position = Vector3.MoveTowards (transform.position, openUp.transform.position, speed * Time.deltaTime);
+			doorDown.transform.position = Vector3.MoveTowards (transform.position, openDown.transform.position, speed * Time.deltaTime);
 		}
+	}
 
-		if (Vector3.Distance (transform.position, _player.transform.position) > 2f)
-		{		
-			transform.position = Vector3.MoveTowards (transform.position, closed.transform.position, speed * Time.deltaTime);
-
-		}
-
-
-		/*GameObject _enemy = GameObject.Find ("Door360Guard");
-
-		if (Vector3.Distance (transform.position, _enemy.transform.position) < 2f)
+	//Door closes
+	void OnTriggerLeave (Collider other)
+	{
+		if(other.CompareTag("Player"))
 		{
-			transform.position = Vector3.MoveTowards (transform.position, open.transform.position, speed * Time.deltaTime);
-			
+			doorUp.transform.position = Vector3.MoveTowards (transform.position, closedUp.transform.position, speed * Time.deltaTime);
+			doorDown.transform.position = Vector3.MoveTowards (transform.position, closedDown.transform.position, speed * Time.deltaTime);
 		}
-		
-		if (Vector3.Distance (transform.position, _enemy.transform.position) > 2f)
-		{		
-			transform.position = Vector3.MoveTowards (transform.position, closed.transform.position, speed * Time.deltaTime);
-			
-		}*/
 	}
 
 }

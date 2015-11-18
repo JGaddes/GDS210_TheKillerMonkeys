@@ -1,0 +1,573 @@
+fileFormatVersion: 2
+guid: 5eb4f81ede4571547aa97d22b049647a
+timeCreated: 1447818203
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: 360 Bot sprite 2_0
+    21300002: 360 Bot sprite 2_1
+    21300004: 360 Bot sprite 2_2
+    21300006: 360 Bot sprite 2_3
+    21300008: 360 Bot sprite 2_4
+    21300010: 360 Bot sprite 2_5
+    21300012: 360 Bot sprite 2_6
+    21300014: 360 Bot sprite 2_7
+    21300016: 360 Bot sprite 2_8
+    21300018: 360 Bot sprite 2_9
+    21300020: 360 Bot sprite 2_10
+    21300022: 360 Bot sprite 2_11
+    21300024: 360 Bot sprite 2_12
+    21300026: 360 Bot sprite 2_13
+    21300028: 360 Bot sprite 2_14
+    21300030: 360 Bot sprite 2_15
+    21300032: 360 Bot sprite 2_16
+    21300034: 360 Bot sprite 2_17
+    21300036: 360 Bot sprite 2_18
+    21300038: 360 Bot sprite 2_19
+    21300040: 360 Bot sprite 2_20
+    21300042: 360 Bot sprite 2_21
+    21300044: 360 Bot sprite 2_22
+    21300046: 360 Bot sprite 2_23
+    21300048: 360 Bot sprite 2_24
+    21300050: 360 Bot sprite 2_25
+    21300052: 360 Bot sprite 2_26
+    21300054: 360 Bot sprite 2_27
+    21300056: 360 Bot sprite 2_28
+    21300058: 360 Bot sprite 2_29
+    21300060: 360 Bot sprite 2_30
+    21300062: 360 Bot sprite 2_31
+    21300064: 360 Bot sprite 2_32
+    21300066: 360 Bot sprite 2_33
+    21300068: 360 Bot sprite 2_34
+    21300070: 360 Bot sprite 2_35
+    21300072: 360 Bot sprite 2_36
+    21300074: 360 Bot sprite 2_37
+    21300076: 360 Bot sprite 2_38
+    21300078: 360 Bot sprite 2_39
+    21300080: 360 Bot sprite 2_40
+    21300082: 360 Bot sprite 2_41
+    21300084: 360 Bot sprite 2_42
+    21300086: 360 Bot sprite 2_43
+    21300088: 360 Bot sprite 2_44
+    21300090: 360 Bot sprite 2_45
+    21300092: 360 Bot sprite 2_46
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: 360 Bot sprite 2_0
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 846
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_1
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 846
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_2
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 846
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_3
+      rect:
+        serializedVersion: 2
+        x: 1158
+        y: 846
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_4
+      rect:
+        serializedVersion: 2
+        x: 1518
+        y: 846
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_5
+      rect:
+        serializedVersion: 2
+        x: 1899
+        y: 846
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_6
+      rect:
+        serializedVersion: 2
+        x: 2254
+        y: 846
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_7
+      rect:
+        serializedVersion: 2
+        x: 2615
+        y: 846
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_8
+      rect:
+        serializedVersion: 2
+        x: 4155
+        y: 959
+        width: 69
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_9
+      rect:
+        serializedVersion: 2
+        x: 4275
+        y: 927
+        width: 123
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_10
+      rect:
+        serializedVersion: 2
+        x: 4406
+        y: 927
+        width: 99
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_11
+      rect:
+        serializedVersion: 2
+        x: 4513
+        y: 927
+        width: 69
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_12
+      rect:
+        serializedVersion: 2
+        x: 4590
+        y: 927
+        width: 241
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_13
+      rect:
+        serializedVersion: 2
+        x: 4839
+        y: 927
+        width: 48
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_14
+      rect:
+        serializedVersion: 2
+        x: 4938
+        y: 927
+        width: 428
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_15
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 491
+        width: 264
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_16
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 504
+        width: 265
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_17
+      rect:
+        serializedVersion: 2
+        x: 817
+        y: 504
+        width: 265
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_18
+      rect:
+        serializedVersion: 2
+        x: 1189
+        y: 491
+        width: 262
+        height: 310
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_19
+      rect:
+        serializedVersion: 2
+        x: 1654
+        y: 732
+        width: 70
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_20
+      rect:
+        serializedVersion: 2
+        x: 1905
+        y: 491
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_21
+      rect:
+        serializedVersion: 2
+        x: 2285
+        y: 491
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_22
+      rect:
+        serializedVersion: 2
+        x: 1558
+        y: 462
+        width: 265
+        height: 262
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_23
+      rect:
+        serializedVersion: 2
+        x: 2732
+        y: 569
+        width: 67
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_24
+      rect:
+        serializedVersion: 2
+        x: 3058
+        y: 569
+        width: 67
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_25
+      rect:
+        serializedVersion: 2
+        x: 3395
+        y: 569
+        width: 67
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_26
+      rect:
+        serializedVersion: 2
+        x: 3721
+        y: 569
+        width: 89
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_27
+      rect:
+        serializedVersion: 2
+        x: 4371
+        y: 590
+        width: 59
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_28
+      rect:
+        serializedVersion: 2
+        x: 4470
+        y: 558
+        width: 177
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_29
+      rect:
+        serializedVersion: 2
+        x: 4655
+        y: 558
+        width: 91
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_30
+      rect:
+        serializedVersion: 2
+        x: 4751
+        y: 558
+        width: 147
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_31
+      rect:
+        serializedVersion: 2
+        x: 4938
+        y: 558
+        width: 428
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_32
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 124
+        width: 264
+        height: 263
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_33
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 124
+        width: 265
+        height: 263
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_34
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 124
+        width: 264
+        height: 263
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_35
+      rect:
+        serializedVersion: 2
+        x: 1167
+        y: 124
+        width: 265
+        height: 263
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_36
+      rect:
+        serializedVersion: 2
+        x: 1547
+        y: 124
+        width: 177
+        height: 241
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_37
+      rect:
+        serializedVersion: 2
+        x: 1643
+        y: 155
+        width: 169
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_38
+      rect:
+        serializedVersion: 2
+        x: 1905
+        y: 124
+        width: 166
+        height: 209
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_39
+      rect:
+        serializedVersion: 2
+        x: 2036
+        y: 199
+        width: 145
+        height: 177
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_40
+      rect:
+        serializedVersion: 2
+        x: 2296
+        y: 143
+        width: 134
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_41
+      rect:
+        serializedVersion: 2
+        x: 2438
+        y: 210
+        width: 101
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_42
+      rect:
+        serializedVersion: 2
+        x: 4264
+        y: 231
+        width: 70
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_43
+      rect:
+        serializedVersion: 2
+        x: 4382
+        y: 199
+        width: 123
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_44
+      rect:
+        serializedVersion: 2
+        x: 4513
+        y: 199
+        width: 265
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_45
+      rect:
+        serializedVersion: 2
+        x: 4786
+        y: 199
+        width: 101
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 360 Bot sprite 2_46
+      rect:
+        serializedVersion: 2
+        x: 4927
+        y: 199
+        width: 439
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
