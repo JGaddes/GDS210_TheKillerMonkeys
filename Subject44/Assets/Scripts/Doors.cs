@@ -3,37 +3,44 @@ using System.Collections;
 
 public class Doors : MonoBehaviour {
 
-	public GameObject doorUp, openUp, closedUp, doorDown, openDown, closedDown;
-	public float speed = 2f;
+	public GameObject doorTop, openTop, closeTop, doorBot, openBot, closeBot;
+	public float speed = 10f;
+    public bool open;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    private Transform topPos, botPos;
 
-	//Door opens
-	void OnTriggerStay (Collider other)
-	{
-		if(other.CompareTag("Player"))
-		{
-			doorUp.transform.position = Vector3.MoveTowards (transform.position, openUp.transform.position, speed * Time.deltaTime);
-			doorDown.transform.position = Vector3.MoveTowards (transform.position, openDown.transform.position, speed * Time.deltaTime);
-		}
-	}
+    void Start()
+    {
+        topPos = doorTop.GetComponent<Transform>();
+        botPos = doorBot.GetComponent<Transform>();
+    }
 
-	//Door closes
-	void OnTriggerLeave (Collider other)
-	{
-		if(other.CompareTag("Player"))
-		{
-			doorUp.transform.position = Vector3.MoveTowards (transform.position, closedUp.transform.position, speed * Time.deltaTime);
-			doorDown.transform.position = Vector3.MoveTowards (transform.position, closedDown.transform.position, speed * Time.deltaTime);
-		}
-	}
+    void Update()
+    {
+        if (!open)
+        {
+            doorTop.transform.position = Vector3.MoveTowards(topPos.position, closeTop.transform.position, speed * Time.deltaTime);
+            doorBot.transform.position = Vector3.MoveTowards(botPos.position, closeBot.transform.position, speed * Time.deltaTime);
+        }
+    }
 
+
+    void OnTriggerStay(Collider other)
+    {   
+        if (other.CompareTag("Player"))
+        {
+            doorTop.transform.position = Vector3.MoveTowards(topPos.position, openTop.transform.position, speed * Time.deltaTime);
+            doorBot.transform.position = Vector3.MoveTowards(botPos.position, openBot.transform.position, speed * Time.deltaTime);
+            open = true;
+        }
+    }
+
+
+    void OnTriggerExit (Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            open = false; 
+        }
+    }
 }
