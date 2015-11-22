@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour {
     public float bananaCount = 0f;
 
 	public AudioClip bananaMusic;
+	public AudioClip levelfinish;
+	AudioSource source;
 	
 	public bool onPole = false;
     public bool inBarrel = false;
@@ -89,6 +91,8 @@ public class PlayerController : MonoBehaviour {
         pillCount = 0;
 
 		MonkeyAnimator.SetInteger ("Walk", 1);
+
+		source = GetComponent<AudioSource> ();
 
 	}
 
@@ -214,6 +218,7 @@ public class PlayerController : MonoBehaviour {
             buttonNext.SetActive(true);
             Time.timeScale = 0;
 
+			source.PlayOneShot(levelfinish); 
         }
 
         if (col.gameObject.tag == "KeyPad")

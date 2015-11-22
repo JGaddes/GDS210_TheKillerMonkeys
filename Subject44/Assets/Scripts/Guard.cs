@@ -5,7 +5,8 @@ public class Guard : MonoBehaviour {
 
 	public GameObject player;
 	public PlayerController playerController;
-	AudioSource deadguard;
+	AudioSource source;
+	public AudioClip deadguard;
 	
 
 	// Use this for initialization
@@ -13,7 +14,7 @@ public class Guard : MonoBehaviour {
 	{
 
 		playerController = player.GetComponent<PlayerController> ();
-		deadguard = GetComponentInParent<AudioSource>();
+		source = GetComponentInParent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -23,7 +24,7 @@ public class Guard : MonoBehaviour {
 			if (playerController.useBanana) {
 				if (Input.GetKeyDown (KeyCode.Space)) {
 					Destroy (gameObject);
-					deadguard.Play ();
+					source.PlayOneShot (deadguard);
 				}
 			}
 		}

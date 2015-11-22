@@ -24,9 +24,9 @@ public class GuiScript : MonoBehaviour {
     private Animator anim2;
     private Animator anim;
 
-	AudioSource KeyPressed; 
-	AudioSource PasswordSuccess; 
-	AudioSource PasswordFail;
+	AudioSource source; 
+	public AudioClip buttonpressed, passwordsuccess, passwordfailure;
+
 
     public GameObject[] lockedDoors;
     public GameObject[] secCams;
@@ -48,10 +48,7 @@ public class GuiScript : MonoBehaviour {
         Computer.enabled = false;
         anim2.enabled = false;
 
-        AudioSource[] allMyAudioSources = GetComponents<AudioSource>();
-		KeyPressed = allMyAudioSources[0];
-		PasswordSuccess = allMyAudioSources[1];
-		PasswordFail = allMyAudioSources [2];
+		source = GetComponent<AudioSource> ();
 
 
     }
@@ -88,7 +85,7 @@ public class GuiScript : MonoBehaviour {
             string tempCurString = keyPadText.text;
             string tempNewString = tempCurString + letterClicked;
             keyPadText.text = tempNewString;
-			KeyPressed.Play ();
+			source.PlayOneShot(buttonpressed);
         }
     }
 
@@ -110,7 +107,7 @@ public class GuiScript : MonoBehaviour {
 
             StartCoroutine(MyCoroutine());
             Debug.Log("Unlocking something!");
-            PasswordSuccess.Play();
+			source.PlayOneShot(passwordsuccess);
             playerController.canMove = true;
             exitDoor.SetActive(false);
 
@@ -120,7 +117,7 @@ public class GuiScript : MonoBehaviour {
             Debug.Log("Wrong code, try again");
             string tempString = tempPass.Substring(0, tempPass.Length - tempPass.Length);
             keyPadText.text = tempString;
-			PasswordFail.Play();
+			source.PlayOneShot(passwordfailure);
         }
     }
 

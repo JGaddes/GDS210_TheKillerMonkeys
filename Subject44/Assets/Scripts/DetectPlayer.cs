@@ -13,6 +13,9 @@ public class DetectPlayer : MonoBehaviour {
 
 	private Vector3 rayDirection;
 	private Vector3 origPos;
+
+	public AudioClip detected; 
+	AudioSource source; 
 	
 	
 	// Use this for initialization
@@ -20,7 +23,7 @@ public class DetectPlayer : MonoBehaviour {
 	{
 		origPos = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
 		playerController = player.GetComponent<PlayerController> ();
-		
+		source = GetComponentInParent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -72,6 +75,7 @@ public class DetectPlayer : MonoBehaviour {
 				player.transform.position = origPos;
 				player.transform.eulerAngles = new Vector3 (0, 0, 0);
 				playerController.speed = 15f;
+				source.PlayOneShot(detected);
 				Debug.Log ("Gotcha");
 			}
 		}

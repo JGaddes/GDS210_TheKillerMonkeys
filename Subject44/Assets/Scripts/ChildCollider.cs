@@ -8,8 +8,6 @@ public class ChildCollider : MonoBehaviour {
     public PlayerController player;
 	//public DetectPlayer detected;
     public GameObject spawnPoint;
-	public AudioSource source; 
-	public AudioClip detectedSound;
     public GuiScript guiScript;
 
     public GameObject purKeyCard;
@@ -35,8 +33,6 @@ public class ChildCollider : MonoBehaviour {
     void Start () {
 
         player = gameObject.GetComponentInParent<PlayerController>();
-        source = gameObject.GetComponentInParent<AudioSource>();
-        detectedSound = gameObject.GetComponentInParent<PlayerController>().detected;
 
         foreach (GameObject g in GameObject.FindGameObjectsWithTag("Guard"))
         {
