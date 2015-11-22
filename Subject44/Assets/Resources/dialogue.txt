@@ -1,0 +1,87 @@
+<actors>
+	<actor> name = Mr. Scientist; avatar = scientist
+	
+<dialogue>
+
+<turn> id = 1
+	[who] 0
+	Begin basic knowledge test of Subject #44.
+	
+<turn> id = 2
+	[who] 0
+	[next] -1
+	Look at your picture.
+	
+<turn> id = 3
+	[who] 0
+	Ok. Understands basic instruction: check. 
+
+<turn> id = 4
+	[who] 0
+	[next] -1
+	Now enter the next room.
+	
+<turn> id = 5
+	[who] 0
+	[next] -1
+	Good. Now pick up the key card and proceed 
+	to the next room.
+	
+<turn> id = 6
+	[who] 0
+	[next] -1
+
+<turn> id = 7
+	[who] 0
+	[next] -1
+
+
+<turn> id = 8
+	[who] 0
+	[next] -1
+
+
+<turn> id = 9
+	[who] 0
+	[next] -1
+
+
+<turn> id = 10
+	[who] 0
+	[next] -1
+
+
+<turn> id = 11
+	[who] 0
+	[next] -1
+
+
+<turn> id = 12
+	[who] 0
+	[next] -1
+
+
+<turn> id = 13
+	[who] 0
+	[next] -1
+
+
+<turn> id = 14
+	[who] 0
+	[next] -1
+
+
+<turn> id = 15
+	[who] 0
+	[next] -1
+
+
+<turn> id = 16
+	[who] 0
+	[next] -1
+	
+<turn> id = 17
+		[who] 0
+		[next] -1
+		
+	
