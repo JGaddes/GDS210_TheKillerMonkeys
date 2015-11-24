@@ -46,6 +46,11 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Josscript\Core\DlgManager.cs" />
+     <Compile Include="Assets\Josscript\Core\Josscript.cs" />
+     <Compile Include="Assets\Josscript\Core\JosscriptGameKeys.cs" />
+     <Compile Include="Assets\Josscript\Scripts\DlgGUI.cs" />
+     <Compile Include="Assets\Josscript\Scripts\Interact.cs" />
      <Compile Include="Assets\Scripts\BananaRotate.cs" />
      <Compile Include="Assets\Scripts\Barrel.cs" />
      <Compile Include="Assets\Scripts\BlueDoor.cs" />
@@ -57,9 +62,12 @@
      <Compile Include="Assets\Scripts\Doors.cs" />
      <Compile Include="Assets\Scripts\FanRotate.cs" />
      <Compile Include="Assets\Scripts\FlyingBananananana.cs" />
+     <Compile Include="Assets\Scripts\Footsteps.cs" />
      <Compile Include="Assets\Scripts\Guard.cs" />
      <Compile Include="Assets\Scripts\GuardRotate.cs" />
+     <Compile Include="Assets\Scripts\InGameMenu\ComputerScript.cs" />
      <Compile Include="Assets\Scripts\InGameMenu\GuiScript.cs" />
+     <Compile Include="Assets\Scripts\InGameMenu\KeypadScript.cs" />
      <Compile Include="Assets\Scripts\InGameMenu\PauseMenuScript.cs" />
      <Compile Include="Assets\Scripts\MainMenu\CodeScript.cs" />
      <Compile Include="Assets\Scripts\MainMenu\LevelSelectScript.cs" />
@@ -68,13 +76,17 @@
      <Compile Include="Assets\Scripts\MonkeyKin.cs" />
      <Compile Include="Assets\Scripts\OrangeDoor.cs" />
      <Compile Include="Assets\Scripts\PatrolAi.cs" />
+     <Compile Include="Assets\Scripts\PictureHide.cs" />
+     <Compile Include="Assets\Scripts\PicturePopup.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PlayerRotate.cs" />
      <Compile Include="Assets\Scripts\Pole.cs" />
      <Compile Include="Assets\Scripts\RedDoor.cs" />
      <Compile Include="Assets\Scripts\SecCamAi.cs" />
      <Compile Include="Assets\Scripts\TextShow.cs" />
+     <Compile Include="Assets\Scripts\TutDialogue.cs" />
      <None Include="Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
+     <None Include="Assets\Resources\dialogue.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

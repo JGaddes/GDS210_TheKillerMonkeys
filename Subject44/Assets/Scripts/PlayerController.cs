@@ -221,15 +221,6 @@ public class PlayerController : MonoBehaviour {
 			source.PlayOneShot(levelfinish); 
         }
 
-        if (col.gameObject.tag == "KeyPad")
-        {
-            if (havePill == true)
-            {
-                guiScript.KeyPadActive();
-                //pills -= 1;
-            }
-        }
-
         if (col.gameObject.tag == "Computer")
         {
 
@@ -267,22 +258,4 @@ public class PlayerController : MonoBehaviour {
             }
         }
     }
-
-
-	/*void TestHidden()
-	{
-        // Switches spritesheet when hidden / visible
-		if (hidden)
-        {
-            playerVisible.SetActive(false);
-            playerHidden.SetActive(true);
-		}
-
-        else
-        {
-            playerVisible.SetActive(true);
-            playerHidden.SetActive(false);
-		}
-
-	}*/
 }

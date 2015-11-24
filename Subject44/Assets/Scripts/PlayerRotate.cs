@@ -14,24 +14,47 @@ public class PlayerRotate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         if(Input.GetKeyDown(KeyCode.W))
+         if(Input.GetKey(KeyCode.W))
          {
              transform.eulerAngles = new Vector3(90, 0, 0);
          }
 
-         if(Input.GetKeyDown(KeyCode.A))
+         if(Input.GetKey(KeyCode.A))
          {
              transform.eulerAngles = new Vector3(90, -90, 0);
          }
 
-         if(Input.GetKeyDown(KeyCode.S))
+         if(Input.GetKey(KeyCode.S))
          {
              transform.eulerAngles = new Vector3(90, 180, 0);
          }
 
-         if(Input.GetKeyDown(KeyCode.D))
+         if(Input.GetKey(KeyCode.D))
          {
              transform.eulerAngles = new Vector3(90, 90, 0);
          }
+
+		// Diagonals
+		if(Input.GetKey (KeyCode.W) && Input.GetKey(KeyCode.A)){
+			
+			transform.eulerAngles = new Vector3(90, -45, 0);
+		}
+		
+		if(Input.GetKey (KeyCode.W) && Input.GetKey(KeyCode.D)){
+			
+			transform.eulerAngles = new Vector3(90, 45, 0);
+		}
+		
+		if(Input.GetKey (KeyCode.S) && Input.GetKey(KeyCode.A)){
+			
+			transform.eulerAngles = new Vector3(90, 225, 0);
+		}
+
+		if(Input.GetKey (KeyCode.S) && Input.GetKey(KeyCode.D)){
+			
+			transform.eulerAngles = new Vector3(90, 135, 0);
+		}
+
+
     }
 }

@@ -125,15 +125,6 @@ public class ChildCollider : MonoBehaviour {
 		}*/
 
 		// Interactables
-		if (col.CompareTag ("KeyPad")) {
-			if (player.havePill) {
-				col.gameObject.GetComponent<GuiScript> ();
-				guiScript.KeyPadActive ();
-				player.pillCount -= 1;
-
-			}
-
-		}
 
 		if (col.CompareTag ("Computer")) {
 			if (player.havePill) {
@@ -195,11 +186,6 @@ public class ChildCollider : MonoBehaviour {
         }
 
         // Interactables
-        if (other.CompareTag("KeyPad"))
-        {
-            guiScript.KeyPadUnActive();
-        }
-
         if (other.gameObject.tag == "Computer")
         {
             guiScript.ComputerUnActive();
