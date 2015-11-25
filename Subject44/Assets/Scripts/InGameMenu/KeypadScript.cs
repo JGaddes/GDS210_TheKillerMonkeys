@@ -31,8 +31,6 @@ public class KeypadScript : MonoBehaviour {
 		_openAccess = false;
 		interactPrompt.enabled = false;
 		
-		playerController.pillCount += 2;
-		
 		KeyPadUnActive();
 		//AudioSource[] allMyAudioSources = GetComponents<AudioSource>();
 		//KeyPressed = allMyAudioSources[0];
@@ -102,8 +100,9 @@ public class KeypadScript : MonoBehaviour {
 			Debug.Log("Unlocking something!");
 			//PasswordSuccess.Play();
 
-			//exitDoor.SetActive(false);
-			exitDoor.GetComponent<Collider> ().enabled = true;
+			exitDoor.SetActive(false);
+			//exitDoor.GetComponent<Collider> ().enabled = true;
+
 
 			
 		}

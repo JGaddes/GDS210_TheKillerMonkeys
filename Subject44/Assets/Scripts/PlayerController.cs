@@ -22,10 +22,7 @@ public class PlayerController : MonoBehaviour {
 	public bool havePill = false;
     public bool canMove = true;
 	public bool bananananaMode = false;
-
-    //public GameObject playerSprite;
-    //public GameObject playerVisible;
-   // public GameObject playerHidden;
+	
     public GameObject shadows;
 
     public CharacterController controller;
@@ -42,8 +39,7 @@ public class PlayerController : MonoBehaviour {
     public Image star1;
     public Image star2;
     public Image star3;
-
-
+	
     //reference to next button
     public GameObject buttonNext;
 
@@ -54,8 +50,7 @@ public class PlayerController : MonoBehaviour {
 
     //timer text reference
     public Text timerText;
-
-
+	
     //time passed since start of level
     protected float totalTime = 0f;
 
@@ -67,7 +62,7 @@ public class PlayerController : MonoBehaviour {
     public Text keyAmountText;
 	public Image collect1, collect2, collect3;
 
-
+	public GameObject _secCameraView;
 
     void Start () {
 		//set the level complete to false on start of level
@@ -93,6 +88,8 @@ public class PlayerController : MonoBehaviour {
 		MonkeyAnimator.SetInteger ("Walk", 1);
 
 		source = GetComponent<AudioSource> ();
+
+		_secCameraView.SetActive (false);
 
 	}
 
