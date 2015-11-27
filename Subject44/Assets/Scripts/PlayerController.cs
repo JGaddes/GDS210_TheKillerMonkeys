@@ -109,12 +109,17 @@ public class PlayerController : MonoBehaviour {
 
 		if (bananananaMode)
 		{
+			bananaSlider.value -= bananaTime * Time.deltaTime;
+			speed = 7.5f;
 			MonkeyAnimator.SetBool("Banana", true);
 		}
 
 		if (!bananananaMode)
 		{
+			useBanana = false;
 			MonkeyAnimator.SetBool("Banana", false);
+			speed = 5f;
+			bananaTime = 15f;
 		}
 
         controller = GetComponent<CharacterController>();
@@ -167,16 +172,11 @@ public class PlayerController : MonoBehaviour {
 
         if (useBanana)
         {
-			bananaSlider.value -= bananaTime * Time.deltaTime;
-            speed = 7.5f;
 			bananananaMode = true;
         }
 
 		if (bananaSlider.value <= 0)
 		{
-            useBanana = false;
-            speed = 5;
-			bananaTime = 15f;
 			bananananaMode = false;
         }
 
