@@ -14,74 +14,95 @@
 	
 <turn> id = 3
 	[who] 0
-	Ok. Understands basic instruction: check. 
+	Understands basic instruction: check. 
 
 <turn> id = 4
 	[who] 0
 	[next] -1
-	Now enter the next room.
+	Enter the next room.
 	
 <turn> id = 5
 	[who] 0
 	[next] -1
-	Good. Now pick up the key card and proceed 
+	Pick up the key card and proceed 
 	to the next room.
 	
 <turn> id = 6
 	[who] 0
 	[next] -1
+	Proceed to the next area.
 
 <turn> id = 7
 	[who] 0
 	[next] -1
-
+	Stop head-butting the door and look for an alernate exit...
+	*muffled* idiot.
 
 <turn> id = 8
 	[who] 0
 	[next] -1
-
+	That light needs fixing again, move into the light so that I can see you.
 
 <turn> id = 9
 	[who] 0
-	[next] -1
-
+	Begin stealth test of subject #44.
 
 <turn> id = 10
 	[who] 0
 	[next] -1
-
+	Proceed to the next area without being detected.
 
 <turn> id = 11
 	[who] 0
 	[next] -1
-
+	Sigh... Please try again.
 
 <turn> id = 12
 	[who] 0
 	[next] -1
-
+	Average performance. 
+	Proceed to the next area.
 
 <turn> id = 13
 	[who] 0
 	[next] -1
-
+	Begin technology test of Subject #44.
 
 <turn> id = 14
 	[who] 0
-	[next] -1
-
+	Pick up the monkey med and the code.
 
 <turn> id = 15
 	[who] 0
 	[next] -1
-
+	Enter the code into the keypad.
 
 <turn> id = 16
 	[who] 0
 	[next] -1
+	Proceed through the unlocked door into the next room and repeat.
 	
 <turn> id = 17
-		[who] 0
-		[next] -1
-		
+	[who] 0
+	[next] -1
+	Who left the banana out!?
 	
+<turn> id = 18
+	[who] 0
+	[next] -1
+	Subject #44 do not eat that banana!!
+	
+<turn> id = 19
+	[who] 0
+	[next] -1
+	Will someone activate those damn guards before that damn monkey destroys them again!
+	
+<turn> id = 20
+	[who] 0
+	[next] -1
+	Lockdown initiated.
+	
+<turn> id = 21
+	[who] 0
+	[next] -1
+	Take Subject #44 back to its cage.
