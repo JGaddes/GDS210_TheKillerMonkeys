@@ -1,27 +1,134 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class ComputerScript : MonoBehaviour {
 
+    //Reference to other Scripts
+    public PlayerController _playerController;
 
+    public Text compInput;
+    public Canvas Computer;
+    public string loginPass = "";
+    public bool _openAccess;
+    public Text interactPrompt;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
+    private Animator anim2;
+
+    public GameObject[] lockedDoors;
+    public GameObject[] secCams;
+    public SecCamAi secCamAi;
+
+    // Use this for initialization
+    void Start () {
+
+        lockedDoors = GameObject.FindGameObjectsWithTag("Locked Door");
+        secCams = GameObject.FindGameObjectsWithTag("Sec Cam");
+
+        anim2 = Computer.gameObject.GetComponent<Animator>();
+        Computer.enabled = false;
+        anim2.enabled = false;
+        _openAccess = false;
+        interactPrompt.enabled = false;
+    }
 	
 	// Update is called once per frame
 	void Update () {
 	
 	}
 
-//	void OnTriggerEnter(Collider col){
-//
-//		if (col.gameObject.tag == "Computer")
-//		{
-//			
-//			guiScript.ComputerActive();
-//			speed = 0;
-//		}
-//	}
+    void OnTriggerEnter(Collider col) {
+
+        interactPrompt.enabled = true;       
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+
+            interactPrompt.enabled = false;
+
+            if (other.CompareTag("Player") && _playerController.havePill || _openAccess == true)
+            {
+
+                ComputerActive();
+
+                if (_openAccess == false)
+                {
+
+                    _openAccess = true;
+                    _playerController.pillCount -= 1;
+                }
+            }
+            else { Debug.Log("No pills"); }
+        }
+    }
+
+    void OnTriggerExit(Collider other) {
+
+        if (other.gameObject.tag == "Player")
+        {
+            ComputerUnActive();
+            interactPrompt.enabled = false;
+        }
+    }
+
+    public void CodeCheck(string other)
+    {
+
+        string tempLogin = compInput.text;
+
+        if (loginPass == tempLogin)
+        {
+
+            Debug.Log("Correct Pass");
+            anim2.enabled = true;
+            _playerController._secCameraView.SetActive(true);
+        }
+        else
+        {
+
+            Debug.Log("Wrong pass");
+        }
+    }
+
+    public void ComputerActive()
+    {
+
+        Computer.enabled = true;
+        _playerController.canMove = false;
+        _playerController._secCameraView.SetActive(true);
+
+    }
+
+    public void ComputerUnActive()
+    {
+        Computer.enabled = false;
+        _playerController.canMove = true;
+        _playerController._secCameraView.SetActive(false);
+    }
+
+    public void UnlockDoors()
+    {
+        //lockedDoors[].SetActive(false);
+        foreach (GameObject d in lockedDoors)
+        {
+            d.SetActive(false);
+            Debug.Log("Doors Unlocking!");
+        }
+    }
+
+    public void DisableCameras()
+    {
+        foreach (GameObject sc in secCams)
+        {
+            secCamAi.GetComponent<SecCamAi>().activated = false;
+            sc.GetComponentInChildren<ParticleSystem>().enableEmission = false;
+            sc.GetComponentInChildren<DetectPlayer>().enabled = false;
+        }
+        Debug.Log("Cameras Disabled!");
+    }
 }

@@ -218,12 +218,12 @@ public class PlayerController : MonoBehaviour {
 			source.PlayOneShot(levelfinish); 
         }
 
-        if (col.gameObject.tag == "Computer")
-        {
+        //if (col.gameObject.tag == "Computer")
+        //{
 
-            guiScript.ComputerActive();
-            speed = 0;
-        }
+        //    guiScript.ComputerActive();
+        //    speed = 0;
+        //}
     }
 
 	 public void OnClickButton()

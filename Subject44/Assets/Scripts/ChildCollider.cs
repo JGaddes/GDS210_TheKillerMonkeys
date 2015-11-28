@@ -92,12 +92,12 @@ public class ChildCollider : MonoBehaviour {
 
 		// Interactables
 
-		if (col.CompareTag ("Computer")) {
-			if (player.havePill) {
-				guiScript.ComputerActive ();
-				player.pillCount -= 1;
-			}
-		}
+		//if (col.CompareTag ("Computer")) {
+		//	if (player.havePill) {
+		//		guiScript.ComputerActive ();
+		//		player.pillCount -= 1;
+		//	}
+		//}
 
 
 		if (col.CompareTag ("Button")) {
@@ -157,10 +157,10 @@ public class ChildCollider : MonoBehaviour {
         }
 
         // Interactables
-        if (other.gameObject.tag == "Computer")
-        {
-            guiScript.ComputerUnActive();
-        }
+        //if (other.gameObject.tag == "Computer")
+        //{
+        //    guiScript.ComputerUnActive();
+        //}
 
 		if(other.CompareTag("Button"))
 		{

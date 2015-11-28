@@ -17,67 +17,67 @@ public class GuiScript : MonoBehaviour {
 //    public GameObject exitDoor;
 
     //Computer Variables
-    public Text compInput;
-    public Canvas Computer;
-    public string loginPass = "";
+    //public Text compInput;
+    //public Canvas Computer;
+    //public string loginPass = "";
 
-    private Animator anim2;
+    //private Animator anim2;
 //    private Animator anim;
 
 //	AudioSource source; 
 //	public AudioClip buttonpressed, passwordsuccess, passwordfailure;
 
 
-    public GameObject[] lockedDoors;
-    public GameObject[] secCams;
-    public SecCamAi secCamAi;
+    //public GameObject[] lockedDoors;
+    //public GameObject[] secCams;
+    //public SecCamAi secCamAi;
 
 
     // Use this for initialization
     void Start () {
 
-        lockedDoors = GameObject.FindGameObjectsWithTag("Locked Door");
-        secCams = GameObject.FindGameObjectsWithTag("Sec Cam");
+        ////lockedDoors = GameObject.FindGameObjectsWithTag("Locked Door");
+        ////secCams = GameObject.FindGameObjectsWithTag("Sec Cam");
 
 //        playerController.GetComponent<PlayerController>();   
 //        anim = keyPadText.GetComponent<Animator>();
 //        keyPad.enabled = false;
 //        anim.enabled = false;
 
-        anim2 = Computer.gameObject.GetComponent<Animator>();
-        Computer.enabled = false;
-        anim2.enabled = false;
+        //anim2 = Computer.gameObject.GetComponent<Animator>();
+        //Computer.enabled = false;
+        //anim2.enabled = false;
 
 //		source = GetComponent<AudioSource> ();
 
 
     }
 
-    public void CodeCheck(string other) {
+  //  public void CodeCheck(string other) {
 
-		string tempLogin = compInput.text;
+		//string tempLogin = compInput.text;
 
-       // switch (other.ToLower()){
+  //     // switch (other.ToLower()){
 
-        //    case "password":
-         //       Debug.Log("Correct Password");
-         //       anim2.enabled = true;
-           //     break;
-          //  default:
-           //     Debug.Log("Wrong Code Nerd!");
-            //    break;
-      //  }
+  //      //    case "password":
+  //       //       Debug.Log("Correct Password");
+  //       //       anim2.enabled = true;
+  //         //     break;
+  //        //  default:
+  //         //     Debug.Log("Wrong Code Nerd!");
+  //          //    break;
+  //    //  }
 
-		if (loginPass == tempLogin) {
+		//if (loginPass == tempLogin) {
 
-			Debug.Log ("Correct Pass");
-			anim2.enabled = true;
-			playerController._secCameraView.SetActive (true);
-		} else {
+		//	Debug.Log ("Correct Pass");
+		//	anim2.enabled = true;
+		//	playerController._secCameraView.SetActive (true);
+		//} else {
 		
-			Debug.Log ("Wrong pass");
-		}
-    }
+		//	Debug.Log ("Wrong pass");
+		//}
+  //  }
 
 //    public void ClickLetter(string letterClicked)
 //    {
@@ -150,41 +150,41 @@ public class GuiScript : MonoBehaviour {
 
     //COMPUTER FUNCTIONS!!
 
-    public void ComputerActive() {
+  //  public void ComputerActive() {
 
-        Computer.enabled = true;
-        playerController.canMove = false;
-		playerController._secCameraView.SetActive (true);
+  //      Computer.enabled = true;
+  //      playerController.canMove = false;
+		//playerController._secCameraView.SetActive (true);
 
-    }
+  //  }
 
-    public void ComputerUnActive()
-    {
-        Computer.enabled = false;
-        playerController.canMove = true;
-		playerController._secCameraView.SetActive (false);
-    }
+  //  public void ComputerUnActive()
+  //  {
+  //      Computer.enabled = false;
+  //      playerController.canMove = true;
+		//playerController._secCameraView.SetActive (false);
+  //  }
 
-    public void UnlockDoors()
-    {
+  //  public void UnlockDoors()
+  //  {
 
-        Debug.Log("Doors Unlocking!");
-        foreach (GameObject d in lockedDoors)
-        {
-            d.SetActive(false);
-        }
-    }
+  //      Debug.Log("Doors Unlocking!");
+  //      foreach (GameObject d in lockedDoors)
+  //      {
+  //          d.SetActive(false);
+  //      }
+  //  }
 
-    public void DisableCameras()
-    {
-        foreach (GameObject sc in secCams)
-        {
-            secCamAi.GetComponent<SecCamAi>().activated = false;
-			sc.GetComponentInChildren<ParticleSystem>().enableEmission = false;
-			sc.GetComponentInChildren<DetectPlayer>().enabled = false;
-        }
-        Debug.Log("Cameras Disabled!");
-    }
+  //  public void DisableCameras()
+  //  {
+  //      foreach (GameObject sc in secCams)
+  //      {
+  //          secCamAi.GetComponent<SecCamAi>().activated = false;
+		//	sc.GetComponentInChildren<ParticleSystem>().enableEmission = false;
+		//	sc.GetComponentInChildren<DetectPlayer>().enabled = false;
+  //      }
+  //      Debug.Log("Cameras Disabled!");
+  //  }
 
     //END OF COMPUTER FUNCTIONS
 
