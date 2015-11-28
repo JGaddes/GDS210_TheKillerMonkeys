@@ -4,14 +4,13 @@ using System.Collections;
 
 public class PicturePopup : MonoBehaviour {
 
-	public Image picture, pictureBack;
+	public Image picture;
 
 	// Use this for initialization
 	void Start () {
 
 		picture.canvasRenderer.SetAlpha (0f);
-		pictureBack.canvasRenderer.SetAlpha (0f);
-
+	
 	}
 	
 	// Update is called once per frame
@@ -22,6 +21,5 @@ public class PicturePopup : MonoBehaviour {
 	void OnTriggerEnter ()
 	{
 		picture.canvasRenderer.SetAlpha (100f);
-		pictureBack.canvasRenderer.SetAlpha (100f);
 	}
 }
