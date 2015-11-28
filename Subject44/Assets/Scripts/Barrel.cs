@@ -9,7 +9,7 @@ public class Barrel : MonoBehaviour {
     void Update()
     {
 
-        if (Vector3.Distance(transform.position, player.transform.position) < 1f)
+        if (Vector3.Distance(transform.position, player.transform.position) < 2f)
         {
 
             if (player.GetComponent<PlayerController>().inBarrel == false)
