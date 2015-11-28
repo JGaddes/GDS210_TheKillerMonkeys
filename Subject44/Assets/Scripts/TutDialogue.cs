@@ -19,9 +19,9 @@ public class TutDialogue : MonoBehaviour {
 	
 	}
 
-	void OnTriggerEnter ()
+	void OnTriggerEnter (Collider col)
 	{
-		if (!used)
+		if (!used && col.tag == "Player")
 		{
 			//player.speed = 0;
 			player.BroadcastMessage ("StartDialogue", text);
