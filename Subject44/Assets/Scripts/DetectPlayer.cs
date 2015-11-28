@@ -72,9 +72,10 @@ public class DetectPlayer : MonoBehaviour {
 			if (!playerController.hidden) 
 			{
 				playerController.speed = 0f;
+				playerController.useBanana = false;
+				playerController.bananananaMode = false;
 				player.transform.position = origPos;
 				player.transform.eulerAngles = new Vector3 (0, 0, 0);
-				playerController.speed = 15f;
 				source.PlayOneShot(detected);
 				Debug.Log ("Gotcha");
 			}

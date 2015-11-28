@@ -4,7 +4,7 @@ using System.Collections;
 public class Doors : MonoBehaviour {
 
 	public GameObject doorTop, openTop, closeTop, doorBot, openBot, closeBot;
-	public float speed = 10f;
+	private float speed = 6.5f;
     public bool open;
 
     private Transform topPos, botPos;

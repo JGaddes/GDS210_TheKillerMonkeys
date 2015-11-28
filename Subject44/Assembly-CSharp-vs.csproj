@@ -51,6 +51,7 @@
      <Compile Include="Assets\Josscript\Core\JosscriptGameKeys.cs" />
      <Compile Include="Assets\Josscript\Scripts\DlgGUI.cs" />
      <Compile Include="Assets\Josscript\Scripts\Interact.cs" />
+     <Compile Include="Assets\Scripts\BananaMusic2 (1).cs" />
      <Compile Include="Assets\Scripts\BananaRotate.cs" />
      <Compile Include="Assets\Scripts\Barrel.cs" />
      <Compile Include="Assets\Scripts\BlueDoor.cs" />

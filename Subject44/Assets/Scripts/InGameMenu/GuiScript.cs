@@ -72,6 +72,7 @@ public class GuiScript : MonoBehaviour {
 
 			Debug.Log ("Correct Pass");
 			anim2.enabled = true;
+			playerController._secCameraView.SetActive (true);
 		} else {
 		
 			Debug.Log ("Wrong pass");
@@ -153,12 +154,15 @@ public class GuiScript : MonoBehaviour {
 
         Computer.enabled = true;
         playerController.canMove = false;
+		playerController._secCameraView.SetActive (true);
+
     }
 
     public void ComputerUnActive()
     {
         Computer.enabled = false;
         playerController.canMove = true;
+		playerController._secCameraView.SetActive (false);
     }
 
     public void UnlockDoors()

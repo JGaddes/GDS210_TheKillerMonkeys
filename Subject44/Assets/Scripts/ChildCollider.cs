@@ -16,6 +16,12 @@ public class ChildCollider : MonoBehaviour {
     public GameObject oraKeyCard;
     public GameObject pinKeyCard;
 
+	public GameObject[] purDoors;
+	public GameObject[] bluDoors;
+	public GameObject[] greDoors;
+	public GameObject[] oraDoors;
+	public GameObject[] pinDoors;
+
     public List<PatrolAi> patrol = new List<PatrolAi>();
     public List<GameObject> guards = new List<GameObject>();
 
@@ -58,47 +64,7 @@ public class ChildCollider : MonoBehaviour {
         if (other.CompareTag("Door"))
         {
             other.gameObject.GetComponent<MeshRenderer>().enabled = false;
-        }
-
-        if(other.CompareTag("Blue Door"))
-        {
-            if(haveBluCard)
-            {
-                other.gameObject.SetActive(false);
-            }
-        }
-
-        if (other.CompareTag("Orange Door"))
-        {
-            if (haveOraCard)
-            {
-                other.gameObject.SetActive(false);
-            }
-        }
-
-        if (other.CompareTag("Green Door"))
-        {
-            if (haveGreCard)
-            {
-                other.gameObject.SetActive(false);
-            }
-        }
-
-        if (other.CompareTag("Purple Door"))
-        {
-            if (havePurCard)
-            {
-                other.gameObject.SetActive(false);
-            }
-        }
-
-        if (other.CompareTag("Pink Door"))
-        {
-            if (havePinCard)
-            {
-                other.gameObject.SetActive(false);
-            }
-        }
+        }	
     }
 	
 	
@@ -144,6 +110,11 @@ public class ChildCollider : MonoBehaviour {
 			haveBluCard = true;
 			Destroy (col.gameObject);
 			bluKeyCard.SetActive (true);
+
+			foreach(GameObject d in bluDoors)
+			{
+				d.GetComponent<Collider> ().enabled = true;
+			}
 		}
 
 		if (col.CompareTag ("Orange Key")) {
