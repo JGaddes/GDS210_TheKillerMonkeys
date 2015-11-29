@@ -4,27 +4,43 @@ using System.Collections;
 
 public class PicturePopup : MonoBehaviour {
 
-	public Image picture, pictureBack;
+    public Image picture, pictureBack;
+    public GameObject door;
+    public Text interactText;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start() {
 
-		picture.canvasRenderer.SetAlpha (0f);
-		pictureBack.canvasRenderer.SetAlpha (0f);
 
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+        picture.enabled = false;
+        pictureBack.enabled = false;
+        interactText.enabled = false;
 
-	void OnTriggerStay ()
-	{
-		if(Input.GetKeyDown(KeyCode.E))
-		{
-			picture.canvasRenderer.SetAlpha (100f);
-			pictureBack.canvasRenderer.SetAlpha (100f);
-		}
-	}
+    }
+
+    // Update is called once per frame
+    void Update() {
+
+    }
+
+    void OnTriggerStay()
+    {
+
+        interactText.enabled = true;
+
+        if (Input.GetKey(KeyCode.E))
+        {
+            interactText.enabled = false;
+            picture.enabled = true;
+            pictureBack.enabled = true;
+            door.SetActive(false);
+        }
+    }
+
+    void OnTriggerExit() {
+
+        picture.enabled = false;
+        pictureBack.enabled = false;
+        interactText.enabled = false;
+    }
 }

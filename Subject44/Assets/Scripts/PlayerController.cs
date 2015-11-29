@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour {
 	public Animator MonkeyAnimator;
 
     //GUI VARIABLES!!
-    public GuiScript guiScript;
+    //public GuiScript guiScript;
 
     //reference to stars
     public Image star1;
@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour {
         //save the current level name
         currentLevel = Application.loadedLevelName;
 		
-		guiScript.GetComponent <GuiScript>();
+		//guiScript.GetComponent <GuiScript>();
 		controller = GetComponent<CharacterController> ();
 		useBanana = false;
 		bananaSlider.value = 0;
@@ -142,16 +142,7 @@ public class PlayerController : MonoBehaviour {
             pill.canvasRenderer.SetAlpha(0.2f);
         }
 
-		if (!isLevelComplete)
-        {
-            //update the timer value
-            totalTime += Time.deltaTime;
-
-            //display the timer value 
-            timerText.text = "TIME: " + totalTime.ToString();
-        }
-
-		if (bananaCount > 0)
+        if (bananaCount > 0)
 		{
             if (!useBanana)
             {
@@ -217,13 +208,6 @@ public class PlayerController : MonoBehaviour {
 
 			source.PlayOneShot(levelfinish); 
         }
-
-        //if (col.gameObject.tag == "Computer")
-        //{
-
-        //    guiScript.ComputerActive();
-        //    speed = 0;
-        //}
     }
 
 	 public void OnClickButton()

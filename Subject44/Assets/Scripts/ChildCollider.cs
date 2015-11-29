@@ -15,6 +15,7 @@ public class ChildCollider : MonoBehaviour {
     public GameObject greKeyCard;
     public GameObject oraKeyCard;
     public GameObject pinKeyCard;
+    public GameObject idCard;
 
 	public GameObject[] purDoors;
 	public GameObject[] bluDoors;
@@ -31,6 +32,7 @@ public class ChildCollider : MonoBehaviour {
 	public bool haveGreCard = false;
 	public bool havePurCard = false;
 	public bool havePinCard = false;
+    public bool haveIdCard = false;
 
 	public Sprite green, red;
 
@@ -63,7 +65,7 @@ public class ChildCollider : MonoBehaviour {
         // Doors
         if (other.CompareTag("Door"))
         {
-            other.gameObject.GetComponent<MeshRenderer>().enabled = false;
+            //other.gameObject.GetComponent<MeshRenderer>().enabled = false;
         }	
     }
 	
@@ -91,14 +93,6 @@ public class ChildCollider : MonoBehaviour {
 		}*/
 
 		// Interactables
-
-		//if (col.CompareTag ("Computer")) {
-		//	if (player.havePill) {
-		//		guiScript.ComputerActive ();
-		//		player.pillCount -= 1;
-		//	}
-		//}
-
 
 		if (col.CompareTag ("Button")) {
 			col.gameObject.GetComponent<SpriteRenderer> ().sprite = green;
@@ -141,6 +135,13 @@ public class ChildCollider : MonoBehaviour {
 			Destroy (col.gameObject);
 		}
 
+        if (col.CompareTag ("IDCard")) {
+
+            haveIdCard = true;
+            idCard.SetActive(true);
+            Destroy(col.gameObject);
+        }
+
 	} 
 
     void OnTriggerExit(Collider other)
@@ -153,7 +154,7 @@ public class ChildCollider : MonoBehaviour {
         // Doors
         if (other.CompareTag("Door"))
         {
-            other.gameObject.GetComponent<MeshRenderer>().enabled = true;
+            //other.gameObject.GetComponent<MeshRenderer>().enabled = true;
         }
 
         // Interactables
