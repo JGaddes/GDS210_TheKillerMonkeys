@@ -4,44 +4,84 @@ using System.Collections;
 
 public class MonkeyKin : MonoBehaviour {
 
-	public bool lockpicking;
+	public PlayerController player;
+	public int textHelp, textYes, textNo;
+
+	public bool key;
+	private bool used = false;
 	public AudioClip badMonkey, goodMonkey;
-	public Button yes, no;
+	public AudioSource source;
+	public GameObject yesButt, noButt;
+	public Text yesTxt, noTxt;
+	public GameObject cageDoor, monkeyKin;
 
 
 	// Use this for initialization
 	void Start () {
 	
-		yes.enabled = false;
-		no.enabled = false;
+		key = false;
+
+		yesButt.SetActive (false);
+		noButt.SetActive (false);
+
+		player = GameObject.Find("Player").GetComponent<PlayerController>();
+
+		//source = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
-		if(lockpicking)
+
+	}
+
+	void OnTriggerStay (Collider col)
+	{
+		if (!used && col.tag == "Player")
 		{
-			if (Vector3.Distance (transform.position, GameObject.FindGameObjectWithTag("MonkeyKin").transform.position) < 2f)
+			if(key)
 			{
-				if(Input.GetKeyDown(KeyCode.Space))
+				if(Input.GetKeyDown(KeyCode.E))
 				{
-					yes.enabled = true;
-					no.enabled = true;
+					//Will you help me? dialogue
+					player.BroadcastMessage ("StartDialogue", textHelp);
+
+					used = true;
+
+					yesButt.SetActive (true);
+					noButt.SetActive (true);
+					yesTxt.enabled = true;
+					noTxt.enabled = true;
 				}
 			}
 		}
-
-
 	}
 
 	public void saveMonkey()
 	{
-		//goodMonkey.Play ();
-		GameObject.FindGameObjectWithTag ("MonkeyKin").SetActive (false);
+		//thank you dialogue
+		player.BroadcastMessage ("StartDialogue", textYes);
+		source.PlayOneShot(goodMonkey, 1f);
+		cageDoor.transform.Rotate(0, 110f, 0);
+
+		monkeyKin.SetActive (false);
+
+
+		yesButt.SetActive (false);
+		noButt.SetActive (false);
+		yesTxt.enabled = false;
+		noTxt.enabled = false;
+
 	}
 
 	public void leaveMonkey()
 	{
-		//badMonkey.Play ();
+		//sad dialogue
+		player.BroadcastMessage ("StartDialogue", textNo);
+		source.PlayOneShot(badMonkey, 1f);
+
+		yesButt.SetActive (false);
+		noButt.SetActive (false);
+		yesTxt.enabled = false;
+		noTxt.enabled = false;
 	}
 }

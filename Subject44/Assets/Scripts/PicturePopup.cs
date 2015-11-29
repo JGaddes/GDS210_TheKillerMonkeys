@@ -19,10 +19,12 @@ public class PicturePopup : MonoBehaviour {
 	
 	}
 
-	void OnTriggerEnter ()
+	void OnTriggerStay ()
 	{
-		picture.canvasRenderer.SetAlpha (100f);
-		pictureBack.canvasRenderer.SetAlpha (100f);
-
+		if(Input.GetKeyDown(KeyCode.E))
+		{
+			picture.canvasRenderer.SetAlpha (100f);
+			pictureBack.canvasRenderer.SetAlpha (100f);
+		}
 	}
 }

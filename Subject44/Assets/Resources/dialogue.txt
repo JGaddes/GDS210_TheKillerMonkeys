@@ -1,5 +1,8 @@
 <actors>
 	<actor> name = Mr. Scientist; avatar = scientist
+	<actor> name = Monkeykin 1; avatar = monkey01
+	<actor> name = Monkeykin 2; avatar = monkey02
+	<actor> name = MonkeyNPC 3; avatar = NPC01
 	
 <dialogue>
 
@@ -90,4 +93,50 @@
 	[who] 0
 	[next] -1
 	Take Subject #44 back to its cage.
+	
+<turn> id = 19
+	[who] 1
+	[next] -1
+	Will you help me?
+	
+<turn> id = 20
+	[who] 1
+	[next] -1
+	I'm free!!
+	
+<turn> id = 21
+	[who] 1
+	[next] -1
+	I probably deserve this fate...
+	
+<turn> id = 22
+	[who] 2
+	[next] -1
+	Please help me!
+	
+<turn> id = 23
+	[who] 2
+	[next] -1
+	Freedom is mine!!
+	
+<turn> id = 24
+	[who] 2
+	[next] -1
+	I hate you.
+	
+<turn> id = 25
+	[who] 3
+	If you have come to free me you are wasting your time,
+	I have grown old and here my life is simple.
+	
+<turn> id = 26
+	[who] 3
+	It is not too late for the others though,
+	take this key and free your fellow monkey kin...
+	or leave them here to suffer.
+	
+<turn> id = 27
+	[who] 3
+	[next] -1
+	There fate lies in your hands Subject #44.
 	
