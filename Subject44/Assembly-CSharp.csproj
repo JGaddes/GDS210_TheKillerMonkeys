@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\BananaMusic2.cs" />
      <Compile Include="Assets\Scripts\BananaRotate.cs" />
      <Compile Include="Assets\Scripts\Barrel.cs" />
+     <Compile Include="Assets\Scripts\BarrelCollideCheck.cs" />
      <Compile Include="Assets\Scripts\BlueDoor.cs" />
      <Compile Include="Assets\Scripts\Button.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
