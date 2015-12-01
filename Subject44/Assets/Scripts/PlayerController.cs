@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour {
 	public float pillCount = 0f;
     public float bananaCount = 0f;
 
+	public Vector3 spawnPoint;
+
 	public AudioClip bananaMusic;
 	public AudioClip levelfinish;
 	AudioSource source;
@@ -65,6 +67,9 @@ public class PlayerController : MonoBehaviour {
 	public GameObject _secCameraView;
 
     void Start () {
+		//sets the player's spawnpoint 
+		spawnPoint = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+
 		//set the level complete to false on start of level
         isLevelComplete = false;
 

@@ -60,13 +60,7 @@ public class ChildCollider : MonoBehaviour {
             {
                 player.hidden = true;
             }
-		}
-
-        // Doors
-        if (other.CompareTag("Door"))
-        {
-            //other.gameObject.GetComponent<MeshRenderer>().enabled = false;
-        }	
+		}     	
     }
 	
 	
@@ -85,18 +79,17 @@ public class ChildCollider : MonoBehaviour {
 			player.pillCount += 1;
 			Destroy (col.gameObject);
 		}
-
-		/*if (col.CompareTag("Collectible"))
-		{
-			player.collect1.enabled = true;
-			Destroy(col.gameObject);
-		}*/
+		
 
 		// Interactables
 
 		if (col.CompareTag ("Button")) {
 			col.gameObject.GetComponent<SpriteRenderer> ().sprite = green;
 			col.gameObject.GetComponent<Button> ().buttonOn = true;
+		}
+
+		if (col.CompareTag ("Checkpoint")) {
+			player.GetComponent<PlayerController>().spawnPoint = col.transform.position;
 		}
 
 		// Pick up Keys
@@ -150,18 +143,6 @@ public class ChildCollider : MonoBehaviour {
         {
             player.hidden = false;
         }
-
-        // Doors
-        if (other.CompareTag("Door"))
-        {
-            //other.gameObject.GetComponent<MeshRenderer>().enabled = true;
-        }
-
-        // Interactables
-        //if (other.gameObject.tag == "Computer")
-        //{
-        //    guiScript.ComputerUnActive();
-        //}
 
 		if(other.CompareTag("Button"))
 		{

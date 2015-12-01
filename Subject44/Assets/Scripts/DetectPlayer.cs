@@ -12,7 +12,6 @@ public class DetectPlayer : MonoBehaviour {
 	public float rayRange = 0f;
 
 	private Vector3 rayDirection;
-	private Vector3 origPos;
 
 	public AudioClip detected; 
 	AudioSource source; 
@@ -21,7 +20,6 @@ public class DetectPlayer : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		origPos = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
 		playerController = player.GetComponent<PlayerController> ();
 		source = GetComponentInParent<AudioSource> ();
 	}
@@ -42,10 +40,8 @@ public class DetectPlayer : MonoBehaviour {
 			if (Physics.Raycast (transform.position, rayDirection, out hit, rayRange)) {
 				
 				if (hit.transform.tag == "Player") {
-					Debug.Log("Can see player");
 					return true;
 				}else{
-					Debug.Log("Can not see player");
 					return false;
 				}
 			}
@@ -74,10 +70,9 @@ public class DetectPlayer : MonoBehaviour {
 				playerController.speed = 0f;
 				playerController.useBanana = false;
 				playerController.bananananaMode = false;
-				player.transform.position = origPos;
+				player.transform.position = player.GetComponent<PlayerController>().spawnPoint;
 				player.transform.eulerAngles = new Vector3 (0, 0, 0);
 				source.PlayOneShot(detected);
-				Debug.Log ("Gotcha");
 			}
 		}
 	}

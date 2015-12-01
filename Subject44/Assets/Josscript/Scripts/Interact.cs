@@ -23,7 +23,6 @@ public class Interact : MonoBehaviour {
 	{
 		if(other.CompareTag("Player"))
 		{
-
 			if(!singleUse || (singleUse && !used))
 			{	
 				other.BroadcastMessage("StartDialogue", speakToIndex);

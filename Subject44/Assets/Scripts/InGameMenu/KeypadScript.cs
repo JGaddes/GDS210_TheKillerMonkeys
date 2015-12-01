@@ -38,11 +38,6 @@ public class KeypadScript : MonoBehaviour {
 		//PasswordFail = allMyAudioSources [2];
 	}
 
-    void Update() {
-
-        Debug.Log(playerController.pillCount);
-    }
-
 
 	void OnTriggerEnter(){
 	
