@@ -1,8 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\DetectPlayer.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MainPicturePopUp.cs">
     <Files>
-      <File FileName="Assets\Scripts\DetectPlayer.cs" Line="75" Column="34" />
+      <File FileName="Assets\Scripts\PicturePopup.cs" Line="13" Column="3" />
+      <File FileName="Assets\Scripts\MainPicturePopUp.cs" Line="5" Column="29" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

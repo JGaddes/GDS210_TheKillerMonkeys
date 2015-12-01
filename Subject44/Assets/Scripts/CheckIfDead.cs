@@ -29,7 +29,6 @@ public class CheckIfDead : MonoBehaviour {
     protected float totalTime = 0f;
 
 
-
     // Use this for initialization
     void Start () {
 

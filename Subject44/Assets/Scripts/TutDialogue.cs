@@ -23,7 +23,7 @@ public class TutDialogue : MonoBehaviour {
 	{
 		if (!used && col.tag == "Player")
 		{
-			//player.speed = 0;
+			player.canMove = false;
 			player.BroadcastMessage ("StartDialogue", text);
 			used = true;
 		}

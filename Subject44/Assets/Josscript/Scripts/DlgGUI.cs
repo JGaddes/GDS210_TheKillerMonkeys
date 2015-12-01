@@ -22,10 +22,16 @@ public class DlgGUI : DlgManager
 	private Texture2D avatarBG		;
 	private Texture2D highlightBar	;
 
+	public PlayerController player;
+
+
 	// Use this for initialization
 	void Start () {
 		Load();
 		Save ();
+
+		player = GameObject.Find("Player").GetComponent<PlayerController>();
+
 	}
 
 	void Update()
@@ -57,7 +63,17 @@ public class DlgGUI : DlgManager
 	void OnGUI()
 	{
 		if (HasEnded)
-			return;
+		{
+			if(player.onPole == false)
+			{
+				player.canMove = true;
+				return;
+			}
+
+			if(player.onPole == true)
+				return;
+
+		}
 
 		//show the player's dialogue in the bottom right corner of the screen
 		//and the other character's dialogue in the top left

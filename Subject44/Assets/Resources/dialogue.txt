@@ -1,96 +1,99 @@
 <actors>
-	<actor> name = Mr. Scientist; avatar = scientist
+	<actor> name = No one 0; avatar = nothing
 	<actor> name = Monkeykin 1; avatar = monkey01
 	<actor> name = Monkeykin 2; avatar = monkey02
 	<actor> name = MonkeyNPC 3; avatar = NPC01
+	<actor> name = Mr. Scientist 4; avatar = scientist
 	
 <dialogue>
 
 <turn> id = 1
-	[who] 0
+	[who] 4
 	Begin basic knowledge test of Subject #44.
 	
 <turn> id = 2
-	[who] 0
+	[who] 4
 	[next] -1
 	Look at your picture.
 	
 <turn> id = 3
-	[who] 0
+	[who] 4
 	Understands basic instruction: Check. 
 
 <turn> id = 4
-	[who] 0
+	[who] 4
 	[next] -1
 	Proceed to the next room.
 	
 <turn> id = 5
-	[who] 0
+	[who] 4
 	[next] -1
 	Pick up the key card and proceed to the next room.
 	
 <turn> id = 6
-	[who] 0
+	[who] 4
 	[next] -1
 	Stop head-butting the door and look for an alternate exit...
 	*muffled* idiot.
 
 <turn> id = 7
-	[who] 0
+	[who] 4
 	[next] -1
 	Move into the light so that I can see you.
 
 <turn> id = 8
-	[who] 0
+	[who] 4
 	Begin stealth test of Subject #44.
 
 <turn> id = 9
-	[who] 0
+	[who] 4
 	[next] -1
 	Proceed to the next area without being detected.
 
 <turn> id = 10
-	[who] 0
+	[who] 4
 	[next] -1
 	*Sigh*... Try again.
 
 <turn> id = 11
-	[who] 0
+	[who] 4
 	[next] -1
 	Average Performance Subject #44.
 	Proceed to the next area.
 
 <turn> id = 12
-	[who] 0
+	[who] 4
 	Begin technology test of Subject #44.
 
 <turn> id = 13
-	[who] 0
+	[who] 4
 	[next] -1
 	Pick up the monkey med and code to gain access to the next area.
 
 <turn> id = 14
-	[who] 0
+	[who] 4
 	[next] -1
 	Who left the banana out!? Guards!
 
 <turn> id = 15
-	[who] 0
-	Subject #44 do not eat that banana!!
-
-<turn> id = 16
-	[who] 0
-	[next] -1
+	[who] 4
 	Will someone activate those damn guards before that damn monkey 
 	destroys them again!!!
 	
+<turn> id = 16
+	[who] 4
+	[next] -1
+	Subject #44 do not eat that banana!!
+	Do not press B!
+	
 <turn> id = 17
-	[who] 0
+	[who] 4
 	[next] -1
 	Lockdown initiated.
+	Take Subject #44 back to its cage.
 	
 <turn> id = 18
-	[who] 0
+	[who] 4
 	[next] -1
 	Take Subject #44 back to its cage.
 	
@@ -138,5 +141,14 @@
 <turn> id = 27
 	[who] 3
 	[next] -1
-	There fate lies in your hands Subject #44.
+	Their fate lies in your hands Subject #44.
 	
+<turn> id = 28
+	[who] 1
+	[next] -1
+	You can't free me without a key.
+	
+<turn> id = 29
+	[who] 2
+	[next] -1
+	How are you going to free me without a key?
