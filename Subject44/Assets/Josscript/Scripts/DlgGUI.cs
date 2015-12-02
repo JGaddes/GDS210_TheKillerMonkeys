@@ -64,13 +64,13 @@ public class DlgGUI : DlgManager
 	{
 		if (HasEnded)
 		{
-			if(player.onPole == false)
+			if(!player.onPole && !player.inBarrel)
 			{
 				player.canMove = true;
 				return;
 			}
 
-			if(player.onPole == true)
+			if(player.onPole && player.inBarrel)
 				return;
 
 		}

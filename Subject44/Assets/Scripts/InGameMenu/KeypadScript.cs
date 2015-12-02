@@ -15,10 +15,7 @@ public class KeypadScript : MonoBehaviour {
 	public Text interactPrompt;
 	
 	private Animator anim;
-	
-	//AudioSource KeyPressed; 
-	//AudioSource PasswordSuccess; 
-	//AudioSource PasswordFail;
+
 	
 	// Use this for initialization
 	void Start () {
@@ -32,15 +29,11 @@ public class KeypadScript : MonoBehaviour {
 		interactPrompt.enabled = false;
 		
 		KeyPadUnActive();
-		//AudioSource[] allMyAudioSources = GetComponents<AudioSource>();
-		//KeyPressed = allMyAudioSources[0];
-		//PasswordSuccess = allMyAudioSources[1];
-		//PasswordFail = allMyAudioSources [2];
 	}
 
 
-	void OnTriggerEnter(){
-	
+	void OnTriggerEnter()
+	{
 		if(anim.enabled == false){
 			interactPrompt.enabled = true;
 		}
@@ -48,16 +41,13 @@ public class KeypadScript : MonoBehaviour {
 
 	void OnTriggerStay(Collider other){
 
-		if(Input.GetKeyDown(KeyCode.E)){
-
+		if(Input.GetKeyDown(KeyCode.E))
+		{
 			interactPrompt.enabled = false;
-
-			if (other.CompareTag ("Player") && playerController.havePill || _openAccess == true ){
-			
+			if (other.CompareTag ("Player") && playerController.havePill || _openAccess == true )
+			{
 				KeyPadActive();
-
 				if(_openAccess == false){
-				
 					_openAccess = true;
 					playerController.pillCount -= 1;
 				}
@@ -73,14 +63,13 @@ public class KeypadScript : MonoBehaviour {
 	public void ClickLetter(string letterClicked)
 	{
 		if (keyPadText.text.Length < 4) {
-			
 			string tempCurString = keyPadText.text;
 			string tempNewString = tempCurString + letterClicked;
 			keyPadText.text = tempNewString;
-			//KeyPressed.Play ();
 		}
 	}
 	
+
 	public void ClickBackspace()
 	{
 		string tempGetString = keyPadText.text;
@@ -96,25 +85,14 @@ public class KeypadScript : MonoBehaviour {
 		string tempPass = keyPadText.text;
 		
 		if (password == tempPass){
-			
 			StartCoroutine(MyCoroutine());
-			Debug.Log("Unlocking something!");
-			//PasswordSuccess.Play();
-
-			exitDoor.SetActive(false);
-			//exitDoor.GetComponent<Collider> ().enabled = true;
-
-
-			
+			exitDoor.SetActive(false);			
 		}
 		else {
-			
-			Debug.Log("Wrong code, try again");
 			Debug.Log(password);
 			Debug.Log (tempPass);
 			string tempString = tempPass.Substring(0, tempPass.Length - tempPass.Length);
-			keyPadText.text = tempString;
-			//PasswordFail.Play();
+			keyPadText.text = tempString;;
 		}
 	}
 	
@@ -122,7 +100,6 @@ public class KeypadScript : MonoBehaviour {
 	
 	public void KeyPadActive() {
 		if(anim.enabled == false){
-			
 			keyPad.enabled = true;
 			playerController.canMove = false;
 		}
