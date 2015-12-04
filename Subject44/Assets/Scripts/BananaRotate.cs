@@ -3,6 +3,8 @@ using System.Collections;
 
 public class BananaRotate : MonoBehaviour {
 
+	public Rigidbody bananaRb;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -11,7 +13,7 @@ public class BananaRotate : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-		transform.Rotate (0, 0, 5);
-
+		//transform.Rotate (0, 20, 0);
+		bananaRb.AddForce(transform.right * 50f);
 	}
 }

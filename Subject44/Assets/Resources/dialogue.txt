@@ -10,11 +10,13 @@
 <turn> id = 1
 	[who] 4
 	Begin basic knowledge test of Subject #44.
+	(Press ENTER to continue)
 	
 <turn> id = 2
 	[who] 4
 	[next] -1
 	Look at your picture.
+	(Use WASD to move)
 	
 <turn> id = 3
 	[who] 4
@@ -29,6 +31,8 @@
 	[who] 4
 	[next] -1
 	Pick up the key card and proceed to the next room.
+	(Walk over KEY CARD to pick up)
+	(KEY CARDS displayed in BOTTOM RIGHT corner of your screen)
 	
 <turn> id = 6
 	[who] 4
@@ -49,6 +53,7 @@
 	[who] 4
 	[next] -1
 	Proceed to the next area without being detected.
+	(Avoid the security camera's and robot guard's DETECTION RADIUS)
 
 <turn> id = 10
 	[who] 4
@@ -69,6 +74,8 @@
 	[who] 4
 	[next] -1
 	Pick up the monkey med and code to gain access to the next area.
+	(KEYPADS and COMPUTERS can only be accesed if you have at least ONE MONKEY MED)
+	(Number of MONKEY MEDS is displayed in BOTTOM LEFT corner of your screen)
 
 <turn> id = 14
 	[who] 4
@@ -84,7 +91,8 @@
 	[who] 4
 	[next] -1
 	Subject #44 do not eat that banana!!
-	Do not press B!
+	(Press B to activate BANANANANANA MODE and SPACE to perform BANANA TAKEDOWNS!)
+	(Number of BANANAS is displayed in BOTTOM LEFT corner of your screen)
 	
 <turn> id = 17
 	[who] 4
@@ -135,7 +143,7 @@
 <turn> id = 26
 	[who] 3
 	It is not too late for the others though,
-	take this key and free your fellow monkey kin...
+	take this KEY and free your fellow monkey kin...
 	or leave them here to suffer.
 	
 <turn> id = 27
@@ -146,9 +154,9 @@
 <turn> id = 28
 	[who] 1
 	[next] -1
-	You can't free me without a key.
+	You can't free me without a KEY.
 	
 <turn> id = 29
 	[who] 2
 	[next] -1
-	How are you going to free me without a key?
+	How are you going to free me without a KEY?

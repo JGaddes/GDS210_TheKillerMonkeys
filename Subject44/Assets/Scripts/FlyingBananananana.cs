@@ -31,13 +31,13 @@ public class FlyingBananananana : MonoBehaviour {
 
 	void OnCollisionEnter (Collision col)
 	{
-		/*if (col.gameObject.tag == "BananaBarrier")
+		if (col.gameObject.tag == "BananaBarrier")
 		{
 			GetDirection ();
 
 			transform.Rotate (direction);
-			rb.AddForce (transform.forward * 10f);
-		}*/
+			rb.AddForce (transform.forward * 1f);
+		}
 
 		direction = -direction;
 	}
