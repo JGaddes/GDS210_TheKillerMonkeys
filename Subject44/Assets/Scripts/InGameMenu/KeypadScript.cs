@@ -11,8 +11,10 @@ public class KeypadScript : MonoBehaviour {
 	public string password = "";
 	public GameObject exitDoor;
 	public PlayerController playerController;
+    public ChildCollider _childCollider;
 	public bool _openAccess;
 	public Text interactPrompt;
+    public Image idCard;
 	
 	private Animator anim;
 
@@ -27,10 +29,18 @@ public class KeypadScript : MonoBehaviour {
 		anim.enabled = false;
 		_openAccess = false;
 		interactPrompt.enabled = false;
-		
-		KeyPadUnActive();
+
+        idCard.enabled = false;
+        KeyPadUnActive();
 	}
 
+    void Update() {
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            KeyPadUnActive();
+        }
+    }
 
 	void OnTriggerEnter()
 	{
@@ -58,6 +68,7 @@ public class KeypadScript : MonoBehaviour {
 	void OnTriggerExit(){
 	
 		interactPrompt.enabled = false;
+        KeyPadUnActive();
 	}
 	
 	public void ClickLetter(string letterClicked)
@@ -103,14 +114,24 @@ public class KeypadScript : MonoBehaviour {
 			keyPad.enabled = true;
 			playerController.canMove = false;
 		}
-	}
+
+        if (_childCollider.haveIdCard == true)
+        {
+            _childCollider.idCard.SetActive(false);
+            idCard.enabled = true;
+        }
+
+        playerController.enabled = false;
+    }
 	
 	public void KeyPadUnActive()
 	{
 		
 		keyPad.enabled = false;
 		playerController.canMove = true;
-	}
+        idCard.enabled = false;
+        playerController.enabled = true;
+    }
 	
 	IEnumerator MyCoroutine()
 	{

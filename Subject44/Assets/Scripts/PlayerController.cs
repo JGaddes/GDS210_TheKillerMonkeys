@@ -164,6 +164,7 @@ public class PlayerController : MonoBehaviour {
         if (bananaCount == 0)
         {
             banana.canvasRenderer.SetAlpha(0.1f);
+            bananaSlider.
         }
 
         if (useBanana)

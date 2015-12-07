@@ -24,7 +24,6 @@ public class DlgGUI : DlgManager
 
 	public PlayerController player;
 
-
 	// Use this for initialization
 	void Start () {
 		Load();

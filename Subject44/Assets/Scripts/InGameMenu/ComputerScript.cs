@@ -7,12 +7,15 @@ public class ComputerScript : MonoBehaviour {
 
     //Reference to other Scripts
     public PlayerController _playerController;
+    public ChildCollider _childCollider;
 
     public Text compInput;
     public Canvas Computer;
     public string loginPass = "";
     public bool _openAccess;
     public Text interactPrompt;
+    public Image idCard;
+    public bool compStopMove;
 
     private Animator anim2;
 
@@ -31,10 +34,15 @@ public class ComputerScript : MonoBehaviour {
         anim2.enabled = false;
         _openAccess = false;
         interactPrompt.enabled = false;
+        idCard.enabled = false;
     }
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            ComputerUnActive();
+        }
 	
 	}
 
@@ -79,7 +87,7 @@ public class ComputerScript : MonoBehaviour {
     public void CodeCheck(string other)
     {
 
-        string tempLogin = compInput.text;
+        string tempLogin = compInput.text.ToLower();
 
         if (loginPass == tempLogin)
         {
@@ -97,11 +105,17 @@ public class ComputerScript : MonoBehaviour {
 
     public void ComputerActive()
     {
-
+        Debug.Log("Comp ena");
         Computer.enabled = true;
         _playerController.canMove = false;
         _playerController._secCameraView.SetActive(true);
+        _playerController.enabled = false;
 
+        if (_childCollider.haveIdCard == true) {
+            _childCollider.idCard.SetActive(false);
+            idCard.enabled = true;
+        }
+        
     }
 
     public void ComputerUnActive()
@@ -109,6 +123,9 @@ public class ComputerScript : MonoBehaviour {
         Computer.enabled = false;
         _playerController.canMove = true;
         _playerController._secCameraView.SetActive(false);
+        _playerController.enabled = true;
+        idCard.enabled = false;
+        _childCollider.idCard.SetActive(true);
     }
 
     public void UnlockDoors()
