@@ -33,6 +33,13 @@ public class Doors : MonoBehaviour {
             doorBot.transform.position = Vector3.MoveTowards(botPos.position, openBot.transform.position, speed * Time.deltaTime);
             open = true;
         }
+
+		if (other.CompareTag("Guard"))
+		{
+			doorTop.transform.position = Vector3.MoveTowards(topPos.position, openTop.transform.position, speed * Time.deltaTime);
+			doorBot.transform.position = Vector3.MoveTowards(botPos.position, openBot.transform.position, speed * Time.deltaTime);
+			open = true;
+		}
     }
 
 
@@ -42,5 +49,11 @@ public class Doors : MonoBehaviour {
         {
             open = false; 
         }
+
+		if (other.CompareTag("Guard"))
+		{
+			open = false; 
+		}
     }
+
 }
