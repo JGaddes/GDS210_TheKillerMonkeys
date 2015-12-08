@@ -45,7 +45,10 @@ public class KeypadScript : MonoBehaviour {
 	void OnTriggerEnter()
 	{
 		if(anim.enabled == false){
-			interactPrompt.enabled = true;
+			if(playerController.havePill)
+			{
+				interactPrompt.enabled = true;
+			}
 		}
 	}
 
@@ -128,19 +131,19 @@ public class KeypadScript : MonoBehaviour {
 	{
 		
 		keyPad.enabled = false;
-		playerController.canMove = true;
         idCard.enabled = false;
+		playerController.canMove = true;
         playerController.enabled = true;
     }
 	
 	IEnumerator MyCoroutine()
 	{
-		
 		//Disable Raycast so the Keypad becomes unusable
 		keyPad.GetComponent<GraphicRaycaster>().enabled = false;
 		anim.enabled = true;
 		yield return new WaitForSeconds(2);
 		keyPad.enabled = false;
 		playerController.canMove = true;
+		playerController.enabled = true;
 	}
 }

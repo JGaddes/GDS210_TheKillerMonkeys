@@ -70,6 +70,7 @@ public class DetectPlayer : MonoBehaviour {
 				playerController.speed = 0f;
 				playerController.useBanana = false;
 				playerController.bananananaMode = false;
+				playerController.bananaSlider.value = 0f;
 				player.transform.position = player.GetComponent<PlayerController>().spawnPoint;
 				player.transform.eulerAngles = new Vector3 (0, 0, 0);
 				source.PlayOneShot(detected);

@@ -47,8 +47,9 @@ public class ComputerScript : MonoBehaviour {
 	}
 
     void OnTriggerEnter(Collider col) {
-
-        interactPrompt.enabled = true;       
+		if (_playerController.havePill) {
+			interactPrompt.enabled = true; 
+		}
     }
 
     void OnTriggerStay(Collider other)
@@ -71,7 +72,6 @@ public class ComputerScript : MonoBehaviour {
                     _playerController.pillCount -= 1;
                 }
             }
-            else { Debug.Log("No pills"); }
         }
     }
 
@@ -91,15 +91,8 @@ public class ComputerScript : MonoBehaviour {
 
         if (loginPass == tempLogin)
         {
-
-            Debug.Log("Correct Pass");
             anim2.enabled = true;
             _playerController._secCameraView.SetActive(true);
-        }
-        else
-        {
-
-            Debug.Log("Wrong pass");
         }
     }
 

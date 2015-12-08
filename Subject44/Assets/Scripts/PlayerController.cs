@@ -24,8 +24,7 @@ public class PlayerController : MonoBehaviour {
 	public bool havePill = false;
     public bool canMove = true;
 	public bool bananananaMode = false;
-	
-    public GameObject shadows;
+
 
     public CharacterController controller;
 	public Slider bananaSlider;
@@ -90,7 +89,7 @@ public class PlayerController : MonoBehaviour {
 		bananaSlider.value = 0;
         pillCount = 0;
 
-		MonkeyAnimator.SetInteger ("Walk", 1);
+		//MonkeyAnimator.SetInteger ("Walk", 1);
 
 		source = GetComponent<AudioSource> ();
 

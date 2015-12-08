@@ -1,15 +1,29 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Pole : MonoBehaviour {
 
 	public GameObject player;
-	
-	// Update is called once per frame
+	public Text popUpText;
+
+
+	void Start()
+	{
+		popUpText.enabled = false;
+	}
+
 	void Update () {
+
+		if (Vector3.Distance (transform.position, player.transform.position) >= 1.5f) {
+			if (player.GetComponent<PlayerController> ().onPole == false) {
+				popUpText.enabled = false;
+			}
+		}
 	
 		if (Vector3.Distance (transform.position, player.transform.position) < 1.5f)
 		{
+			popUpText.enabled = true;
 			if(Input.GetKeyDown(KeyCode.Space))
 			{
 				if(player.GetComponent<PlayerController>().onPole == false)

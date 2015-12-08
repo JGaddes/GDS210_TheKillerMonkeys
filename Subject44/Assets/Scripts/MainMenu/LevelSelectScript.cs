@@ -45,12 +45,10 @@ public class LevelSelectScript : MonoBehaviour {
 
             //enable the respective image based on the stars variable value
             GameObject.Find(j + "star" + stars).GetComponent<Image>().enabled = true;
-            Debug.Log(j + "star" + stars);
 
             //Check if the level is locked
             if ((PlayerPrefs.GetInt("level"+worldIndex.ToString() +":" +levelIndex.ToString()))==1){
 				GameObject.Find("LockedLevel"+(j+1)).SetActive (false);
-				Debug.Log ("Unlocked Level " + levelIndex);
 			}
 		}
 	}

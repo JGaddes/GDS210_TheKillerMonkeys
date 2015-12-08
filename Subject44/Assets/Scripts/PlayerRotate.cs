@@ -3,14 +3,14 @@ using System.Collections;
 
 public class PlayerRotate : MonoBehaviour
 {
-	public bool canRotate = true;
+	public PlayerController player;
 
   
 
     // Update is called once per frame
     void Update()
     {
-		if (canRotate) {
+		if (player.canMove) {
 			if (Input.GetKey (KeyCode.W)) {
 				transform.eulerAngles = new Vector3 (90, 0, 0);
 			}
