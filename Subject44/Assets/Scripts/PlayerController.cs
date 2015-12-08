@@ -151,6 +151,7 @@ public class PlayerController : MonoBehaviour {
 		{
             if (!useBanana)
             {
+				banana.canvasRenderer.SetAlpha(1f);
                 if (Input.GetKeyDown(KeyCode.B))
                 {
 					bananaSlider.value = 100;
@@ -164,7 +165,6 @@ public class PlayerController : MonoBehaviour {
         if (bananaCount == 0)
         {
             banana.canvasRenderer.SetAlpha(0.1f);
-            bananaSlider.
         }
 
         if (useBanana)

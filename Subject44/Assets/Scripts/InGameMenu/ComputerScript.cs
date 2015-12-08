@@ -105,27 +105,31 @@ public class ComputerScript : MonoBehaviour {
 
     public void ComputerActive()
     {
-        Debug.Log("Comp ena");
-        Computer.enabled = true;
-        _playerController.canMove = false;
-        _playerController._secCameraView.SetActive(true);
-        _playerController.enabled = false;
+		if (!_playerController.bananananaMode) {
+			_playerController.enabled = false;
+			Computer.enabled = true;
+			_playerController._secCameraView.SetActive (true);
+        
 
-        if (_childCollider.haveIdCard == true) {
-            _childCollider.idCard.SetActive(false);
-            idCard.enabled = true;
-        }
+			if (_childCollider.haveIdCard == true) {
+				_childCollider.idCard.SetActive (false);
+				idCard.enabled = true;
+			}
+		}
         
     }
 
     public void ComputerUnActive()
     {
         Computer.enabled = false;
-        _playerController.canMove = true;
         _playerController._secCameraView.SetActive(false);
         _playerController.enabled = true;
         idCard.enabled = false;
-        _childCollider.idCard.SetActive(true);
+		if (_childCollider.haveIdCard == true) {
+
+			_childCollider.idCard.SetActive(true);
+		}
+
     }
 
     public void UnlockDoors()

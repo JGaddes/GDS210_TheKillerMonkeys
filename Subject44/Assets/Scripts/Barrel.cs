@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Barrel : MonoBehaviour {
@@ -9,18 +10,31 @@ public class Barrel : MonoBehaviour {
 	public GameObject checkRight;
     public GameObject player;
     public Vector3 origPos;
+	public Text popUpText;
 
 	private float cooldown = 0.25f;
 	private bool canUseBarrel = true;
-	
+
+
+	void Start()
+	{
+		popUpText.enabled = false;
+	}
 
     void Update()
     {
+		if (Vector3.Distance (transform.position, player.transform.position) >= 2f) {
+			if (player.GetComponent<PlayerController> ().inBarrel == false) {
+				popUpText.enabled = false;
+			}
+		}
+
         if (Vector3.Distance(transform.position, player.transform.position) < 2f)
         {
             if (player.GetComponent<PlayerController>().inBarrel == false)
             {
-				if (Input.GetKeyDown(KeyCode.Space))
+				popUpText.enabled = true;
+				if (Input.GetKeyDown(KeyCode.E))
 				{
 					if(canUseBarrel)
 					{
@@ -36,6 +50,7 @@ public class Barrel : MonoBehaviour {
 			
 			else if (player.GetComponent<PlayerController>().inBarrel)
 			{
+				popUpText.enabled = false;
 				if (Input.GetKeyDown(KeyCode.W))
 				{
 					if(!checkUp.GetComponent<BarrelCollideCheck>().isCollide)

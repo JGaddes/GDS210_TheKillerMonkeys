@@ -46,21 +46,20 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Josscript\Core\DlgManager.cs" />
-     <Compile Include="Assets\Josscript\Core\Josscript.cs" />
-     <Compile Include="Assets\Josscript\Core\JosscriptGameKeys.cs" />
-     <Compile Include="Assets\Josscript\Scripts\DlgGUI.cs" />
-     <Compile Include="Assets\Josscript\Scripts\Interact.cs" />
-     <Compile Include="Assets\Scripts\BananaMusic2 (1).cs" />
+     <Compile Include="Assets\Scripts\BananaBarrel.cs" />
+     <Compile Include="Assets\Scripts\BananaMusic2.cs" />
      <Compile Include="Assets\Scripts\BananaRotate.cs" />
      <Compile Include="Assets\Scripts\Barrel.cs" />
+     <Compile Include="Assets\Scripts\BarrelCollideCheck.cs" />
      <Compile Include="Assets\Scripts\BlueDoor.cs" />
      <Compile Include="Assets\Scripts\Button.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
+     <Compile Include="Assets\Scripts\CheckIfDead.cs" />
      <Compile Include="Assets\Scripts\ChildCollider.cs" />
      <Compile Include="Assets\Scripts\CircleGuard.cs" />
      <Compile Include="Assets\Scripts\DetectPlayer.cs" />
      <Compile Include="Assets\Scripts\Doors.cs" />
+     <Compile Include="Assets\Scripts\EndTutorial.cs" />
      <Compile Include="Assets\Scripts\FanRotate.cs" />
      <Compile Include="Assets\Scripts\FlyingBananananana.cs" />
      <Compile Include="Assets\Scripts\Footsteps.cs" />
@@ -70,11 +69,20 @@
      <Compile Include="Assets\Scripts\InGameMenu\GuiScript.cs" />
      <Compile Include="Assets\Scripts\InGameMenu\KeypadScript.cs" />
      <Compile Include="Assets\Scripts\InGameMenu\PauseMenuScript.cs" />
+     <Compile Include="Assets\Scripts\Josscript\Core\DlgManager.cs" />
+     <Compile Include="Assets\Scripts\Josscript\Core\Josscript.cs" />
+     <Compile Include="Assets\Scripts\Josscript\Core\JosscriptGameKeys.cs" />
+     <Compile Include="Assets\Scripts\Josscript\Scripts\DlgGUI.cs" />
+     <Compile Include="Assets\Scripts\Josscript\Scripts\Interact.cs" />
+     <Compile Include="Assets\Scripts\LoginDetails.cs" />
      <Compile Include="Assets\Scripts\MainMenu\CodeScript.cs" />
      <Compile Include="Assets\Scripts\MainMenu\LevelSelectScript.cs" />
      <Compile Include="Assets\Scripts\MainMenu\LockLevel.cs" />
      <Compile Include="Assets\Scripts\MainMenu\menuScript.cs" />
+     <Compile Include="Assets\Scripts\MainPicturePopUp.cs" />
      <Compile Include="Assets\Scripts\MonkeyKin.cs" />
+     <Compile Include="Assets\Scripts\MonkeyNPC.cs" />
+     <Compile Include="Assets\Scripts\NoKey.cs" />
      <Compile Include="Assets\Scripts\OrangeDoor.cs" />
      <Compile Include="Assets\Scripts\PatrolAi.cs" />
      <Compile Include="Assets\Scripts\PictureHide.cs" />
@@ -85,7 +93,9 @@
      <Compile Include="Assets\Scripts\RedDoor.cs" />
      <Compile Include="Assets\Scripts\SecCamAi.cs" />
      <Compile Include="Assets\Scripts\TextShow.cs" />
+     <Compile Include="Assets\Scripts\TutBanana.cs" />
      <Compile Include="Assets\Scripts\TutDialogue.cs" />
+     <Compile Include="Assets\Scripts\TutDialogue02.cs" />
      <None Include="Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Resources\dialogue.txt" />
  <Reference Include="UnityEngine.UI">
