@@ -8,21 +8,20 @@ public class BananaBarrel : MonoBehaviour {
 	public GameObject guard;
 	public GameObject guard1;
 	public GameObject guard2;
-	public Text popUpText;
+	private Text popUpText;
 
 	void Start()
 	{
-		popUpText.enabled = false;
+		popUpText = player.gameObject.GetComponent<PlayerController> ().interactText;
 	}
+	
 
 	void OnTriggerStay(Collider other)
 	{
-		popUpText.enabled = true;
 		if (guard != null && guard1 != null && guard2 != null) {
-			if(!player.bananananaMode)
-			{
+			if(!player.bananananaMode){
 				if (other.CompareTag ("Player")) {
-					// popup text goes here
+					popUpText.enabled = true;
 					if (Input.GetKey (KeyCode.E)) {
 						if (player.bananaCount < 1) {
 							player.bananaCount += 1;

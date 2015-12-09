@@ -13,7 +13,7 @@ public class KeypadScript : MonoBehaviour {
 	public PlayerController playerController;
     public ChildCollider _childCollider;
 	public bool _openAccess;
-	public Text interactPrompt;
+	public Text popUpText;
     public Image idCard;
 	
 	private Animator anim;
@@ -21,15 +21,13 @@ public class KeypadScript : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		
+		popUpText = playerController.gameObject.GetComponent<PlayerController> ().interactText;
 		playerController.GetComponent<PlayerController>();
 		anim = keyPadText.GetComponent<Animator>();
 
 		keyPad.enabled = false;
 		anim.enabled = false;
 		_openAccess = false;
-		interactPrompt.enabled = false;
-
         idCard.enabled = false;
         KeyPadUnActive();
 	}
@@ -49,28 +47,24 @@ public class KeypadScript : MonoBehaviour {
 			keyPadText.text = tempNewString;
 		}
     }
+	
 
-	void OnTriggerEnter()
-	{
-		if(anim.enabled == false){
-			if(playerController.havePill)
-			{
-				interactPrompt.enabled = true;
-			}
-		}
-	}
-
-	void OnTriggerStay(Collider other){
-
-		if(Input.GetKeyDown(KeyCode.E))
+	void OnTriggerStay(Collider other)
+	{	
+		if (other.CompareTag ("Player") && playerController.havePill || _openAccess == true )
 		{
-			interactPrompt.enabled = false;
-			if (other.CompareTag ("Player") && playerController.havePill || _openAccess == true )
-			{
-				KeyPadActive();
-				if(_openAccess == false){
-					_openAccess = true;
-					playerController.pillCount -= 1;
+			if(playerController.havePill)
+			{				
+				popUpText.enabled = true;
+				if(Input.GetKeyDown(KeyCode.E))
+				{
+					popUpText.enabled = false;
+					KeyPadActive();
+					if(_openAccess == false)
+					{
+						_openAccess = true;
+						playerController.pillCount -= 1;
+					}
 				}
 			}
 		}
@@ -78,7 +72,7 @@ public class KeypadScript : MonoBehaviour {
 
 	void OnTriggerExit(){
 	
-		interactPrompt.enabled = false;
+		popUpText.enabled = false;
         KeyPadUnActive();
 	}
 	

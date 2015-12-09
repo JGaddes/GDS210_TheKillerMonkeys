@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
 	public float bananaTime = 15f;
 	public float pillCount = 0f;
     public float bananaCount = 0f;
+	public float colCount;
 
 	public Vector3 spawnPoint;
 
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour {
 	public Slider bananaSlider;
 	public AudioClip detected, enemyDeath;
     private Vector3 moveDirection = Vector3.zero;
+	public Text interactText;
 
 	public Animator MonkeyAnimator;
 
@@ -66,6 +68,8 @@ public class PlayerController : MonoBehaviour {
 	public GameObject[] _secCameraView;
 
     void Start () {
+		interactText.enabled = false;
+
 		//sets the player's spawnpoint 
 		spawnPoint = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 
@@ -93,8 +97,9 @@ public class PlayerController : MonoBehaviour {
 
 		source = GetComponent<AudioSource> ();
 
-		_secCameraView[0].SetActive (false);
-		_secCameraView[1].SetActive (false);
+		foreach (GameObject sc in _secCameraView) {
+			sc.SetActive(false);
+		}
 
 	}
 

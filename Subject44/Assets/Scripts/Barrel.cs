@@ -9,112 +9,89 @@ public class Barrel : MonoBehaviour {
 	public GameObject checkLeft;
 	public GameObject checkRight;
     public GameObject player;
-    public Vector3 origPos;
-	public Text popUpText;
 
-	private float cooldown = 0.25f;
+
+	private Text popUpText;
+	private float cooldown = 0.15f;
 	private bool canUseBarrel = true;
 
 
 	void Start()
 	{
-		popUpText.enabled = false;
+		popUpText = player.gameObject.GetComponent<PlayerController> ().interactText;
 	}
 
-    void Update()
-    {
-		if (Vector3.Distance (transform.position, player.transform.position) >= 2f) {
+	void Update()
+	{
+		if (Vector3.Distance (player.transform.position, transform.position) < 2f) {
 			if (player.GetComponent<PlayerController> ().inBarrel == false) {
-				popUpText.enabled = false;
+				if (Input.GetKey (KeyCode.E)) {
+					if (canUseBarrel) {
+						player.transform.position = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
+						player.GetComponent<PlayerController> ().hidden = true;
+						player.GetComponent<PlayerController> ().canMove = false;
+						player.GetComponent<PlayerController> ().inBarrel = true;
+					}
+				}
 			}
 		}
-
-        if (Vector3.Distance(transform.position, player.transform.position) < 2f)
-        {
-            if (player.GetComponent<PlayerController>().inBarrel == false)
-            {
-				popUpText.enabled = true;
-				if (Input.GetKeyDown(KeyCode.E))
-				{
-					if(canUseBarrel)
-					{
-						StartCoroutine(BarrelCooldown());
-						origPos = player.transform.position;
-						player.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-						player.GetComponent<PlayerController>().canMove = false;
-						player.GetComponent<PlayerController>().inBarrel = true;
-						player.GetComponent<PlayerController>().hidden = true;
+		
+		if (player.GetComponent<PlayerController> ().inBarrel) {
+			if (Input.GetKeyDown (KeyCode.W)) {
+				if (!checkUp.GetComponent<BarrelCollideCheck> ().isCollide) {
+					if (canUseBarrel) {
+						player.GetComponent<PlayerController> ().hidden = false;
+						player.transform.position = checkUp.transform.position;
+						player.GetComponent<PlayerController> ().canMove = true;
+						player.GetComponent<PlayerController> ().inBarrel = false;
 					}
 				}
 			}
-			
-			else if (player.GetComponent<PlayerController>().inBarrel)
-			{
-				popUpText.enabled = false;
-				if (Input.GetKeyDown(KeyCode.W))
-				{
-					if(!checkUp.GetComponent<BarrelCollideCheck>().isCollide)
-					{
-						if(canUseBarrel)
-						{
-							StartCoroutine(BarrelCooldown());
-							player.transform.position = checkUp.transform.position;
-							player.GetComponent<PlayerController>().canMove = true;
-							player.GetComponent<PlayerController>().inBarrel = false;
-							player.GetComponent<PlayerController>().hidden = false;
-						}
+			if (Input.GetKeyDown (KeyCode.S)) {
+				if (!checkDown.GetComponent<BarrelCollideCheck> ().isCollide) {
+					if (canUseBarrel) {
+						player.GetComponent<PlayerController> ().hidden = false;
+						player.transform.position = checkDown.transform.position;
+						player.GetComponent<PlayerController> ().canMove = true;
+						player.GetComponent<PlayerController> ().inBarrel = false;
 					}
 				}
-				if (Input.GetKeyDown(KeyCode.S))
-				{
-					if(!checkDown.GetComponent<BarrelCollideCheck>().isCollide)
-					{
-						if(canUseBarrel)
-						{
-							StartCoroutine(BarrelCooldown());
-							player.transform.position = checkDown.transform.position;
-							player.GetComponent<PlayerController>().canMove = true;
-							player.GetComponent<PlayerController>().inBarrel = false;
-							player.GetComponent<PlayerController>().hidden = false;
-						}
+			}
+			if (Input.GetKeyDown (KeyCode.A)) {
+				if (!checkLeft.GetComponent<BarrelCollideCheck> ().isCollide) {
+					if (canUseBarrel) {
+						player.GetComponent<PlayerController> ().hidden = false;
+						player.transform.position = checkLeft.transform.position;
+						player.GetComponent<PlayerController> ().canMove = true;
+						player.GetComponent<PlayerController> ().inBarrel = false;
 					}
 				}
-				if (Input.GetKeyDown(KeyCode.A))
-				{
-					if(!checkLeft.GetComponent<BarrelCollideCheck>().isCollide)
-					{
-						if(canUseBarrel)
-						{
-							StartCoroutine(BarrelCooldown());
-							player.transform.position = checkLeft.transform.position;
-							player.GetComponent<PlayerController>().canMove = true;
-							player.GetComponent<PlayerController>().inBarrel = false;
-							player.GetComponent<PlayerController>().hidden = false;
-						}
+			}
+			if (Input.GetKeyDown (KeyCode.D)) {
+				if (!checkRight.GetComponent<BarrelCollideCheck> ().isCollide) {
+					if (canUseBarrel) {
+						player.GetComponent<PlayerController> ().hidden = false;
+						player.transform.position = checkRight.transform.position;
+						player.GetComponent<PlayerController> ().canMove = true;
+						player.GetComponent<PlayerController> ().inBarrel = false;
 					}
 				}
-				if (Input.GetKeyDown(KeyCode.D))
-				{
-					if(!checkRight.GetComponent<BarrelCollideCheck>().isCollide)
-					{
-						if(canUseBarrel)
-						{
-							StartCoroutine(BarrelCooldown());
-							player.transform.position = checkRight.transform.position;
-							player.GetComponent<PlayerController>().canMove = true;
-							player.GetComponent<PlayerController>().inBarrel = false;
-							player.GetComponent<PlayerController>().hidden = false;
-						}
-					}
-				}
-        	}
-    	}
+			}
+		}
+	}
+	
+	void OnTriggerStay(Collider other)
+	{
+		if (other.CompareTag ("Player") && (!player.GetComponent<PlayerController> ().inBarrel)) {
+			popUpText.enabled = true;
+		} else 
+		{
+			popUpText.enabled = false;
+		}
 	}
 
-	IEnumerator BarrelCooldown()
+	void OnTriggerExit()
 	{
-		canUseBarrel = false;
-		yield return new WaitForSeconds (cooldown);
-		canUseBarrel = true;
+		popUpText.enabled = false;
 	}
 }

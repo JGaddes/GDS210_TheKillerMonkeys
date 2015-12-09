@@ -13,11 +13,7 @@ public class TutDialogue02 : MonoBehaviour {
 		player = GameObject.Find("Player").GetComponent<PlayerController>();
 		
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 	
 	void OnTriggerStay (Collider col)
 	{

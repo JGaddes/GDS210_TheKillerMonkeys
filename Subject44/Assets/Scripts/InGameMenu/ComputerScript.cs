@@ -14,11 +14,11 @@ public class ComputerScript : MonoBehaviour {
     public Canvas Computer;
     public string loginPass = "";
     public bool _openAccess;
-    public Text interactPrompt;
     public Image idCard;
     public bool compStopMove;
 
     private Animator anim2;
+	private Text popUpText;
 
     public GameObject[] lockedDoors;
     public GameObject[] secCams;
@@ -26,15 +26,14 @@ public class ComputerScript : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-
         lockedDoors = GameObject.FindGameObjectsWithTag("Locked Door");
         secCams = GameObject.FindGameObjectsWithTag("Sec Cam");
+		popUpText = _playerController.gameObject.GetComponent<PlayerController> ().interactText;
 
         anim2 = Computer.gameObject.GetComponent<Animator>();
         Computer.enabled = false;
         anim2.enabled = false;
         _openAccess = false;
-        interactPrompt.enabled = false;
         idCard.enabled = false;
     }
 	
@@ -48,8 +47,8 @@ public class ComputerScript : MonoBehaviour {
 	}
 
     void OnTriggerEnter(Collider col) {
-		if (_playerController.havePill) {
-			interactPrompt.enabled = true; 
+		if (_playerController.havePill && !_playerController.bananananaMode) {
+			popUpText.enabled = true;
 		}
     }
 
@@ -59,7 +58,7 @@ public class ComputerScript : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.E))
         {
 
-            interactPrompt.enabled = false;
+			popUpText.enabled = false;
 
             if (other.CompareTag("Player") && _playerController.havePill || _openAccess == true)
             {
@@ -81,7 +80,7 @@ public class ComputerScript : MonoBehaviour {
         if (other.gameObject.tag == "Player")
         {
             ComputerUnActive();
-            interactPrompt.enabled = false;
+			popUpText.enabled = false;
         }
     }
 

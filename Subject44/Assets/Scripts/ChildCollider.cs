@@ -25,14 +25,8 @@ public class ChildCollider : MonoBehaviour {
 
     public List<PatrolAi> patrol = new List<PatrolAi>();
     public List<GameObject> guards = new List<GameObject>();
-
-
-    public bool haveBluCard = false;
-	public bool haveOraCard = false;
-	public bool haveGreCard = false;
-	public bool havePurCard = false;
-	public bool havePinCard = false;
-    public bool haveIdCard = false;
+	
+	public bool haveBluCard = false, haveOraCard = false, haveGreCard = false, havePurCard = false, havePinCard = false, haveIdCard = false;
 
 	public Sprite green, red;
 
@@ -134,7 +128,6 @@ public class ChildCollider : MonoBehaviour {
             idCard.SetActive(true);
             Destroy(col.gameObject);
         }
-
 	} 
 
     void OnTriggerExit(Collider other)
