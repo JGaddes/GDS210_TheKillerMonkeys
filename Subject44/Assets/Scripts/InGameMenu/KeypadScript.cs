@@ -15,6 +15,8 @@ public class KeypadScript : MonoBehaviour {
 	public bool _openAccess;
 	public Text popUpText;
     public Image idCard;
+	public AudioClip buttonPressed, keypadSuccess, keypadFailure; 
+	AudioSource source;
 	
 	private Animator anim;
 
@@ -30,6 +32,8 @@ public class KeypadScript : MonoBehaviour {
 		_openAccess = false;
         idCard.enabled = false;
         KeyPadUnActive();
+
+		source = GetComponent<AudioSource> ();
 	}
 
     void Update() {
@@ -82,7 +86,7 @@ public class KeypadScript : MonoBehaviour {
 			string tempCurString = keyPadText.text;
 			string tempNewString = tempCurString + letterClicked;
 			keyPadText.text = tempNewString;
-
+			source.PlayOneShot(buttonPressed);
 		}
 	}
 	
@@ -103,7 +107,8 @@ public class KeypadScript : MonoBehaviour {
 		
 		if (password == tempPass){
 			StartCoroutine(MyCoroutine());
-			exitDoor.SetActive(false);			
+			exitDoor.SetActive(false);		
+			source.PlayOneShot(keypadSuccess);
 		}
 		else {
 			Debug.Log(password);

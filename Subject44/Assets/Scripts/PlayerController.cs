@@ -13,10 +13,9 @@ public class PlayerController : MonoBehaviour {
 	public float colCount;
 
 	public Vector3 spawnPoint;
-
-	public AudioClip bananaMusic;
 	public AudioClip levelfinish;
 	AudioSource source;
+	public AudioSource cameraSource; 
 	
 	public bool onPole = false;
     public bool inBarrel = false;
@@ -29,7 +28,6 @@ public class PlayerController : MonoBehaviour {
 
     public CharacterController controller;
 	public Slider bananaSlider;
-	public AudioClip detected, enemyDeath;
     private Vector3 moveDirection = Vector3.zero;
 	public Text interactText;
 
@@ -217,7 +215,8 @@ public class PlayerController : MonoBehaviour {
             buttonNext.SetActive(true);
             Time.timeScale = 0;
 
-			source.PlayOneShot(levelfinish); 
+			source.PlayOneShot(levelfinish);
+			cameraSource.volume = 0.1f; 
         }
     }
 

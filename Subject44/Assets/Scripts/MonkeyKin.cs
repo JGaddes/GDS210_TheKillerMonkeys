@@ -11,6 +11,7 @@ public class MonkeyKin : MonoBehaviour {
 	private bool used = false;
 	public AudioClip badMonkey, goodMonkey;
 	public AudioSource source;
+	public AudioSource cameraSource;
 	public GameObject yesButt, noButt;
 	public Text yesTxt, noTxt;
 	public GameObject cageDoor, monkeyKin;
@@ -61,10 +62,12 @@ public class MonkeyKin : MonoBehaviour {
 		//thank you dialogue
 		player.BroadcastMessage ("StartDialogue", textYes);
 		source.PlayOneShot(goodMonkey, 1f);
+		cameraSource.volume = 0.1f; 
+		Invoke("VolumeBackUp", 4.5f);
+
 		cageDoor.transform.Rotate(0, 110f, 0);
 
 		monkeyKin.SetActive (false);
-
 
 		yesButt.SetActive (false);
 		noButt.SetActive (false);
@@ -78,10 +81,18 @@ public class MonkeyKin : MonoBehaviour {
 		//sad dialogue
 		player.BroadcastMessage ("StartDialogue", textNo);
 		source.PlayOneShot(badMonkey, 1f);
+		cameraSource.volume = 0.1f; 
+		Invoke("VolumeBackUp", 4.5f);
 
 		yesButt.SetActive (false);
 		noButt.SetActive (false);
 		yesTxt.enabled = false;
 		noTxt.enabled = false;
+	}
+
+	public void VolumeBackUp()
+	{
+		cameraSource.volume = 0.4f;
+		
 	}
 }

@@ -29,6 +29,8 @@ public class ChildCollider : MonoBehaviour {
 	public bool haveBluCard = false, haveOraCard = false, haveGreCard = false, havePurCard = false, havePinCard = false, haveIdCard = false;
 
 	public Sprite green, red;
+	public AudioSource source; 
+	public AudioClip pickupAnything; 
 
 
     // Use this for initialization
@@ -67,11 +69,13 @@ public class ChildCollider : MonoBehaviour {
 			player.banana.enabled = true;
 			player.banana.canvasRenderer.SetAlpha (1f);
 			Destroy (col.gameObject);
+			source.PlayOneShot(pickupAnything);
 		}
 
 		if (col.CompareTag ("Pill")) {
 			player.pillCount += 1;
 			Destroy (col.gameObject);
+			source.PlayOneShot(pickupAnything);
 		}
 		
 
@@ -90,6 +94,7 @@ public class ChildCollider : MonoBehaviour {
 		if (col.CompareTag ("Blue Key")) {
 			haveBluCard = true;
 			Destroy (col.gameObject);
+			source.PlayOneShot(pickupAnything);
 			bluKeyCard.SetActive (true);
 
 			foreach(GameObject d in bluDoors)
@@ -102,24 +107,28 @@ public class ChildCollider : MonoBehaviour {
 			haveOraCard = true;
 			oraKeyCard.SetActive (true);
 			Destroy (col.gameObject);
+			source.PlayOneShot(pickupAnything);
 		}
 
 		if (col.CompareTag ("Pink Key")) {
 			havePinCard = true;
 			pinKeyCard.SetActive (true);
 			Destroy (col.gameObject);
+			source.PlayOneShot(pickupAnything);
 		}
 
 		if (col.CompareTag ("Purple Key")) {
 			havePurCard = true;
 			purKeyCard.SetActive (true);
 			Destroy (col.gameObject);
+			source.PlayOneShot(pickupAnything);
 		}
 
 		if (col.CompareTag ("Green Key")) {
 			haveGreCard = true;
 			greKeyCard.SetActive (true);
 			Destroy (col.gameObject);
+			source.PlayOneShot(pickupAnything);
 		}
 
         if (col.CompareTag ("IDCard")) {
@@ -127,6 +136,7 @@ public class ChildCollider : MonoBehaviour {
             haveIdCard = true;
             idCard.SetActive(true);
             Destroy(col.gameObject);
+			source.PlayOneShot(pickupAnything);
         }
 	} 
 
