@@ -40,6 +40,14 @@ public class KeypadScript : MonoBehaviour {
         {
             KeyPadUnActive();
         }
+
+
+		if ((Input.GetKeyDown(KeyCode.Keypad1) && keyPadText.text.Length < 4) || (Input.GetKeyDown(KeyCode.Alpha1) && keyPadText.text.Length < 4)) {
+			
+			string tempCurString = keyPadText.text;
+			string tempNewString = tempCurString + "1";
+			keyPadText.text = tempNewString;
+		}
     }
 
 	void OnTriggerEnter()
@@ -80,6 +88,7 @@ public class KeypadScript : MonoBehaviour {
 			string tempCurString = keyPadText.text;
 			string tempNewString = tempCurString + letterClicked;
 			keyPadText.text = tempNewString;
+
 		}
 	}
 	

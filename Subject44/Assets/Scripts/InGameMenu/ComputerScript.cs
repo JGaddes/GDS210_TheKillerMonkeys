@@ -8,6 +8,7 @@ public class ComputerScript : MonoBehaviour {
     //Reference to other Scripts
     public PlayerController _playerController;
     public ChildCollider _childCollider;
+	public PauseMenuScript _pauseMenuScript;
 
     public Text compInput;
     public Canvas Computer;
@@ -92,7 +93,8 @@ public class ComputerScript : MonoBehaviour {
         if (loginPass == tempLogin)
         {
             anim2.enabled = true;
-            _playerController._secCameraView.SetActive(true);
+            _playerController._secCameraView[0].SetActive(true);
+			_playerController._secCameraView[1].SetActive(true);
         }
     }
 
@@ -100,8 +102,10 @@ public class ComputerScript : MonoBehaviour {
     {
 		if (!_playerController.bananananaMode) {
 			_playerController.enabled = false;
+			_pauseMenuScript.enabled = false;
 			Computer.enabled = true;
-			_playerController._secCameraView.SetActive (true);
+			_playerController._secCameraView[0].SetActive (true);
+			_playerController._secCameraView[1].SetActive (true);
         
 
 			if (_childCollider.haveIdCard == true) {
@@ -115,8 +119,10 @@ public class ComputerScript : MonoBehaviour {
     public void ComputerUnActive()
     {
         Computer.enabled = false;
-        _playerController._secCameraView.SetActive(false);
+        _playerController._secCameraView[0].SetActive(false);
+		_playerController._secCameraView[1].SetActive(false);
         _playerController.enabled = true;
+		_pauseMenuScript.enabled = true;
         idCard.enabled = false;
 		if (_childCollider.haveIdCard == true) {
 

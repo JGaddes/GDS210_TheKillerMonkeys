@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour {
     public Text keyAmountText;
 	public Image collect1, collect2, collect3;
 
-	public GameObject _secCameraView;
+	public GameObject[] _secCameraView;
 
     void Start () {
 		//sets the player's spawnpoint 
@@ -93,7 +93,8 @@ public class PlayerController : MonoBehaviour {
 
 		source = GetComponent<AudioSource> ();
 
-		_secCameraView.SetActive (false);
+		_secCameraView[0].SetActive (false);
+		_secCameraView[1].SetActive (false);
 
 	}
 
