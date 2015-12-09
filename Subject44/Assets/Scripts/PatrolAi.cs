@@ -6,9 +6,10 @@ public class PatrolAi : MonoBehaviour {
 	public Transform[] waypoint;
     public Vector3 target;      
 	public float patrolSpeed = 3f;       
-	public bool  loop = true, hitWall = false;       
+	public bool  loop = true, hitWall = false, stopped = false;       
 	public float dampingLook = 6.0f;          
-	public float pauseDuration = 0; 
+	public float pauseDuration = 0;
+	public Animator guardAnim;
 		
 	private float curTime;
 	private int currentWaypoint = 0;
@@ -31,6 +32,16 @@ public class PatrolAi : MonoBehaviour {
 				currentWaypoint=0;
 			} 
 		}
+
+		if (stopped == true)
+		{
+			guardAnim.StartPlayback();
+		}
+
+		if (stopped == false)
+		{
+			guardAnim.StopPlayback();
+		}
 	}
 		
 	void  patrol ()
@@ -42,6 +53,7 @@ public class PatrolAi : MonoBehaviour {
 		if(moveDirection.magnitude < 0.5f){
 			if (curTime == 0)
 				curTime = Time.time; 
+				stopped = true;
 			if ((Time.time - curTime) >= pauseDuration){
 				currentWaypoint++;
 				curTime = 0;
@@ -52,6 +64,7 @@ public class PatrolAi : MonoBehaviour {
 			var rotation = Quaternion.LookRotation(target - transform.position);
 			transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * dampingLook);
 			character.Move(moveDirection.normalized * patrolSpeed * Time.deltaTime);
+			stopped = false;
 		}  
 	}
 }
