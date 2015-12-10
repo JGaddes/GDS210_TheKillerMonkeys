@@ -9,7 +9,6 @@ public class PatrolAi : MonoBehaviour {
 	public bool  loop = true, hitWall = false, stopped = false;       
 	public float dampingLook = 6.0f;          
 	public float pauseDuration = 0;
-	public Animator guardAnim;
 		
 	private float curTime;
 	private int currentWaypoint = 0;
@@ -35,13 +34,14 @@ public class PatrolAi : MonoBehaviour {
 
 		if (stopped == true)
 		{
-			guardAnim.StartPlayback();
+			gameObject.GetComponent<Guard>().GuardControl.SetBool("STOP", true);
 		}
 
 		if (stopped == false)
 		{
-			guardAnim.StopPlayback();
+			gameObject.GetComponent<Guard>().GuardControl.SetBool("STOP", false);
 		}
+
 	}
 		
 	void  patrol ()

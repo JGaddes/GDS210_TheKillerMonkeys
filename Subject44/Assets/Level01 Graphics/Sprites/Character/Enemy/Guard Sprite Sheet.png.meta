@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: abf96511c30b57545907446537267713
-timeCreated: 1447818780
+timeCreated: 1449755625
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -122,7 +122,7 @@ TextureImporter:
         width: 24
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Guard Sprite Sheet_5
       rect:
@@ -132,7 +132,7 @@ TextureImporter:
         width: 76
         height: 52
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Guard Sprite Sheet_6
       rect:
@@ -142,7 +142,7 @@ TextureImporter:
         width: 36
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Guard Sprite Sheet_7
       rect:
@@ -152,7 +152,7 @@ TextureImporter:
         width: 16
         height: 52
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Guard Sprite Sheet_8
       rect:
@@ -162,7 +162,7 @@ TextureImporter:
         width: 40
         height: 52
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Guard Sprite Sheet_9
       rect:
@@ -172,7 +172,7 @@ TextureImporter:
         width: 92
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Guard Sprite Sheet_10
       rect:
@@ -182,7 +182,7 @@ TextureImporter:
         width: 92
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Guard Sprite Sheet_11
       rect:
@@ -192,7 +192,7 @@ TextureImporter:
         width: 92
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Guard Sprite Sheet_12
       rect:
@@ -202,77 +202,47 @@ TextureImporter:
         width: 92
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Guard Sprite Sheet_13
-      rect:
-        serializedVersion: 2
-        x: 578
-        y: 74
-        width: 44
-        height: 56
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Guard Sprite Sheet_14
       rect:
         serializedVersion: 2
-        x: 618
+        x: 578
         y: 66
-        width: 52
-        height: 60
+        width: 92
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Guard Sprite Sheet_15
-      rect:
-        serializedVersion: 2
-        x: 706
-        y: 82
-        width: 36
-        height: 44
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Guard Sprite Sheet_16
       rect:
         serializedVersion: 2
-        x: 750
+        x: 705
         y: 66
-        width: 48
-        height: 60
+        width: 92
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Guard Sprite Sheet_17
-      rect:
-        serializedVersion: 2
-        x: 850
-        y: 86
-        width: 24
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Guard Sprite Sheet_18
       rect:
         serializedVersion: 2
-        x: 902
+        x: 846
         y: 66
-        width: 36
-        height: 56
+        width: 92
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Guard Sprite Sheet_19
       rect:
         serializedVersion: 2
-        x: 1022
-        y: 86
-        width: 16
-        height: 24
+        x: 984
+        y: 66
+        width: 92
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Guard Sprite Sheet_20
       rect:
@@ -282,7 +252,7 @@ TextureImporter:
         width: 24
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Guard Sprite Sheet_21
       rect:
@@ -292,7 +262,7 @@ TextureImporter:
         width: 48
         height: 52
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Guard Sprite Sheet_22
       rect:
@@ -302,7 +272,7 @@ TextureImporter:
         width: 104
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Guard Sprite Sheet_23
       rect:
@@ -312,7 +282,7 @@ TextureImporter:
         width: 36
         height: 52
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

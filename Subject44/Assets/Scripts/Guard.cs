@@ -7,6 +7,7 @@ public class Guard : MonoBehaviour {
 	public PlayerController playerController;
 	AudioSource source;
 	public AudioClip deadguard;
+	public Animator GuardControl;
 	
 
 	// Use this for initialization
@@ -23,11 +24,20 @@ public class Guard : MonoBehaviour {
 		if (Vector3.Distance (transform.position, player.transform.position) < 1.5f) {
 			if (playerController.useBanana) {
 				if (Input.GetKeyDown (KeyCode.Space)) {
-					Destroy (gameObject);
+					player.GetComponent<PlayerController>().MonkeyAnimator.SetTrigger("Takedown");
+					GuardControl.SetTrigger("DIE");
 					source.PlayOneShot (deadguard);
+
+					StartCoroutine ("GuardGone");
 				}
 			}
 		}
 
+	}
+
+	IEnumerator GuardGone()
+	{
+		yield return new WaitForSeconds(1f);
+		Destroy (gameObject);
 	}
 }

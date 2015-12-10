@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour {
 	public bool havePill = false;
     public bool canMove = true;
 	public bool bananananaMode = false;
-
+	public bool stand = true;
 
     public CharacterController controller;
 	public Slider bananaSlider;
@@ -99,20 +99,77 @@ public class PlayerController : MonoBehaviour {
 			sc.SetActive(false);
 		}
 
+		stand = true;
+
 	}
 
 
 	void Update () {
 
 		//Monkey Animation
+
+		if (Input.GetKey(KeyCode.W))
+		{
+			stand = false;
+		}
+
+		if (Input.GetKey(KeyCode.A))
+		{
+			stand = false;
+		}
+
+		if (Input.GetKey(KeyCode.S))
+		{
+			stand = false;
+		}
+
+		if (Input.GetKey(KeyCode.D))
+		{
+			stand = false;
+		}
+
+
+		if (Input.GetKeyUp(KeyCode.W))
+		{
+			stand = true;
+		}
+		
+		if (Input.GetKeyUp(KeyCode.A))
+		{
+			stand = true;
+		}
+		
+		if (Input.GetKeyUp(KeyCode.S))
+		{
+			stand = true;
+		}
+		
+		if (Input.GetKeyUp(KeyCode.D))
+		{
+			stand = true;
+		}
+
+
 		if (hidden)
 		{
 			MonkeyAnimator.SetBool("Hidden", true);
+			MonkeyAnimator.SetBool("StandHidden", false);
+
+			if(stand)
+			{
+				MonkeyAnimator.SetBool("StandHidden", true);
+			}
 		}
 
 		if (!hidden)
 		{
 			MonkeyAnimator.SetBool("Hidden", false);
+			MonkeyAnimator.SetBool("Stand", false);
+
+			if(stand)
+			{
+				MonkeyAnimator.SetBool("Stand", true);
+			}
 		}
 
 		if (bananananaMode)
@@ -120,12 +177,21 @@ public class PlayerController : MonoBehaviour {
 			bananaSlider.value -= bananaTime * Time.deltaTime;
 			speed = 7.5f;
 			MonkeyAnimator.SetBool("Banana", true);
+			MonkeyAnimator.SetBool("StandBanana", false);
+
+			if(stand)
+			{
+				MonkeyAnimator.SetBool("StandBanana", true);
+				MonkeyAnimator.SetBool("Stand", false);
+
+			}
 		}
 
 		if (!bananananaMode)
 		{
 			useBanana = false;
 			MonkeyAnimator.SetBool("Banana", false);
+			MonkeyAnimator.SetBool("StandBanana", false);
 			speed = 5f;
 			bananaTime = 15f;
 		}
