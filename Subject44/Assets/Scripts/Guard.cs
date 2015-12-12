@@ -5,7 +5,7 @@ public class Guard : MonoBehaviour {
 
 	public GameObject player;
 	public PlayerController playerController;
-	AudioSource source;
+	public AudioSource source;
 	public AudioClip deadguard;
 	public Animator GuardControl;
 	
@@ -15,7 +15,6 @@ public class Guard : MonoBehaviour {
 	{
 
 		playerController = player.GetComponent<PlayerController> ();
-		source = GetComponentInParent<AudioSource>();
 	}
 	
 	// Update is called once per frame

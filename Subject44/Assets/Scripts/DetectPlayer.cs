@@ -14,14 +14,13 @@ public class DetectPlayer : MonoBehaviour {
 	private Vector3 rayDirection;
 
 	public AudioClip detected; 
-	AudioSource source; 
+	public AudioSource source; 
 	
 	
 	// Use this for initialization
 	void Start () 
 	{
 		playerController = player.GetComponent<PlayerController> ();
-		source = GetComponentInParent<AudioSource> ();
 	}
 	
 	// Update is called once per frame

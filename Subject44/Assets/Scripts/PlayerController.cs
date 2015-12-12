@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour {
 
 	public Vector3 spawnPoint;
 	public AudioClip levelfinish;
-	AudioSource source;
+	public AudioSource source;
 	public AudioSource cameraSource; 
 	
 	public bool onPole = false;
