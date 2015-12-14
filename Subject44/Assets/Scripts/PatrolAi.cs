@@ -14,9 +14,9 @@ public class PatrolAi : MonoBehaviour {
 	private int currentWaypoint = 0;
 	private CharacterController character;
 		
-	void  Start (){
-			
-		character = GetComponent<CharacterController>();;
+	void  Start ()
+	{
+		character = GetComponent<CharacterController>();
 	}
 		
 	void  Update (){
