@@ -43,13 +43,118 @@ public class KeypadScript : MonoBehaviour {
             KeyPadUnActive();
         }
 
+        //KEYPAD KEYBOARD INPUT
+        if (keyPadText.text.Length < 4) {
 
-		if ((Input.GetKeyDown(KeyCode.Keypad1) && keyPadText.text.Length < 4) || (Input.GetKeyDown(KeyCode.Alpha1) && keyPadText.text.Length < 4)) {
-			
-			string tempCurString = keyPadText.text;
-			string tempNewString = tempCurString + "1";
-			keyPadText.text = tempNewString;
-		}
+            if (Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKeyDown(KeyCode.Alpha1)) {
+
+                string tempCurString = keyPadText.text;
+                string tempNewString = tempCurString + "1";
+                keyPadText.text = tempNewString;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Keypad2) || Input.GetKeyDown(KeyCode.Alpha2))
+            {
+
+                string tempCurString = keyPadText.text;
+                string tempNewString = tempCurString + "2";
+                keyPadText.text = tempNewString;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Keypad3) || Input.GetKeyDown(KeyCode.Alpha3))
+            {
+
+                string tempCurString = keyPadText.text;
+                string tempNewString = tempCurString + "3";
+                keyPadText.text = tempNewString;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Keypad4) || Input.GetKeyDown(KeyCode.Alpha4))
+            {
+
+                string tempCurString = keyPadText.text;
+                string tempNewString = tempCurString + "4";
+                keyPadText.text = tempNewString;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Keypad5) || Input.GetKeyDown(KeyCode.Alpha5))
+            {
+
+                string tempCurString = keyPadText.text;
+                string tempNewString = tempCurString + "5";
+                keyPadText.text = tempNewString;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Keypad6) || Input.GetKeyDown(KeyCode.Alpha6))
+            {
+
+                string tempCurString = keyPadText.text;
+                string tempNewString = tempCurString + "6";
+                keyPadText.text = tempNewString;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Keypad7) || Input.GetKeyDown(KeyCode.Alpha7))
+            {
+
+                string tempCurString = keyPadText.text;
+                string tempNewString = tempCurString + "7";
+                keyPadText.text = tempNewString;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Keypad8) || Input.GetKeyDown(KeyCode.Alpha8))
+            {
+
+                string tempCurString = keyPadText.text;
+                string tempNewString = tempCurString + "8";
+                keyPadText.text = tempNewString;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Keypad9) || Input.GetKeyDown(KeyCode.Alpha9))
+            {
+
+                string tempCurString = keyPadText.text;
+                string tempNewString = tempCurString + "9";
+                keyPadText.text = tempNewString;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Keypad0) || Input.GetKeyDown(KeyCode.Alpha0))
+            {
+
+                string tempCurString = keyPadText.text;
+                string tempNewString = tempCurString + "0";
+                keyPadText.text = tempNewString;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Backspace)) {
+
+            string tempGetString = keyPadText.text;
+            if (tempGetString.Length > 0)
+            {
+
+                ClickBackspace();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return)) {
+
+            string tempPass = keyPadText.text;
+
+            if (password == tempPass)
+            {
+                StartCoroutine(MyCoroutine());
+                exitDoor.SetActive(false);
+                source.PlayOneShot(keypadSuccess);
+            }
+            else
+            {
+                Debug.Log(password);
+                Debug.Log(tempPass);
+                string tempString = tempPass.Substring(0, tempPass.Length - tempPass.Length);
+                keyPadText.text = tempString; ;
+            }
+        }
+            
     }
 	
 
