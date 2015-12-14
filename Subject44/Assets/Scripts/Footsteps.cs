@@ -7,7 +7,6 @@ public class Footsteps : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
 		audio = GetComponent<AudioSource> ();
 	}
 	
