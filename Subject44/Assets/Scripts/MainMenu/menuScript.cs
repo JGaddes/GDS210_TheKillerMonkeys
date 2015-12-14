@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 public class menuScript : MonoBehaviour {
 
+    public Button[] menuOptions;
+
 	public Canvas exitMenu;
 	public Canvas levelMenu;
 	public Canvas creditMenu;
