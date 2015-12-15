@@ -74,7 +74,7 @@
 	[who] 4
 	[next] -1
 	Pick up the monkey med and code to gain access to the next area.
-	(KEYPADS and COMPUTERS can only be accesed if you have at least ONE MONKEY MED)
+	(KEYPADS and COMPUTERS can only be used if you have at least ONE MONKEY MED and the CORRECT CODE)
 	(Number of MONKEY MEDS is displayed in BOTTOM LEFT corner of your screen)
 
 <turn> id = 14

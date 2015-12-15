@@ -13,6 +13,8 @@ public class PatrolAi : MonoBehaviour {
 	private float curTime;
 	private int currentWaypoint = 0;
 	private CharacterController character;
+
+	//public Animator GuardAnimator;
 		
 	void  Start ()
 	{
@@ -32,15 +34,21 @@ public class PatrolAi : MonoBehaviour {
 			} 
 		}
 
-		if (stopped == true)
+		if(gameObject.name == "Guard")
 		{
-			gameObject.GetComponent<Guard>().GuardControl.SetBool("STOP", true);
+			if (stopped == true)
+			{
+				gameObject.GetComponent<Guard>().GuardControl.SetBool("STOP", true);
+				//GuardAnimator.StartPlayback();
+			}
+			
+			if (stopped == false)
+			{
+				gameObject.GetComponent<Guard>().GuardControl.SetBool("STOP", false);
+				//GuardAnimator.StopPlayback();
+			}
 		}
 
-		if (stopped == false)
-		{
-			gameObject.GetComponent<Guard>().GuardControl.SetBool("STOP", false);
-		}
 
 	}
 		
