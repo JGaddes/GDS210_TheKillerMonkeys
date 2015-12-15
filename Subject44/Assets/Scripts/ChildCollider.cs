@@ -6,8 +6,6 @@ using System.Collections.Generic;
 public class ChildCollider : MonoBehaviour {
 
     public PlayerController player;
-	//public DetectPlayer detected;
-    public GameObject spawnPoint;
     public GuiScript guiScript;
 
     public GameObject purKeyCard;

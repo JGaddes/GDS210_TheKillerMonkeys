@@ -15,6 +15,7 @@ public class ComputerScript : MonoBehaviour {
     public string loginPass = "";
     public bool _openAccess;
     public Image idCard;
+	public Text loginInfo;
     public bool compStopMove;
 
     private Animator anim2;
@@ -35,6 +36,7 @@ public class ComputerScript : MonoBehaviour {
         anim2.enabled = false;
         _openAccess = false;
         idCard.enabled = false;
+		loginInfo.enabled = false;
     }
 	
 	// Update is called once per frame
@@ -110,6 +112,7 @@ public class ComputerScript : MonoBehaviour {
 			if (_childCollider.haveIdCard == true) {
 				_childCollider.idCard.SetActive (false);
 				idCard.enabled = true;
+				loginInfo.enabled = true;
 			}
 		}
         
@@ -123,6 +126,7 @@ public class ComputerScript : MonoBehaviour {
         _playerController.enabled = true;
 		_pauseMenuScript.enabled = true;
         idCard.enabled = false;
+		loginInfo.enabled = false;
 		if (_childCollider.haveIdCard == true) {
 
 			_childCollider.idCard.SetActive(true);

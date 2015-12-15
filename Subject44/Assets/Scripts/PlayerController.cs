@@ -16,15 +16,6 @@ public class PlayerController : MonoBehaviour {
 	public AudioClip levelfinish;
 	public AudioSource source;
 	public AudioSource cameraSource; 
-	
-	public bool onPole = false;
-    public bool inBarrel = false;
-    public bool hidden = false;
-	public bool useBanana = false;
-	public bool havePill = false;
-    public bool canMove = true;
-	public bool bananananaMode = false;
-	public bool stand = true;
 
     public CharacterController controller;
 	public Slider bananaSlider;
@@ -57,13 +48,22 @@ public class PlayerController : MonoBehaviour {
 
 	public Image banana;
     public Image pill;
-    public Image key;
     public Text pillAmountText;
     public Text bananaAmountText;
-    public Text keyAmountText;
-	public Image collect1, collect2, collect3;
+	//public Image collect1, collect2, collect3;
 
 	public GameObject[] _secCameraView;
+
+	//Public Bool Variables
+	[Header("Bool Checks")]
+	public bool onPole = false;
+	public bool inBarrel = false;
+	public bool hidden = false;
+	public bool useBanana = false;
+	public bool havePill = false;
+	public bool canMove = true;
+	public bool bananananaMode = false;
+	public bool stand = true;
 
     void Start () {
 		interactText.enabled = false;
@@ -105,6 +105,8 @@ public class PlayerController : MonoBehaviour {
 
 
 	void Update () {
+
+
 
 		//Monkey Animation
 

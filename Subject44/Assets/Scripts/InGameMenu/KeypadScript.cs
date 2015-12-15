@@ -15,6 +15,7 @@ public class KeypadScript : MonoBehaviour {
 	public bool _openAccess;
 	public Text popUpText;
     public Image idCard;
+	public Text loginInfo;
 	public AudioClip buttonPressed, keypadSuccess, keypadFailure; 
 	AudioSource source;
 	
@@ -31,12 +32,16 @@ public class KeypadScript : MonoBehaviour {
 		anim.enabled = false;
 		_openAccess = false;
         idCard.enabled = false;
+		loginInfo.enabled = false;
         KeyPadUnActive();
 
 		source = GetComponent<AudioSource> ();
 	}
 
     void Update() {
+		if (keyPad.enabled) {
+			popUpText.enabled = false;
+		}
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -160,14 +165,13 @@ public class KeypadScript : MonoBehaviour {
 
 	void OnTriggerStay(Collider other)
 	{	
-		if (other.CompareTag ("Player") && playerController.havePill || _openAccess == true )
+		if (other.CompareTag ("Player") && playerController.havePill || _openAccess)
 		{
-			if(playerController.havePill)
-			{				
-				popUpText.enabled = true;
+			popUpText.enabled = true;
 				if(Input.GetKeyDown(KeyCode.E))
 				{
 					popUpText.enabled = false;
+					Debug.Log ("Nice meme kiddo");
 					KeyPadActive();
 					if(_openAccess == false)
 					{
@@ -175,7 +179,6 @@ public class KeypadScript : MonoBehaviour {
 						playerController.pillCount -= 1;
 					}
 				}
-			}
 		}
 	}
 
@@ -235,6 +238,7 @@ public class KeypadScript : MonoBehaviour {
         {
             _childCollider.idCard.SetActive(false);
             idCard.enabled = true;
+			loginInfo.enabled = true;
         }
 
         playerController.enabled = false;
@@ -245,6 +249,7 @@ public class KeypadScript : MonoBehaviour {
 		
 		keyPad.enabled = false;
         idCard.enabled = false;
+		loginInfo.enabled = false;
 		playerController.canMove = true;
         playerController.enabled = true;
     }
