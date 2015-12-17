@@ -153,8 +153,7 @@ public class KeypadScript : MonoBehaviour {
             }
             else
             {
-                Debug.Log(password);
-                Debug.Log(tempPass);
+
                 string tempString = tempPass.Substring(0, tempPass.Length - tempPass.Length);
                 keyPadText.text = tempString; ;
             }
@@ -171,7 +170,6 @@ public class KeypadScript : MonoBehaviour {
 				if(Input.GetKeyDown(KeyCode.E))
 				{
 					popUpText.enabled = false;
-					Debug.Log ("Nice meme kiddo");
 					KeyPadActive();
 					if(_openAccess == false)
 					{
@@ -232,7 +230,7 @@ public class KeypadScript : MonoBehaviour {
 		if(anim.enabled == false){
 			keyPad.enabled = true;
 			playerController.canMove = false;
-		}
+        }
 
         if (_childCollider.haveIdCard == true)
         {
@@ -258,10 +256,12 @@ public class KeypadScript : MonoBehaviour {
 	{
 		//Disable Raycast so the Keypad becomes unusable
 		keyPad.GetComponent<GraphicRaycaster>().enabled = false;
-		anim.enabled = true;
+        anim.enabled = true;
 		yield return new WaitForSeconds(2);
 		keyPad.enabled = false;
-		playerController.canMove = true;
+        idCard.enabled = false;
+        loginInfo.enabled = false;
+        playerController.canMove = true;
 		playerController.enabled = true;
 	}
 }

@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour {
 	public AudioSource cameraSource; 
 
     public CharacterController controller;
+    public MonkeyKin _monkeyKin;
 	public Slider bananaSlider;
     private Vector3 moveDirection = Vector3.zero;
 	public Text interactText;
@@ -31,9 +32,13 @@ public class PlayerController : MonoBehaviour {
     public Image star1;
     public Image star2;
     public Image star3;
-	
+
+    //reference for monkeykin
+    public Image monkeykin1, monkeykin2, monkeykin3;
+    public float monkeyKinSaved = 0f;
+
     //reference to next button
-    public GameObject buttonNext;
+    public Canvas buttonNext;
 
     private string currentLevel;
     private int worldIndex;
@@ -68,8 +73,12 @@ public class PlayerController : MonoBehaviour {
     void Start () {
 		interactText.enabled = false;
 
-		//sets the player's spawnpoint 
-		spawnPoint = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        monkeykin1.GetComponent<Image>().enabled = false;
+        monkeykin2.GetComponent<Image>().enabled = false;
+        monkeykin3.GetComponent<Image>().enabled = false;
+
+        //sets the player's spawnpoint 
+        spawnPoint = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 
 		//set the level complete to false on start of level
         isLevelComplete = false;
@@ -80,7 +89,7 @@ public class PlayerController : MonoBehaviour {
        	star3.GetComponent<Image>().enabled = false;
 
         //disable the next button
-        buttonNext.SetActive(false);
+        buttonNext.enabled = false;
 
         //save the current level name
         currentLevel = Application.loadedLevelName;
@@ -93,7 +102,7 @@ public class PlayerController : MonoBehaviour {
 
 		//MonkeyAnimator.SetInteger ("Walk", 1);
 
-		source = GetComponent<AudioSource> ();
+		//source = GetComponent<AudioSource> ();
 
 		foreach (GameObject sc in _secCameraView) {
 			sc.SetActive(false);
@@ -107,7 +116,7 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
 
 
-
+        Debug.Log("Saved " + monkeyKinSaved);
 		//Monkey Animation
 
 		if (Input.GetKey(KeyCode.W))
@@ -280,22 +289,51 @@ public class PlayerController : MonoBehaviour {
                 star1.GetComponent<Image>().enabled = true;
                 UnlockLevels(1);   //unlock next level function 
             }
-            buttonNext.SetActive(true);
-            Time.timeScale = 0;
 
+            if (monkeyKinSaved == 1) {
+
+                monkeykin1.GetComponent<Image>().enabled = true;
+            }
+            else if (monkeyKinSaved == 2){
+
+                monkeykin2.GetComponent<Image>().enabled = true;
+            }
+            else if (monkeyKinSaved == 3){
+
+                monkeykin3.GetComponent<Image>().enabled = true;
+            }
+
+            buttonNext.enabled = true;
+            Time.timeScale = 0;
 			source.PlayOneShot(levelfinish);
-			cameraSource.volume = 0.1f; 
+			cameraSource.volume = 0f; 
         }
     }
 
-	 public void OnClickButton()
+	 public void OnClickNext()
+    {
+        //load the World1 level 
+        Application.LoadLevel("Elevator");
+        Time.timeScale = 1;
+
+    }
+
+    public void OnClickRestart()
+    {
+        //load the World1 level 
+        Application.LoadLevel(Application.loadedLevel);
+
+    }
+
+    public void OnClickMenu()
     {
         //load the World1 level 
         Application.LoadLevel("MainMenu1");
 
+
     }
-	
-	public void UnlockLevels(int stars)
+
+    public void UnlockLevels(int stars)
     {
         //set the playerprefs value of next level to 1 to unlock
         for (int i = 0; i < LockLevel.worlds; i++)

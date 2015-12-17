@@ -62,17 +62,13 @@ public class ComputerScript : MonoBehaviour {
 
 			popUpText.enabled = false;
 
-            if (other.CompareTag("Player") && _playerController.havePill || _openAccess == true)
+            if (other.CompareTag("Player") && _playerController.havePill )
             {
 
                 ComputerActive();
+                
 
-                if (_openAccess == false)
-                {
 
-                    _openAccess = true;
-                    _playerController.pillCount -= 1;
-                }
             }
         }
     }
@@ -86,43 +82,22 @@ public class ComputerScript : MonoBehaviour {
         }
     }
 
-    public void CodeCheck(string other)
-    {
+    public void ComputerActive(){
 
-        string tempLogin = compInput.text.ToLower();
-
-        if (loginPass == tempLogin)
-        {
-            anim2.enabled = true;
-            _playerController._secCameraView[0].SetActive(true);
-			_playerController._secCameraView[1].SetActive(true);
-        }
-    }
-
-    public void ComputerActive()
-    {
 		if (!_playerController.bananananaMode) {
-			_playerController.enabled = false;
-			_pauseMenuScript.enabled = false;
-			Computer.enabled = true;
-			_playerController._secCameraView[0].SetActive (true);
-			_playerController._secCameraView[1].SetActive (true);
-        
 
 			if (_childCollider.haveIdCard == true) {
-				_childCollider.idCard.SetActive (false);
-				idCard.enabled = true;
-				loginInfo.enabled = true;
-			}
-		}
-        
+
+                UnlockDoors();
+                DisableCameras();
+                _playerController.pillCount -= 1;
+            }
+		}       
     }
 
     public void ComputerUnActive()
     {
         Computer.enabled = false;
-        _playerController._secCameraView[0].SetActive(false);
-		_playerController._secCameraView[1].SetActive(false);
         _playerController.enabled = true;
 		_pauseMenuScript.enabled = true;
         idCard.enabled = false;

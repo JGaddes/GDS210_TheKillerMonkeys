@@ -5,6 +5,7 @@ using System.Collections;
 public class MonkeyKin : MonoBehaviour {
 
 	public PlayerController player;
+    public MonkeyNPC _monkeyNPC;
 	public int textHelp, textYes, textNo;
 
 	public bool key;
@@ -13,25 +14,17 @@ public class MonkeyKin : MonoBehaviour {
 	public AudioSource source;
 	public AudioSource cameraSource;
 	public GameObject yesButt, noButt;
-	public Text yesTxt, noTxt;
-	public GameObject cageDoor, monkeyKin;
+	public GameObject cageDoor;
+    public GameObject monkeyKin;
+    public int noKey;
 
+    // Use this for initialization
+    void Start () {
 
-	// Use this for initialization
-	void Start () {
-	
-		key = false;
-
-		yesButt.SetActive (false);
+		key = false;  
+        yesButt.SetActive (false);
 		noButt.SetActive (false);
-
 		player = GameObject.Find("Player").GetComponent<PlayerController>();
-
-		//source = GetComponent<AudioSource>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
 
 	}
 
@@ -45,40 +38,44 @@ public class MonkeyKin : MonoBehaviour {
 				{
 					//Will you help me? dialogue
 					player.BroadcastMessage ("StartDialogue", textHelp);
-
 					used = true;
-
 					yesButt.SetActive (true);
 					noButt.SetActive (true);
-					yesTxt.enabled = true;
-					noTxt.enabled = true;
 				}
 			}
-		}
+
+            if (!key)
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    //you need a key dialogue
+                    player.BroadcastMessage("StartDialogue", noKey);
+                    used = true;
+                }
+            }
+        }
 	}
 
 	public void saveMonkey()
 	{
-		//thank you dialogue
-		player.BroadcastMessage ("StartDialogue", textYes);
-		source.PlayOneShot(goodMonkey, 1f);
+        //thank you dialogue
+        player.BroadcastMessage ("StartDialogue", textYes);
+        source.PlayOneShot(goodMonkey, 1f);
 		cameraSource.volume = 0.1f; 
 		Invoke("VolumeBackUp", 4.5f);
 
-		cageDoor.transform.Rotate(0, 110f, 0);
+        cageDoor.transform.Rotate(0, 110f, 0);
+        monkeyKin.SetActive(false);
+        player.monkeyKinSaved += 1;
 
-		monkeyKin.SetActive (false);
-
-		yesButt.SetActive (false);
+        yesButt.SetActive (false);
 		noButt.SetActive (false);
-		yesTxt.enabled = false;
-		noTxt.enabled = false;
+    }
 
-	}
-
-	public void leaveMonkey()
+    public void leaveMonkey()
 	{
-		//sad dialogue
+        //sad dialogue
+        
 		player.BroadcastMessage ("StartDialogue", textNo);
 		source.PlayOneShot(badMonkey, 1f);
 		cameraSource.volume = 0.1f; 
@@ -86,11 +83,9 @@ public class MonkeyKin : MonoBehaviour {
 
 		yesButt.SetActive (false);
 		noButt.SetActive (false);
-		yesTxt.enabled = false;
-		noTxt.enabled = false;
 	}
 
-	public void VolumeBackUp()
+    public void VolumeBackUp()
 	{
 		cameraSource.volume = 0.4f;
 		
