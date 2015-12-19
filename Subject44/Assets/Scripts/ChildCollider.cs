@@ -84,9 +84,7 @@ public class ChildCollider : MonoBehaviour {
 			col.gameObject.GetComponent<Button> ().buttonOn = true;
 		}
 
-		if (col.CompareTag ("Checkpoint")) {
-			player.GetComponent<PlayerController>().spawnPoint = col.transform.position;
-		}
+
 
 		// Pick up Keys
 		if (col.CompareTag ("Blue Key")) {
@@ -132,7 +130,7 @@ public class ChildCollider : MonoBehaviour {
         if (col.CompareTag ("IDCard")) {
 
             haveIdCard = true;
-            idCard.SetActive(true);
+            idCard.GetComponent<Image>().enabled = true;
             Destroy(col.gameObject);
 			source.PlayOneShot(pickupAnything);
         }

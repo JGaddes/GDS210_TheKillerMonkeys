@@ -72,10 +72,12 @@ public class PlayerController : MonoBehaviour {
 
     void Start () {
 		interactText.enabled = false;
-
-        monkeykin1.GetComponent<Image>().enabled = false;
-        monkeykin2.GetComponent<Image>().enabled = false;
-        monkeykin3.GetComponent<Image>().enabled = false;
+		//Cursor.visible = false;
+		if (monkeykin1 != null || monkeykin2 != null || monkeykin3 != null) {
+			monkeykin1.GetComponent<Image> ().enabled = false;
+			monkeykin2.GetComponent<Image> ().enabled = false;
+			monkeykin3.GetComponent<Image> ().enabled = false;
+		}
 
         //sets the player's spawnpoint 
         spawnPoint = new Vector3(transform.position.x, transform.position.y, transform.position.z);
@@ -158,6 +160,10 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetKeyUp(KeyCode.D))
 		{
 			stand = true;
+		}
+
+		if (inBarrel) {
+			canMove = false;
 		}
 
 
@@ -272,6 +278,7 @@ public class PlayerController : MonoBehaviour {
     {
 		if (col.gameObject.name == "Goal")
         { 
+			Cursor.visible = true;
             //set the isLevelComplete flag to true if the player hits an object with name Goal
             isLevelComplete = true;
             if (totalTime < 2)
