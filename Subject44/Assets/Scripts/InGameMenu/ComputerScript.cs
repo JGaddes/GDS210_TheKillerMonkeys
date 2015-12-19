@@ -25,6 +25,9 @@ public class ComputerScript : MonoBehaviour {
     public GameObject[] secCams;
     public SecCamAi secCamAi;
 
+	public AudioClip loginFail, loginSuccess; 
+	public AudioSource source; 
+
     // Use this for initialization
     void Start () {
         lockedDoors = GameObject.FindGameObjectsWithTag("Locked Door");
@@ -66,10 +69,14 @@ public class ComputerScript : MonoBehaviour {
             {
 
                 ComputerActive();
-                
+				source.PlayOneShot(loginSuccess);               
 
 
             }
+			else
+			{
+				source.PlayOneShot(loginFail); 
+			}
         }
     }
 

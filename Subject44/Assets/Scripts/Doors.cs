@@ -6,6 +6,8 @@ public class Doors : MonoBehaviour {
 	public GameObject doorTop, openTop, closeTop, doorBot, openBot, closeBot;
 	private float speed = 6.5f;
     public bool open;
+	public AudioSource source;
+	public AudioClip dooropening; 
 
     private Transform topPos, botPos;
 
@@ -55,5 +57,20 @@ public class Doors : MonoBehaviour {
 			open = false; 
 		}
     }
+
+	void OnTriggerEnter(Collider other)
+	{
+		if (other.CompareTag("Player"))
+		{
+			open = true;
+			source.PlayOneShot(dooropening); 
+		}
+		
+		if (other.CompareTag("Guard"))
+		{
+			open = true;
+			source.PlayOneShot(dooropening);
+		}
+	}
 
 }
