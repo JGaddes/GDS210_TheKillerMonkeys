@@ -15,6 +15,7 @@ public class Doors : MonoBehaviour {
     {
         topPos = doorTop.GetComponent<Transform>();
         botPos = doorBot.GetComponent<Transform>();
+		source.volume = 0.5f;
     }
 
     void Update()

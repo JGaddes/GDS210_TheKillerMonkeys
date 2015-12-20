@@ -68,12 +68,14 @@ public class ChildCollider : MonoBehaviour {
 			player.banana.canvasRenderer.SetAlpha (1f);
 			Destroy (col.gameObject);
 			source.PlayOneShot(pickupAnything);
+			source.volume = 0.6f;
 		}
 
 		if (col.CompareTag ("Pill")) {
 			player.pillCount += 1;
 			Destroy (col.gameObject);
 			source.PlayOneShot(pickupAnything);
+			source.volume = 0.6f;
 		}
 		
 
@@ -91,6 +93,7 @@ public class ChildCollider : MonoBehaviour {
 			haveBluCard = true;
 			Destroy (col.gameObject);
 			source.PlayOneShot(pickupAnything);
+			source.volume = 0.6f;
 			bluKeyCard.SetActive (true);
 
 			foreach(GameObject d in bluDoors)
@@ -104,6 +107,7 @@ public class ChildCollider : MonoBehaviour {
 			oraKeyCard.SetActive (true);
 			Destroy (col.gameObject);
 			source.PlayOneShot(pickupAnything);
+			source.volume = 0.6f;
 		}
 
 		if (col.CompareTag ("Pink Key")) {
@@ -111,6 +115,7 @@ public class ChildCollider : MonoBehaviour {
 			pinKeyCard.SetActive (true);
 			Destroy (col.gameObject);
 			source.PlayOneShot(pickupAnything);
+			source.volume = 0.6f;
 		}
 
 		if (col.CompareTag ("Purple Key")) {
@@ -118,6 +123,7 @@ public class ChildCollider : MonoBehaviour {
 			purKeyCard.SetActive (true);
 			Destroy (col.gameObject);
 			source.PlayOneShot(pickupAnything);
+			source.volume = 0.6f;
 		}
 
 		if (col.CompareTag ("Green Key")) {
@@ -125,6 +131,7 @@ public class ChildCollider : MonoBehaviour {
 			greKeyCard.SetActive (true);
 			Destroy (col.gameObject);
 			source.PlayOneShot(pickupAnything);
+			source.volume = 0.6f;
 		}
 
         if (col.CompareTag ("IDCard")) {
@@ -133,6 +140,7 @@ public class ChildCollider : MonoBehaviour {
             idCard.GetComponent<Image>().enabled = true;
             Destroy(col.gameObject);
 			source.PlayOneShot(pickupAnything);
+			source.volume = 0.6f;
         }
 	} 
 

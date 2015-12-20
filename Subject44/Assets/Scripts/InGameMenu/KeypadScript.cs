@@ -17,7 +17,7 @@ public class KeypadScript : MonoBehaviour {
     public Image idCard;
 	public Text loginInfo;
 	public AudioClip buttonPressed, keypadSuccess, keypadFailure; 
-	AudioSource source;
+	public AudioSource source;
 	
 	private Animator anim;
 
@@ -56,6 +56,7 @@ public class KeypadScript : MonoBehaviour {
                 string tempCurString = keyPadText.text;
                 string tempNewString = tempCurString + "1";
                 keyPadText.text = tempNewString;
+				source.PlayOneShot(buttonPressed);
             }
 
             if (Input.GetKeyDown(KeyCode.Keypad2) || Input.GetKeyDown(KeyCode.Alpha2))
@@ -64,6 +65,7 @@ public class KeypadScript : MonoBehaviour {
                 string tempCurString = keyPadText.text;
                 string tempNewString = tempCurString + "2";
                 keyPadText.text = tempNewString;
+				source.PlayOneShot(buttonPressed);
             }
 
             if (Input.GetKeyDown(KeyCode.Keypad3) || Input.GetKeyDown(KeyCode.Alpha3))
@@ -72,6 +74,7 @@ public class KeypadScript : MonoBehaviour {
                 string tempCurString = keyPadText.text;
                 string tempNewString = tempCurString + "3";
                 keyPadText.text = tempNewString;
+				source.PlayOneShot(buttonPressed);
             }
 
             if (Input.GetKeyDown(KeyCode.Keypad4) || Input.GetKeyDown(KeyCode.Alpha4))
@@ -80,6 +83,7 @@ public class KeypadScript : MonoBehaviour {
                 string tempCurString = keyPadText.text;
                 string tempNewString = tempCurString + "4";
                 keyPadText.text = tempNewString;
+				source.PlayOneShot(buttonPressed);
             }
 
             if (Input.GetKeyDown(KeyCode.Keypad5) || Input.GetKeyDown(KeyCode.Alpha5))
@@ -88,6 +92,7 @@ public class KeypadScript : MonoBehaviour {
                 string tempCurString = keyPadText.text;
                 string tempNewString = tempCurString + "5";
                 keyPadText.text = tempNewString;
+				source.PlayOneShot(buttonPressed);
             }
 
             if (Input.GetKeyDown(KeyCode.Keypad6) || Input.GetKeyDown(KeyCode.Alpha6))
@@ -96,6 +101,7 @@ public class KeypadScript : MonoBehaviour {
                 string tempCurString = keyPadText.text;
                 string tempNewString = tempCurString + "6";
                 keyPadText.text = tempNewString;
+				source.PlayOneShot(buttonPressed);
             }
 
             if (Input.GetKeyDown(KeyCode.Keypad7) || Input.GetKeyDown(KeyCode.Alpha7))
@@ -104,6 +110,7 @@ public class KeypadScript : MonoBehaviour {
                 string tempCurString = keyPadText.text;
                 string tempNewString = tempCurString + "7";
                 keyPadText.text = tempNewString;
+				source.PlayOneShot(buttonPressed);
             }
 
             if (Input.GetKeyDown(KeyCode.Keypad8) || Input.GetKeyDown(KeyCode.Alpha8))
@@ -112,6 +119,7 @@ public class KeypadScript : MonoBehaviour {
                 string tempCurString = keyPadText.text;
                 string tempNewString = tempCurString + "8";
                 keyPadText.text = tempNewString;
+				source.PlayOneShot(buttonPressed);
             }
 
             if (Input.GetKeyDown(KeyCode.Keypad9) || Input.GetKeyDown(KeyCode.Alpha9))
@@ -120,6 +128,7 @@ public class KeypadScript : MonoBehaviour {
                 string tempCurString = keyPadText.text;
                 string tempNewString = tempCurString + "9";
                 keyPadText.text = tempNewString;
+				source.PlayOneShot(buttonPressed);
             }
 
             if (Input.GetKeyDown(KeyCode.Keypad0) || Input.GetKeyDown(KeyCode.Alpha0))
@@ -128,6 +137,7 @@ public class KeypadScript : MonoBehaviour {
                 string tempCurString = keyPadText.text;
                 string tempNewString = tempCurString + "0";
                 keyPadText.text = tempNewString;
+				source.PlayOneShot(buttonPressed);
             }
         }
 
@@ -263,5 +273,6 @@ public class KeypadScript : MonoBehaviour {
         loginInfo.enabled = false;
         playerController.canMove = true;
 		playerController.enabled = true;
+		source.mute = true;
 	}
 }

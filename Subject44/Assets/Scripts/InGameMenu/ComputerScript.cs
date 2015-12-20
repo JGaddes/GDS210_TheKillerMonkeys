@@ -69,8 +69,6 @@ public class ComputerScript : MonoBehaviour {
             {
 
                 ComputerActive();
-				source.PlayOneShot(loginSuccess);               
-
 
             }
 			else
@@ -95,6 +93,7 @@ public class ComputerScript : MonoBehaviour {
 
 			if (_childCollider.haveIdCard == true) {
 
+				source.PlayOneShot(loginSuccess); 
                 UnlockDoors();
                 DisableCameras();
                 _playerController.pillCount -= 1;
