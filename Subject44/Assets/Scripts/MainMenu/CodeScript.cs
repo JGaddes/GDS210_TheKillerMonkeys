@@ -10,6 +10,7 @@ public class CodeScript : MonoBehaviour {
     private int worldIndex;
     private int levelIndex;
 	private int setIndex;
+    private bool debugMode = false;
 
 	void Start (){
 
@@ -57,5 +58,22 @@ public class CodeScript : MonoBehaviour {
                 PlayerPrefs.SetInt("level" + worldIndex.ToString() + ":" + levelIndex.ToString(), 1);
             }
         }
+    }
+
+    public void DebugModeOn() {
+
+        debugMode = !debugMode;
+
+        if (debugMode)
+        {
+
+            unlockables[0].gameObject.GetComponent<Image>().enabled = false;
+            unlockables[1].gameObject.GetComponent<Image>().enabled = false;
+        }
+        else {
+            unlockables[0].gameObject.GetComponent<Image>().enabled = true;
+            unlockables[1].gameObject.GetComponent<Image>().enabled = true;
+        }
+
     }
 }

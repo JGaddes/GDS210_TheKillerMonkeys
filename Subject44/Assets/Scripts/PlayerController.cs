@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour {
     public CharacterController controller;
     public MonkeyKin _monkeyKin;
 	public Slider bananaSlider;
+    public Image fill;
+    public Image background;
     private Vector3 moveDirection = Vector3.zero;
 	public Text interactText;
 
@@ -117,8 +119,6 @@ public class PlayerController : MonoBehaviour {
 
 	void Update () {
 
-
-        Debug.Log("Saved " + monkeyKinSaved);
 		//Monkey Animation
 
 		if (Input.GetKey(KeyCode.W))
@@ -258,9 +258,17 @@ public class PlayerController : MonoBehaviour {
 			bananananaMode = true;
         }
 
-		if (bananaSlider.value <= 0)
-		{
-			bananananaMode = false;
+        if (bananaSlider.value <= 0)
+        {
+            bananananaMode = false;
+            background.canvasRenderer.SetAlpha(0.2f);
+            fill.canvasRenderer.SetAlpha(0.2f);
+        }
+        else
+        {
+
+            background.canvasRenderer.SetAlpha(1f);
+            fill.canvasRenderer.SetAlpha(1f);
         }
 
         bananaAmountText.text = ("x " + bananaCount);
@@ -336,8 +344,11 @@ public class PlayerController : MonoBehaviour {
     {
         //load the World1 level 
         Application.LoadLevel("MainMenu1");
+    }
 
+    public void LoadLevel1() {
 
+        Application.LoadLevel("Level1.2");
     }
 
     public void UnlockLevels(int stars)

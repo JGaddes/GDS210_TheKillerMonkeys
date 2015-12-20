@@ -108,7 +108,13 @@ public class ChildCollider : MonoBehaviour {
 			Destroy (col.gameObject);
 			source.PlayOneShot(pickupAnything);
 			source.volume = 0.6f;
-		}
+            oraKeyCard.SetActive(true);
+
+            foreach (GameObject d in oraDoors)
+            {
+                d.GetComponent<Collider>().enabled = true;
+            }
+        }
 
 		if (col.CompareTag ("Pink Key")) {
 			havePinCard = true;
@@ -116,7 +122,13 @@ public class ChildCollider : MonoBehaviour {
 			Destroy (col.gameObject);
 			source.PlayOneShot(pickupAnything);
 			source.volume = 0.6f;
-		}
+            pinKeyCard.SetActive(true);
+
+            foreach (GameObject d in pinDoors)
+            {
+                d.GetComponent<Collider>().enabled = true;
+            }
+        }
 
 		if (col.CompareTag ("Purple Key")) {
 			havePurCard = true;
@@ -132,12 +144,20 @@ public class ChildCollider : MonoBehaviour {
 			Destroy (col.gameObject);
 			source.PlayOneShot(pickupAnything);
 			source.volume = 0.6f;
-		}
+
+            greKeyCard.SetActive(true);
+
+            foreach (GameObject d in greDoors)
+            {
+                d.GetComponent<Collider>().enabled = true;
+            }
+        }
 
         if (col.CompareTag ("IDCard")) {
 
             haveIdCard = true;
             idCard.GetComponent<Image>().enabled = true;
+            idCard.SetActive(true);
             Destroy(col.gameObject);
 			source.PlayOneShot(pickupAnything);
 			source.volume = 0.6f;

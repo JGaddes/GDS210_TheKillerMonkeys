@@ -10,20 +10,18 @@ public class ComputerScript : MonoBehaviour {
     public ChildCollider _childCollider;
 	public PauseMenuScript _pauseMenuScript;
 
-    public Text compInput;
-    public Canvas Computer;
-    public string loginPass = "";
     public bool _openAccess;
     public Image idCard;
-	public Text loginInfo;
     public bool compStopMove;
 
-    private Animator anim2;
 	private Text popUpText;
 
     public GameObject[] lockedDoors;
+    //public GameObject[] unlockedDoors;
     public GameObject[] secCams;
     public SecCamAi secCamAi;
+    public Animator anim;
+
 
 	public AudioClip loginFail, loginSuccess; 
 	public AudioSource source; 
@@ -31,15 +29,20 @@ public class ComputerScript : MonoBehaviour {
     // Use this for initialization
     void Start () {
         lockedDoors = GameObject.FindGameObjectsWithTag("Locked Door");
+        //unlockedDoors = GameObject.FindGameObjectsWithTag("Unlocked Door");
         secCams = GameObject.FindGameObjectsWithTag("Sec Cam");
 		popUpText = _playerController.gameObject.GetComponent<PlayerController> ().interactText;
 
-        anim2 = Computer.gameObject.GetComponent<Animator>();
-        Computer.enabled = false;
-        anim2.enabled = false;
+
+        anim.enabled = false;
         _openAccess = false;
         idCard.enabled = false;
-		loginInfo.enabled = false;
+
+
+        //foreach (GameObject ud in unlockedDoors) {
+
+        //    ud.SetActive(false);
+        //}
     }
 	
 	// Update is called once per frame
@@ -97,17 +100,19 @@ public class ComputerScript : MonoBehaviour {
                 UnlockDoors();
                 DisableCameras();
                 _playerController.pillCount -= 1;
+                anim.enabled = true;
+                
             }
 		}       
     }
 
     public void ComputerUnActive()
     {
-        Computer.enabled = false;
+
         _playerController.enabled = true;
 		_pauseMenuScript.enabled = true;
         idCard.enabled = false;
-		loginInfo.enabled = false;
+
 		if (_childCollider.haveIdCard == true) {
 
 			_childCollider.idCard.SetActive(true);
@@ -123,6 +128,12 @@ public class ComputerScript : MonoBehaviour {
             d.SetActive(false);
             Debug.Log("Doors Unlocking!");
         }
+
+        //foreach (GameObject ud in unlockedDoors)
+        //{
+
+        //    ud.SetActive(true);
+        //}
     }
 
     public void DisableCameras()

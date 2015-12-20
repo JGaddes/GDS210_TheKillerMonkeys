@@ -19,7 +19,11 @@ public class Barrel : MonoBehaviour {
 	void Start()
 	{
 		popUpText = player.gameObject.GetComponent<PlayerController> ().interactText;
+
+        player = GameObject.FindGameObjectWithTag ("Player");
 	}
+
+
 
 	void Update()
 	{

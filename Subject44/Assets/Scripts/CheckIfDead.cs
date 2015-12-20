@@ -15,7 +15,7 @@ public class CheckIfDead : MonoBehaviour {
     public Image star3;
 
     //reference to next button
-    public GameObject buttonNext;
+    public Canvas buttonNext;
 
     private string currentLevel;
     private int worldIndex;
@@ -38,7 +38,7 @@ public class CheckIfDead : MonoBehaviour {
         star3.GetComponent<Image>().enabled = false;
 
         //disable the next button
-        buttonNext.SetActive(false);
+        buttonNext.enabled = false;
 
         //save the current level name
         currentLevel = Application.loadedLevelName;
@@ -65,7 +65,7 @@ public class CheckIfDead : MonoBehaviour {
                 star1.GetComponent<Image>().enabled = true;
                 UnlockLevels(1);   //unlock next level function 
             }
-            buttonNext.SetActive(true);
+            buttonNext.enabled = true;
 
             Time.timeScale = 0;          
         }
