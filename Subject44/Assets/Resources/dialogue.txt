@@ -4,6 +4,12 @@
 	<actor> name = Monkeykin 2; avatar = monkey02
 	<actor> name = MonkeyNPC 3; avatar = NPC01
 	<actor> name = Mr. Scientist 4; avatar = scientist
+	<actor> name = Monkeykin 5; avatar = monkey03
+	<actor> name = Monkeykin 6; avatar = monkey03
+	<actor> name = Monkeykin 7; avatar = monkey03
+	<actor> name = Monkeykin 8; avatar = monkey03
+
+
 	
 <dialogue>
 
@@ -160,3 +166,84 @@
 	[who] 2
 	[next] -1
 	How are you going to free me without a KEY?
+	
+<turn> id = 30
+	[who] 5
+	[next] -1
+	Help me please!
+	
+<turn> id = 31
+	[who] 5
+	[next] -1
+	Bless your kindness.
+	
+<turn> id = 32
+	[who] 5
+	[next] -1
+	You'll get what's coming to you.
+	
+<turn> id = 33
+	[who] 6
+	[next] -1
+	Will you help a fellow monkey out?
+	
+<turn> id = 34
+	[who] 6
+	[next] -1
+	I knew you was a good monkey.
+	
+<turn> id = 35
+	[who] 6
+	[next] -1
+	It's all good my monkey, tis just karma.
+	
+<turn> id = 36
+	[who] 7
+	[next] -1
+	Oh! Kind monkey! Will you help me?
+	
+<turn> id = 37
+	[who] 7
+	[next] -1
+	Splendid!
+	
+<turn> id = 38
+	[who] 7
+	[next] -1
+	Betrayed by my own kind.
+	
+<turn> id = 39
+	[who] 8
+	[next] -1
+	Will you perform the ultimate act of heroism and save me!?
+	
+<turn> id = 40
+	[who] 8
+	[next] -1
+	Thank you kind hero.
+	
+<turn> id = 41
+	[who] 8
+	[next] -1
+	There is a special place in hell for you.
+	
+<turn> id = 42
+	[who] 5
+	[next] -1
+	Go get the KEY!
+	
+<turn> id = 43
+	[who] 7
+	[next] -1
+	The lock needs a key dear monkey.
+	
+<turn> id = 44
+	[who] 8
+	[next] -1
+	Set forth on an epic adventure and find the KEY!
+	
+<turn> id = 45
+	[who] 3
+	[next] -1
+	I did not think you would make it this far!
+	You will need this KEY if you want to save the monkey kin in this area.

@@ -41,6 +41,7 @@ public class MonkeyKin : MonoBehaviour {
 					used = true;
 					yesButt.SetActive (true);
 					noButt.SetActive (true);
+					player.canMove = false;
 				}
 			}
 
@@ -50,7 +51,7 @@ public class MonkeyKin : MonoBehaviour {
                 {
                     //you need a key dialogue
                     player.BroadcastMessage("StartDialogue", noKey);
-                    used = true;
+					player.canMove = false;
                 }
             }
         }
